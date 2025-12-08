@@ -29,7 +29,7 @@ export function MediaShowcase() {
       title: "Fokvs Mobile App Demo",
       description: "Demonstration of the Fokvs mobile application features and user experience",
       type: "video",
-      src: "/media/videos/demo_fokvs_app.MP4",
+      src: "/media/videos/demo_fokvs_app.mp4",
       alt: "Video demonstration of Fokvs mobile app features and functionality",
       project: "Fokvs",
       orientation: "portrait",
