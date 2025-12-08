@@ -1,8 +1,4 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { ScrollAnimate } from "@/components/scroll-animate";
 import {
   Users,
   TrendingUp,
@@ -12,6 +8,7 @@ import {
   FileText,
   Target,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type Metric = {
   value: number;
@@ -136,183 +133,119 @@ const getColorClasses = (color: string) => {
   return colorMap[color] || colorMap["chart-2"];
 };
 
-function AnimatedCounter({
-  target,
-  suffix = "",
-  prefix = "",
-  duration = 2000,
-  format = "number",
-  rangeEnd,
-  color = "chart-2",
-}: {
-  target: number;
-  suffix?: string;
-  prefix?: string;
-  duration?: number;
-  format?: "number" | "percentage" | "range";
-  rangeEnd?: number;
-  color?: string;
-}) {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const currentRef = ref.current;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-            const startTime = Date.now();
-            const startValue = 0;
-
-            const animate = () => {
-              const now = Date.now();
-              const progress = Math.min((now - startTime) / duration, 1);
-
-              // Easing function for smooth animation
-              const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-              const current = Math.floor(
-                startValue + (target - startValue) * easeOutQuart
-              );
-
-              setCount(current);
-
-              if (progress < 1) {
-                requestAnimationFrame(animate);
-              } else {
-                setCount(target);
-              }
-            };
-
-            requestAnimationFrame(animate);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [target, duration, hasAnimated]);
-
-  const formatNumber = (num: number): string => {
-    if (format === "range" && rangeEnd !== undefined) {
-      return `${num}% → ${rangeEnd}%`;
-    }
-    if (format === "percentage") {
-      return num.toString();
-    }
-    if (num >= 100000) {
-      return (num / 1000).toFixed(0) + "K";
-    }
-    if (num >= 1000) {
-      return (num / 1000).toFixed(num % 1000 === 0 ? 0 : 1) + "K";
-    }
+function formatNumber(
+  num: number,
+  format: "number" | "percentage" | "range" = "number",
+  rangeEnd?: number
+): string {
+  if (format === "range" && rangeEnd !== undefined) {
+    return `${num}% → ${rangeEnd}%`;
+  }
+  if (format === "percentage") {
     return num.toString();
-  };
-
-  const colors = getColorClasses(color);
-
-  return (
-    <div ref={ref} className="flex items-baseline gap-2">
-      <span
-        className={`text-4xl font-bold ${colors.text} md:text-5xl whitespace-nowrap`}
-      >
-        {prefix && (
-          <span className="text-muted-foreground text-2xl md:text-3xl">
-            {prefix}{" "}
-          </span>
-        )}
-        {formatNumber(count)}
-        {suffix && format !== "range" && suffix}
-      </span>
-    </div>
-  );
+  }
+  if (num >= 100000) {
+    return (num / 1000).toFixed(0) + "K";
+  }
+  if (num >= 1000) {
+    return (num / 1000).toFixed(num % 1000 === 0 ? 0 : 1) + "K";
+  }
+  return num.toString();
 }
 
 export function Metrics() {
   return (
     <section className="mb-32" aria-labelledby="metrics-heading">
-      <ScrollAnimate direction="up" delay={0}>
-        <h2
-          id="metrics-heading"
-          className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl text-center"
-        >
-          Impact by Numbers
-        </h2>
-      </ScrollAnimate>
+      <h2
+        id="metrics-heading"
+        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl text-center"
+      >
+        Impact by Numbers
+      </h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {metrics.map((metric, index) => {
+        {metrics.map((metric) => {
           const color = metric.color || "chart-2";
           const colors = getColorClasses(color);
 
           return (
-            <ScrollAnimate
+            <Card
               key={metric.label}
-              direction="up"
-              delay={index * 0.1}
+              className={cn(
+                `group border-l-4 shadow-md transition-all duration-300 hover:shadow-xl overflow-hidden relative h-full flex flex-col`,
+                colors.border
+              )}
             >
-              <Card
-                className={`group border-l-4 ${colors.border} shadow-md transition-all duration-300 hover:shadow-xl overflow-hidden relative h-full flex flex-col`}
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                />
-                <CardContent className="pt-6 pb-6 px-6 relative flex-1 flex flex-col">
-                  <div className="space-y-4 flex-1 flex flex-col">
-                    <div className="flex items-center justify-between mb-2">
-                      <div
-                        className={`p-2 rounded-lg ${colors.iconBg} ${colors.text} ${colors.iconHover} transition-colors duration-300`}
-                      >
-                        {metric.icon}
-                      </div>
-                      {metric.trend && (
-                        <div
-                          className={`flex items-center gap-1 text-xs font-medium ${colors.text}`}
-                        >
-                          {metric.trend === "up" ? (
-                            <TrendingUp className="h-4 w-4" />
-                          ) : (
-                            <TrendingDown className="h-4 w-4" />
-                          )}
-                        </div>
+              <div
+                className={cn(
+                  `absolute inset-0 bg-gradient-to-br to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`,
+                  colors.gradient
+                )}
+              />
+              <CardContent className="pt-6 pb-6 px-6 relative flex-1 flex flex-col">
+                <div className="space-y-4 flex-1 flex flex-col">
+                  <div className="flex items-center justify-between mb-2">
+                    <div
+                      className={cn(
+                        `p-2 rounded-lg transition-colors duration-300`,
+                        colors.iconBg,
+                        colors.text,
+                        colors.iconHover
                       )}
+                    >
+                      {metric.icon}
                     </div>
-                    <div className="space-y-1 flex-1 flex flex-col">
-                      <div className="flex-1 flex items-center">
-                        <AnimatedCounter
-                          target={metric.value}
-                          suffix={metric.suffix}
-                          prefix={metric.prefix}
-                          duration={2500}
-                          format={metric.format}
-                          rangeEnd={metric.rangeEnd}
-                          color={color}
-                        />
-                      </div>
-                      <h3
-                        className={`text-base font-semibold ${colors.text} mt-2`}
+                    {metric.trend && (
+                      <div
+                        className={cn(
+                          `flex items-center gap-1 text-xs font-medium`,
+                          colors.text
+                        )}
                       >
-                        {metric.label}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {metric.description}
-                      </p>
-                    </div>
+                        {metric.trend === "up" ? (
+                          <TrendingUp className="h-4 w-4" />
+                        ) : (
+                          <TrendingDown className="h-4 w-4" />
+                        )}
+                      </div>
+                    )}
                   </div>
-                </CardContent>
-              </Card>
-            </ScrollAnimate>
+                  <div className="space-y-1 flex-1 flex flex-col">
+                    <div className="flex-1 flex items-center">
+                      <div className="flex items-baseline gap-2">
+                        <span
+                          className={cn(
+                            `text-4xl font-bold md:text-5xl whitespace-nowrap`,
+                            colors.text
+                          )}
+                        >
+                          {metric.prefix && (
+                            <span className="text-muted-foreground text-2xl md:text-3xl">
+                              {metric.prefix}{" "}
+                            </span>
+                          )}
+                          {formatNumber(
+                            metric.value,
+                            metric.format,
+                            metric.rangeEnd
+                          )}
+                          {metric.suffix &&
+                            metric.format !== "range" &&
+                            metric.suffix}
+                        </span>
+                      </div>
+                    </div>
+                    <h3
+                      className={cn(`text-base font-semibold mt-2`, colors.text)}
+                    >
+                      {metric.label}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {metric.description}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           );
         })}
       </div>
