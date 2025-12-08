@@ -4,15 +4,15 @@ import { Separator } from "@/components/ui/separator";
 
 export function Experience() {
   return (
-    <section className="mb-20" aria-labelledby="experience-heading">
+    <section className="mb-32" aria-labelledby="experience-heading">
       <h2
         id="experience-heading"
-        className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent"
+        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl"
       >
         Experience
       </h2>
 
-      <Card className="mb-6 border-l-4 border-l-chart-2 shadow-lg">
+      <Card className="mb-6 border-l-4 border-l-chart-2 shadow-lg transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
             <div>

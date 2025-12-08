@@ -161,10 +161,10 @@ export function Skills() {
   const techColors = ["chart-1", "chart-2"];
 
   return (
-    <section className="mb-20" aria-labelledby="skills-heading">
+    <section className="mb-32" aria-labelledby="skills-heading">
       <h2
         id="skills-heading"
-        className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent"
+        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl"
       >
         Skills & Certifications
       </h2>
@@ -175,7 +175,7 @@ export function Skills() {
           return (
             <Card
               key={category}
-              className={`border-l-4 ${categoryColors.border} shadow-md`}
+              className={`border-l-4 ${categoryColors.border} shadow-md transition-all duration-300 hover:shadow-lg`}
             >
               <CardHeader>
                 <CardTitle className={`${categoryColors.text}`}>
@@ -201,7 +201,7 @@ export function Skills() {
           );
         })}
 
-        <Card className="border-l-4 border-l-chart-2 shadow-md">
+        <Card className="border-l-4 border-l-chart-2 shadow-md transition-all duration-300 hover:shadow-lg">
           <CardHeader>
             <CardTitle className="text-chart-2">Languages</CardTitle>
           </CardHeader>
@@ -228,7 +228,7 @@ export function Skills() {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-chart-2 shadow-md">
+        <Card className="border-l-4 border-l-chart-2 shadow-md transition-all duration-300 hover:shadow-lg">
           <CardHeader>
             <CardTitle className="text-chart-2">Certifications</CardTitle>
           </CardHeader>

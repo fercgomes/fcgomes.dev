@@ -4,15 +4,15 @@ import { Separator } from "@/components/ui/separator";
 
 export function Education() {
   return (
-    <section className="mb-20" aria-labelledby="education-heading">
+    <section className="mb-32" aria-labelledby="education-heading">
       <h2
         id="education-heading"
-        className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent"
+        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl"
       >
         Education & Background
       </h2>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle>Computer Science</CardTitle>
           <p className="text-muted-foreground">

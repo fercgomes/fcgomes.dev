@@ -93,15 +93,15 @@ export function MediaShowcase() {
   };
 
   return (
-    <section className="mb-20" aria-labelledby="media-heading">
-      <h2 id="media-heading" className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
+    <section className="mb-32" aria-labelledby="media-heading">
+      <h2 id="media-heading" className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
         Featured Work
       </h2>
       <div className="grid gap-6 md:grid-cols-2">
         {mediaItems.map((item) => {
           const colors = getColorClasses(item.type);
           return (
-            <Card key={item.id} className={`border-l-4 ${colors.border} shadow-md hover:shadow-lg transition-shadow overflow-hidden`}>
+            <Card key={item.id} className={`border-l-4 ${colors.border} shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden`}>
               <CardHeader>
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1">
