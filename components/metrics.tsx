@@ -3,39 +3,162 @@
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollAnimate } from "@/components/scroll-animate";
+import {
+  Users,
+  TrendingUp,
+  DollarSign,
+  TrendingDown,
+  Brain,
+  FileText,
+  Target,
+} from "lucide-react";
 
 type Metric = {
-  value: string;
+  value: number;
   label: string;
+  description: string;
   suffix?: string;
   prefix?: string;
+  icon: React.ReactNode;
+  trend?: "up" | "down";
+  format?: "number" | "percentage" | "range";
+  rangeEnd?: number;
+  color?: "chart-1" | "chart-2" | "chart-3" | "chart-4" | "chart-5";
 };
 
 const metrics: Metric[] = [
-  { value: "100000", label: "Users Scaled", suffix: "+" },
-  { value: "300", label: "Active Subscribers", suffix: "+" },
-  { value: "85", label: "Infra Cost Reduction", suffix: "%" },
-  { value: "50", label: "Churn Reduction", suffix: "% → 10%" },
-  { value: "30000", label: "AI Scans Processed", suffix: "+" },
-  { value: "18000", label: "Documents Processed", suffix: "+" },
+  {
+    value: 100000,
+    label: "Users Scaled",
+    description: "From 1K to 100K+ active users",
+    suffix: "+",
+    icon: <Users className="h-5 w-5" />,
+    trend: "up",
+    color: "chart-2",
+  },
+  {
+    value: 300,
+    label: "Active Subscribers",
+    description: "Grew from 0 to 300+ paying customers",
+    suffix: "+",
+    icon: <Target className="h-5 w-5" />,
+    trend: "up",
+    color: "chart-3",
+  },
+  {
+    value: 85,
+    label: "Infra Cost Reduction",
+    description: "Cut infrastructure costs by 85%",
+    suffix: "%",
+    icon: <DollarSign className="h-5 w-5" />,
+    trend: "down",
+    format: "percentage",
+    color: "chart-4",
+  },
+  {
+    value: 50,
+    label: "Churn Reduction",
+    description: "Reduced from 50% to 10%",
+    suffix: "%",
+    icon: <TrendingDown className="h-5 w-5" />,
+    trend: "down",
+    format: "range",
+    rangeEnd: 10,
+    color: "chart-5",
+  },
+  {
+    value: 30000,
+    label: "AI Scans Processed",
+    description: "Question Scan feature used by 20K+ students",
+    suffix: "+",
+    icon: <Brain className="h-5 w-5" />,
+    trend: "up",
+    color: "chart-1",
+  },
+  {
+    value: 18000,
+    label: "Documents Processed",
+    description: "Processed for search and recommendations",
+    suffix: "+",
+    icon: <FileText className="h-5 w-5" />,
+    trend: "up",
+    color: "chart-2",
+  },
 ];
+
+const getColorClasses = (color: string) => {
+  const colorMap: Record<
+    string,
+    {
+      text: string;
+      border: string;
+      iconBg: string;
+      iconHover: string;
+      gradient: string;
+    }
+  > = {
+    "chart-1": {
+      text: "text-chart-1",
+      border: "border-l-chart-1",
+      iconBg: "bg-chart-1/10",
+      iconHover: "group-hover:bg-chart-1/20",
+      gradient: "from-chart-1/5",
+    },
+    "chart-2": {
+      text: "text-chart-2",
+      border: "border-l-chart-2",
+      iconBg: "bg-chart-2/10",
+      iconHover: "group-hover:bg-chart-2/20",
+      gradient: "from-chart-2/5",
+    },
+    "chart-3": {
+      text: "text-chart-3",
+      border: "border-l-chart-3",
+      iconBg: "bg-chart-3/10",
+      iconHover: "group-hover:bg-chart-3/20",
+      gradient: "from-chart-3/5",
+    },
+    "chart-4": {
+      text: "text-chart-4",
+      border: "border-l-chart-4",
+      iconBg: "bg-chart-4/10",
+      iconHover: "group-hover:bg-chart-4/20",
+      gradient: "from-chart-4/5",
+    },
+    "chart-5": {
+      text: "text-chart-5",
+      border: "border-l-chart-5",
+      iconBg: "bg-chart-5/10",
+      iconHover: "group-hover:bg-chart-5/20",
+      gradient: "from-chart-5/5",
+    },
+  };
+  return colorMap[color] || colorMap["chart-2"];
+};
 
 function AnimatedCounter({
   target,
   suffix = "",
   prefix = "",
   duration = 2000,
+  format = "number",
+  rangeEnd,
+  color = "chart-2",
 }: {
   target: number;
   suffix?: string;
   prefix?: string;
   duration?: number;
+  format?: "number" | "percentage" | "range";
+  rangeEnd?: number;
+  color?: string;
 }) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -47,11 +170,13 @@ function AnimatedCounter({
             const animate = () => {
               const now = Date.now();
               const progress = Math.min((now - startTime) / duration, 1);
-              
+
               // Easing function for smooth animation
               const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-              const current = Math.floor(startValue + (target - startValue) * easeOutQuart);
-              
+              const current = Math.floor(
+                startValue + (target - startValue) * easeOutQuart
+              );
+
               setCount(current);
 
               if (progress < 1) {
@@ -66,21 +191,27 @@ function AnimatedCounter({
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [target, duration, hasAnimated]);
 
   const formatNumber = (num: number): string => {
+    if (format === "range" && rangeEnd !== undefined) {
+      return `${num}% → ${rangeEnd}%`;
+    }
+    if (format === "percentage") {
+      return num.toString();
+    }
     if (num >= 100000) {
       return (num / 1000).toFixed(0) + "K";
     }
@@ -90,12 +221,20 @@ function AnimatedCounter({
     return num.toString();
   };
 
+  const colors = getColorClasses(color);
+
   return (
-    <div ref={ref}>
-      <span className="text-4xl font-bold text-chart-2 md:text-5xl">
-        {prefix && <span className="text-muted-foreground text-2xl md:text-3xl">{prefix} </span>}
+    <div ref={ref} className="flex items-baseline gap-2">
+      <span
+        className={`text-4xl font-bold ${colors.text} md:text-5xl whitespace-nowrap`}
+      >
+        {prefix && (
+          <span className="text-muted-foreground text-2xl md:text-3xl">
+            {prefix}{" "}
+          </span>
+        )}
         {formatNumber(count)}
-        {suffix}
+        {suffix && format !== "range" && suffix}
       </span>
     </div>
   );
@@ -113,27 +252,70 @@ export function Metrics() {
         </h2>
       </ScrollAnimate>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {metrics.map((metric, index) => (
-          <ScrollAnimate key={metric.label} direction="up" delay={index * 0.1}>
-            <Card className="border-l-4 border-l-chart-2 shadow-md transition-all duration-300 hover:shadow-lg text-center">
-              <CardContent className="pt-6 pb-6">
-                <div className="space-y-2">
-                  <AnimatedCounter
-                    target={parseInt(metric.value)}
-                    suffix={metric.suffix}
-                    prefix={metric.prefix}
-                    duration={2500}
-                  />
-                  <p className="text-sm font-medium text-muted-foreground">
-                    {metric.label}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </ScrollAnimate>
-        ))}
+        {metrics.map((metric, index) => {
+          const color = metric.color || "chart-2";
+          const colors = getColorClasses(color);
+
+          return (
+            <ScrollAnimate
+              key={metric.label}
+              direction="up"
+              delay={index * 0.1}
+            >
+              <Card
+                className={`group border-l-4 ${colors.border} shadow-md transition-all duration-300 hover:shadow-xl overflow-hidden relative h-full flex flex-col`}
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                />
+                <CardContent className="pt-6 pb-6 px-6 relative flex-1 flex flex-col">
+                  <div className="space-y-4 flex-1 flex flex-col">
+                    <div className="flex items-center justify-between mb-2">
+                      <div
+                        className={`p-2 rounded-lg ${colors.iconBg} ${colors.text} ${colors.iconHover} transition-colors duration-300`}
+                      >
+                        {metric.icon}
+                      </div>
+                      {metric.trend && (
+                        <div
+                          className={`flex items-center gap-1 text-xs font-medium ${colors.text}`}
+                        >
+                          {metric.trend === "up" ? (
+                            <TrendingUp className="h-4 w-4" />
+                          ) : (
+                            <TrendingDown className="h-4 w-4" />
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-1 flex-1 flex flex-col">
+                      <div className="flex-1 flex items-center">
+                        <AnimatedCounter
+                          target={metric.value}
+                          suffix={metric.suffix}
+                          prefix={metric.prefix}
+                          duration={2500}
+                          format={metric.format}
+                          rangeEnd={metric.rangeEnd}
+                          color={color}
+                        />
+                      </div>
+                      <h3
+                        className={`text-base font-semibold ${colors.text} mt-2`}
+                      >
+                        {metric.label}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {metric.description}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </ScrollAnimate>
+          );
+        })}
       </div>
     </section>
   );
 }
-

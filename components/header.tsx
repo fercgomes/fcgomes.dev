@@ -1,20 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, ExternalLink, Download, Github } from "lucide-react";
 import { CommandPaletteHint } from "@/components/command-palette-hint";
+import Image from "next/image";
 
 export function Header() {
   return (
     <header className="mb-20 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-      <div>
-        <h1 className="bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
-          Fernando Gomes
-        </h1>
-        <p
-          className="mt-2 text-lg text-muted-foreground"
-          aria-label="Job title"
-        >
-          Founding Engineer & CTO
-        </p>
+      <div className="flex items-center gap-6">
+        <div className="relative h-20 w-20 shrink-0 md:h-24 md:w-24">
+          <Image
+            src="/media/images/fernando.jpeg"
+            alt="Fernando Gomes"
+            fill
+            className="rounded-full object-cover border-2 border-chart-2/30 shadow-lg transition-all duration-300 hover:border-chart-2 hover:shadow-xl"
+            sizes="(max-width: 768px) 80px, 96px"
+            priority
+          />
+        </div>
+        <div>
+          <h1 className="bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
+            Fernando Gomes
+          </h1>
+          <p
+            className="mt-2 text-lg text-muted-foreground"
+            aria-label="Job title"
+          >
+            Founding Engineer & CTO
+          </p>
+        </div>
       </div>
       <div className="flex flex-wrap items-center gap-2 md:gap-3">
         <CommandPaletteHint />
