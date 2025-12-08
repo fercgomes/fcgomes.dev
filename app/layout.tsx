@@ -21,7 +21,8 @@ export const metadata: Metadata = {
     default: "Fernando Gomes | Founding Engineer & CTO",
     template: "%s | Fernando Gomes",
   },
-  description: "Founding engineer and CTO who takes products from prototype to scale. Built and operated the entire Fokvs engineering stack while scaling to 100K+ users. Expert in TypeScript, Node.js, AWS, AI/ML, and payments infrastructure.",
+  description:
+    "Founding engineer and CTO who takes products from prototype to scale. Built and operated the entire Fokvs engineering stack while scaling to 100K+ users. Expert in TypeScript, Node.js, AWS, AI/ML, and payments infrastructure.",
   keywords: [
     "CTO",
     "Founding Engineer",
@@ -52,13 +53,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://fcgomes.dev",
     title: "Fernando Gomes | Founding Engineer & CTO",
-    description: "Founding engineer and CTO who takes products from prototype to scale. Built and operated the entire Fokvs engineering stack while scaling to 100K+ users.",
+    description:
+      "Founding engineer and CTO who takes products from prototype to scale. Built and operated the entire Fokvs engineering stack while scaling to 100K+ users.",
     siteName: "Fernando Gomes",
   },
   twitter: {
     card: "summary_large_image",
     title: "Fernando Gomes | Founding Engineer & CTO",
-    description: "Founding engineer and CTO who takes products from prototype to scale. Built and operated the entire Fokvs engineering stack while scaling to 100K+ users.",
+    description:
+      "Founding engineer and CTO who takes products from prototype to scale. Built and operated the entire Fokvs engineering stack while scaling to 100K+ users.",
     creator: "@fercgomes",
   },
   robots: {
@@ -86,7 +89,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

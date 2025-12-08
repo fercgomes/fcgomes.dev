@@ -5,9 +5,24 @@ import { Separator } from "@/components/ui/separator";
 export function Skills() {
   const languages = [
     { name: "English", level: "Fluent", color: "chart-2", flag: "🇺🇸" },
-    { name: "Swedish", level: "Near fluent (lived in Sweden 2013)", color: "chart-2", flag: "🇸🇪" },
-    { name: "French", level: "A2 (2 years of classes)", color: "chart-2", flag: "🇫🇷" },
-    { name: "Spanish", level: "Good understanding, limited speaking", color: "chart-2", flag: "🇪🇸" },
+    {
+      name: "Swedish",
+      level: "Near fluent (lived in Sweden 2013)",
+      color: "chart-2",
+      flag: "🇸🇪",
+    },
+    {
+      name: "French",
+      level: "A2 (2 years of classes)",
+      color: "chart-2",
+      flag: "🇫🇷",
+    },
+    {
+      name: "Spanish",
+      level: "Good understanding, limited speaking",
+      color: "chart-2",
+      flag: "🇪🇸",
+    },
   ];
 
   const certifications = [
@@ -24,16 +39,105 @@ export function Skills() {
   ];
 
   const skillsByCategory = {
-    "Backend": ["TypeScript/Node", "NestJS", "Fastify", "Python", "Postgres", "Redis"],
-    "Architecture": ["Distributed systems", "Modular services", "Event-driven design", "Caching", "Async pipelines"],
-    "Infrastructure": ["AWS (ECS/Fargate, RDS, VPC, S3, CloudFront)", "Terraform", "Docker", "CI/CD"],
-    "AI/ML": ["LLM integrations", "OCR", "Embeddings", "pgvector", "Bedrock", "Evaluation"],
-    "Payments": ["PIX orchestration", "Multi-gateway routing", "Attribution", "Entitlements", "Subscription systems"],
-    "Leadership": ["Technical direction", "Mentoring", "Hiring", "Roadmap ownership", "Product alignment"],
+    Backend: [
+      "TypeScript/Node",
+      "NestJS",
+      "Fastify",
+      "Python",
+      "Postgres",
+      "Redis",
+      "KnexJS",
+      "Bull Queues",
+    ],
+    Frontend: [
+      "React",
+      "Next.js",
+      "Flutter",
+      "Dart",
+      "Tailwind CSS",
+      "DaisyUI",
+      "shadcn/ui",
+    ],
+    Architecture: [
+      "Distributed systems",
+      "Modular services",
+      "Event-driven design",
+      "DDD (Domain-Driven Design)",
+      "Caching strategies",
+      "Async pipelines",
+      "Microservices",
+      "Monolith to microservices",
+    ],
+    Infrastructure: [
+      "AWS (ECS/Fargate, RDS, VPC, S3, CloudFront, ElastiCache)",
+      "Terraform",
+      "Docker",
+      "CI/CD (Codemagic)",
+      "Fly.io",
+      "Vercel",
+      "Bastion hosts",
+      "Private subnets",
+    ],
+    "AI/ML": [
+      "LLM integrations (OpenAI, Gemini)",
+      "OCR (Gemini, custom pipelines)",
+      "Embeddings (OpenAI, custom)",
+      "pgvector",
+      "AWS Bedrock",
+      "Model evaluation",
+      "Streaming LLM responses",
+    ],
+    Payments: [
+      "PIX orchestration",
+      "Multi-gateway routing",
+      "Payment attribution",
+      "Entitlements management",
+      "Subscription systems",
+      "RevenueCat integration",
+      "Superwall paywalls",
+    ],
+    Data: [
+      "PostgreSQL",
+      "Redis",
+      "S3 data lakes",
+      "AWS Glue",
+      "Athena queries",
+      "Parquet files",
+      "Data pipelines",
+    ],
+    Tools: [
+      "Linear (project management)",
+      "Retool (backoffice)",
+      "n8n (automations)",
+      "Posthog (analytics)",
+      "Mixpanel (analytics)",
+      "Firebase Crashlytics",
+      "CloudWatch",
+    ],
+    Leadership: [
+      "Technical direction",
+      "Mentoring",
+      "Hiring & onboarding",
+      "Roadmap ownership",
+      "Product alignment",
+      "User research (30+ interviews)",
+      "Usability testing (15+ tests)",
+      "Process definition",
+    ],
   };
 
   const getColorClasses = (color: string) => {
-    const colorMap: Record<string, { border: string; text: string; bg: string; hover: string; dot: string; badgeBorder: string }> = {
+    const colorMap: Record<
+      string,
+      {
+        border: string;
+        text: string;
+        bg: string;
+        hover: string;
+        dot: string;
+        badgeBorder: string;
+      }
+    > = {
       "chart-1": {
         border: "border-l-chart-1",
         text: "text-chart-1",
@@ -58,22 +162,35 @@ export function Skills() {
 
   return (
     <section className="mb-20" aria-labelledby="skills-heading">
-      <h2 id="skills-heading" className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">Skills & Certifications</h2>
-      
+      <h2
+        id="skills-heading"
+        className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent"
+      >
+        Skills & Certifications
+      </h2>
+
       <div className="space-y-6">
         {Object.entries(skillsByCategory).map(([category, skills]) => {
           const categoryColors = getColorClasses("chart-2");
           return (
-            <Card key={category} className={`border-l-4 ${categoryColors.border} shadow-md`}>
+            <Card
+              key={category}
+              className={`border-l-4 ${categoryColors.border} shadow-md`}
+            >
               <CardHeader>
-                <CardTitle className={`${categoryColors.text}`}>{category}</CardTitle>
+                <CardTitle className={`${categoryColors.text}`}>
+                  {category}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {skills.map((skill) => {
                     const skillColorsMap = getColorClasses("chart-2");
                     return (
-                      <Badge key={skill} className={`${skillColorsMap.bg} ${skillColorsMap.text} ${skillColorsMap.badgeBorder} ${skillColorsMap.hover}`}>
+                      <Badge
+                        key={skill}
+                        className={`${skillColorsMap.bg} ${skillColorsMap.text} ${skillColorsMap.badgeBorder} ${skillColorsMap.hover}`}
+                      >
                         {skill}
                       </Badge>
                     );
@@ -93,8 +210,13 @@ export function Skills() {
               {languages.map((lang) => {
                 const langColors = getColorClasses("chart-2");
                 return (
-                  <div key={lang.name} className="flex items-center justify-between text-sm">
-                    <span className={`font-medium ${langColors.text} flex items-center gap-2`}>
+                  <div
+                    key={lang.name}
+                    className="flex items-center justify-between text-sm"
+                  >
+                    <span
+                      className={`font-medium ${langColors.text} flex items-center gap-2`}
+                    >
                       <span>{lang.flag}</span>
                       <span>{lang.name}</span>
                     </span>
@@ -116,7 +238,9 @@ export function Skills() {
                 const certColors = getColorClasses("chart-2");
                 return (
                   <li key={cert} className="flex items-start gap-2">
-                    <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${certColors.dot}`} />
+                    <span
+                      className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${certColors.dot}`}
+                    />
                     <span>{cert}</span>
                   </li>
                 );

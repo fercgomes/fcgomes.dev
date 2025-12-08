@@ -5,7 +5,10 @@ import { Separator } from "@/components/ui/separator";
 export function Education() {
   return (
     <section className="mb-20" aria-labelledby="education-heading">
-      <h2 id="education-heading" className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
+      <h2
+        id="education-heading"
+        className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent"
+      >
         Education & Background
       </h2>
 
@@ -20,9 +23,12 @@ export function Education() {
           </Badge>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground mb-4">
             Full graduation in Computer Science. Focused on entrepreneurship and
-            full-stack development throughout the program.
+            full-stack development throughout the program. During the pandemic, took multiple courses to acquire skills needed to build products from scratch. Did not pursue traditional internships, instead focused full-time on Fokvs for 3 years, learning and building extensively.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            <strong className="text-foreground">Background:</strong> Graduated high school in 2012 from Colégio Sinodal Barão do Rio Branco in Cachoeira do Sul. Always dreamed of entrepreneurship. During the pandemic, took courses on blockchain, web development, product management, and cloud computing to build the skills needed to create something from scratch.
           </p>
         </CardContent>
       </Card>
@@ -73,15 +79,21 @@ export function Education() {
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-chart-2" />
               <span>
+                <strong className="text-foreground">2012:</strong> Graduated high school from Colégio Sinodal Barão do Rio Branco in Cachoeira do Sul
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-chart-2" />
+              <span>
                 <strong className="text-foreground">2013:</strong> Rotary Youth
-                Exchange Program - One year living in Sweden as exchange student
+                Exchange Program - One year living in Sweden as exchange student. This experience contributed to near-fluent Swedish language skills.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-chart-2" />
               <span>
                 <strong className="text-foreground">2015:</strong> Two semesters
-                of Biology at UFRGS before switching to Computer Science
+                of Biology at UFRGS before switching to Computer Science. This exploration period helped clarify career direction.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -91,7 +103,7 @@ export function Education() {
                   Entrepreneurship Marathon (SEDETEC UFRGS):
                 </strong>
                 Decoreba project - Duolingo for college entrance exams. 2nd
-                place. Developed entire app, web, and backend (never launched)
+                place. Developed entire app, web, and backend. Despite the recognition, the project was never launched due to inexperience, but it was valuable learning that prepared for Fokvs.
               </span>
             </li>
           </ul>

@@ -2,8 +2,10 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Experience } from "@/components/experience";
 import { Projects } from "@/components/projects";
+import { Journey } from "@/components/journey";
 import { Education } from "@/components/education";
 import { Skills } from "@/components/skills";
+import { MediaShowcase } from "@/components/media-showcase";
 import { Separator } from "@/components/ui/separator";
 
 const structuredData = {
@@ -61,10 +63,15 @@ export default function Home() {
           <Hero />
           <Experience />
           <Projects />
+          <MediaShowcase />
+          <Journey />
           <Education />
           <Skills />
           <footer className="mt-20 pb-8 text-center text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Fernando Gomes. Built with Next.js, TypeScript, and Tailwind CSS.</p>
+            <p>
+              © {new Date().getFullYear()} Fernando Gomes. Built with Next.js,
+              TypeScript, and Tailwind CSS.
+            </p>
           </footer>
         </div>
       </main>
