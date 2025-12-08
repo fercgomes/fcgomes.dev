@@ -4,15 +4,15 @@ import { Separator } from "@/components/ui/separator";
 
 export function Journey() {
   return (
-    <section className="mb-32" aria-labelledby="journey-heading">
+    <section className="mb-16 md:mb-32" aria-labelledby="journey-heading">
       <h2
         id="journey-heading"
-        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl"
+        className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl"
       >
         The Journey
       </h2>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-6 transition-all duration-300 hover:shadow-xl">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">Starting Point: The Monstrous Stack</CardTitle>
           <Badge className="mt-2 w-fit bg-chart-2/10 text-chart-2 border-chart-2/30">
@@ -61,7 +61,7 @@ export function Journey() {
         </CardContent>
       </Card>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-6 transition-all duration-300 hover:shadow-xl">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">The First Migration: Simplification</CardTitle>
           <Badge className="mt-2 w-fit bg-chart-2/10 text-chart-2 border-chart-2/30">
@@ -104,7 +104,7 @@ export function Journey() {
         </CardContent>
       </Card>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-6 transition-all duration-300 hover:shadow-xl">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">Migration Back to AWS</CardTitle>
           <Badge className="mt-2 w-fit bg-chart-2/10 text-chart-2 border-chart-2/30">
@@ -153,7 +153,7 @@ export function Journey() {
         </CardContent>
       </Card>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-6 transition-all duration-300 hover:shadow-xl">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">Monetization Experiments</CardTitle>
           <Badge className="mt-2 w-fit bg-chart-2/10 text-chart-2 border-chart-2/30">
@@ -193,7 +193,7 @@ export function Journey() {
         </CardContent>
       </Card>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-6 transition-all duration-300 hover:shadow-xl">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">The Ambassador Program</CardTitle>
           <Badge className="mt-2 w-fit bg-chart-2/10 text-chart-2 border-chart-2/30">
@@ -233,7 +233,7 @@ export function Journey() {
         </CardContent>
       </Card>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-6 transition-all duration-300 hover:shadow-xl">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">Building the Team & Establishing Processes</CardTitle>
           <Badge className="mt-2 w-fit bg-chart-2/10 text-chart-2 border-chart-2/30">
@@ -282,7 +282,7 @@ export function Journey() {
         </CardContent>
       </Card>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-6 transition-all duration-300 hover:shadow-xl">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">Direct Sales with Landing Pages</CardTitle>
           <Badge className="mt-2 w-fit bg-chart-2/10 text-chart-2 border-chart-2/30">
@@ -331,7 +331,7 @@ export function Journey() {
         </CardContent>
       </Card>
 
-      <Card className="border-l-4 border-l-chart-2 shadow-lg transition-all duration-300 hover:shadow-xl">
+      <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>
           <CardTitle className="text-xl">Technical Evolution & Challenges</CardTitle>
         </CardHeader>

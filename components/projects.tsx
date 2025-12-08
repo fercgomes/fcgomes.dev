@@ -286,14 +286,14 @@ export function Projects() {
   const techColors = ["chart-1", "chart-2"];
 
   return (
-    <section className="mb-32" aria-labelledby="projects-heading">
+    <section className="mb-16 md:mb-32" aria-labelledby="projects-heading">
       <h2
         id="projects-heading"
-        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl"
+        className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl"
       >
         Projects
       </h2>
-      <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+      <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:gap-8">
         {projects.map((project) => {
           const colors = getColorClasses(project.color);
           const desc = project.description as ProjectDescription;
@@ -349,7 +349,7 @@ export function Projects() {
                 {project.images && project.images.length > 0 && (
                   <div className="space-y-2">
                     <Separator />
-                    <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${Math.min(project.images.length, 2)}, 1fr)` }}>
+                    <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
                       {project.images.map((image, idx) => (
                         <ImageLightbox
                           key={idx}
@@ -364,7 +364,7 @@ export function Projects() {
                               alt={`${project.name} screenshot ${idx + 1}`}
                               fill
                               className="object-cover"
-                              sizes="(max-width: 768px) 100vw, 50vw"
+                              sizes="(max-width: 640px) 100vw, 50vw"
                               loading="lazy"
                             />
                           </div>

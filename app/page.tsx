@@ -61,9 +61,9 @@ export default function Home() {
       />
       <main className="min-h-screen bg-background">
         <CommandPalette />
-        <div className="mx-auto max-w-5xl px-6 py-12 md:px-8 md:py-20">
+        <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-20">
           <Header />
-          <Separator className="mb-20" />
+          <Separator className="mb-12 md:mb-20" />
           <Hero />
           <Metrics />
           <Experience />
@@ -73,7 +73,7 @@ export default function Home() {
           <Education />
           <Skills />
           <Personal />
-          <footer className="mt-32 pt-12 pb-8 border-t border-border/50">
+          <footer className="mt-16 md:mt-32 pt-8 md:pt-12 pb-6 md:pb-8 border-t border-border/50">
             <p className="text-center text-sm text-muted-foreground">
               © {new Date().getFullYear()} Fernando Gomes. Built with Next.js,
               TypeScript, and Tailwind CSS.

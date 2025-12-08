@@ -3,14 +3,14 @@ import { Music, Activity } from "lucide-react";
 
 export function Personal() {
   return (
-    <section className="mb-32" aria-labelledby="personal-heading">
+    <section className="mb-16 md:mb-32" aria-labelledby="personal-heading">
       <h2
         id="personal-heading"
-        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl text-center"
+        className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl text-center"
       >
         Beyond Code
       </h2>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 md:gap-6 md:grid-cols-2">
         <Card className="border-l-4 border-l-chart-2 shadow-md transition-all duration-300 hover:shadow-lg">
           <CardHeader>
             <div className="flex items-center gap-3">

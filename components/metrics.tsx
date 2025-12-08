@@ -227,12 +227,12 @@ function AnimatedCounter({
     <div ref={ref} className="flex items-baseline gap-2">
       <span
         className={cn(
-          `text-4xl font-bold md:text-5xl whitespace-nowrap`,
+          `text-3xl font-bold md:text-5xl whitespace-nowrap`,
           colors.text
         )}
       >
         {prefix && (
-          <span className="text-muted-foreground text-2xl md:text-3xl">
+          <span className="text-muted-foreground text-xl md:text-3xl">
             {prefix}{" "}
           </span>
         )}
@@ -245,14 +245,14 @@ function AnimatedCounter({
 
 export function Metrics() {
   return (
-    <section className="mb-32" aria-labelledby="metrics-heading">
+    <section className="mb-16 md:mb-32" aria-labelledby="metrics-heading">
       <h2
         id="metrics-heading"
-        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl text-center"
+        className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl text-center"
       >
         Impact by Numbers
       </h2>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {metrics.map((metric) => {
           const color = metric.color || "chart-2";
           const colors = getColorClasses(color);

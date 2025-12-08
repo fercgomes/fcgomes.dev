@@ -4,10 +4,10 @@ import { Separator } from "@/components/ui/separator";
 
 export function Experience() {
   return (
-    <section className="mb-32" aria-labelledby="experience-heading">
+    <section className="mb-16 md:mb-32" aria-labelledby="experience-heading">
       <h2
         id="experience-heading"
-        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl"
+        className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl"
       >
         Experience
       </h2>

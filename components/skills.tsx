@@ -161,10 +161,10 @@ export function Skills() {
   const techColors = ["chart-1", "chart-2"];
 
   return (
-    <section className="mb-32" aria-labelledby="skills-heading">
+    <section className="mb-16 md:mb-32" aria-labelledby="skills-heading">
       <h2
         id="skills-heading"
-        className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl"
+        className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl"
       >
         Skills & Certifications
       </h2>
@@ -183,7 +183,7 @@ export function Skills() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 md:gap-2">
                   {skills.map((skill) => {
                     const skillColorsMap = getColorClasses("chart-2");
                     return (

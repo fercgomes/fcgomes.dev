@@ -5,9 +5,9 @@ import Image from "next/image";
 
 export function Header() {
   return (
-    <header className="mb-20 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-      <div className="flex items-center gap-6">
-        <div className="relative h-20 w-20 shrink-0 md:h-24 md:w-24">
+    <header className="mb-12 md:mb-20 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="flex items-center gap-3 md:gap-6">
+        <div className="relative h-16 w-16 shrink-0 md:h-24 md:w-24">
           <Image
             src="/media/images/fernando.jpeg"
             alt="Fernando Gomes"
@@ -18,18 +18,18 @@ export function Header() {
           />
         </div>
         <div>
-          <h1 className="bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
+          <h1 className="bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl">
             Fernando Gomes
           </h1>
           <p
-            className="mt-2 text-lg text-muted-foreground"
+            className="mt-1 md:mt-2 text-base md:text-lg text-muted-foreground"
             aria-label="Job title"
           >
             Founding Engineer & CTO
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap items-center gap-2 md:gap-3">
+      <div className="flex flex-wrap items-center gap-1.5 md:gap-3">
         <CommandPaletteHint />
         <Button
           variant="outline"

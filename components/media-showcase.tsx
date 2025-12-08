@@ -93,11 +93,11 @@ export function MediaShowcase() {
   };
 
   return (
-    <section className="mb-32" aria-labelledby="media-heading">
-      <h2 id="media-heading" className="mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
+    <section className="mb-16 md:mb-32" aria-labelledby="media-heading">
+      <h2 id="media-heading" className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl">
         Featured Work
       </h2>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 md:gap-6 md:grid-cols-2">
         {mediaItems.map((item) => {
           const colors = getColorClasses(item.type);
           return (
@@ -129,14 +129,14 @@ export function MediaShowcase() {
                         alt={item.alt}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         loading="lazy"
                       />
                     </div>
                   </ImageLightbox>
                 )}
                 {item.type === "video" && (
-                  <div className={`relative w-full ${item.orientation === "portrait" ? "aspect-[9/16] max-w-sm mx-auto" : "aspect-video"} bg-muted`}>
+                  <div className={`relative w-full ${item.orientation === "portrait" ? "aspect-[9/16] max-w-[280px] sm:max-w-sm mx-auto" : "aspect-video"} bg-muted`}>
                     <video
                       src={item.src}
                       controls
@@ -161,7 +161,7 @@ export function MediaShowcase() {
                         alt={item.alt}
                         fill
                         className="object-contain p-4"
-                        sizes="(max-width: 768px) 100vw, 50vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         loading="lazy"
                       />
                     </div>
