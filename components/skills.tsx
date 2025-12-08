@@ -57,8 +57,8 @@ export function Skills() {
   const techColors = ["chart-1", "chart-2"];
 
   return (
-    <section className="mb-20">
-      <h2 className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">Skills & Certifications</h2>
+    <section className="mb-20" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">Skills & Certifications</h2>
       
       <div className="space-y-6">
         {Object.entries(skillsByCategory).map(([category, skills]) => {

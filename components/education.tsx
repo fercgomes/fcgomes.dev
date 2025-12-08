@@ -4,8 +4,8 @@ import { Separator } from "@/components/ui/separator";
 
 export function Education() {
   return (
-    <section className="mb-20">
-      <h2 className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
+    <section className="mb-20" aria-labelledby="education-heading">
+      <h2 id="education-heading" className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
         Education & Background
       </h2>
 

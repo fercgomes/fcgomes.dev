@@ -52,8 +52,8 @@ export function Projects() {
   const techColors = ["chart-1", "chart-2"];
 
   return (
-    <section className="mb-20">
-      <h2 className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">Projects</h2>
+    <section className="mb-20" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">Projects</h2>
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project) => {
           const colors = getColorClasses(project.color);

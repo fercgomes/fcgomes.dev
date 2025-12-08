@@ -4,8 +4,8 @@ import { Separator } from "@/components/ui/separator";
 
 export function Experience() {
   return (
-    <section className="mb-20">
-      <h2 className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">Experience</h2>
+    <section className="mb-20" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" className="mb-8 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent">Experience</h2>
       
       <Card className="mb-6 border-l-4 border-l-chart-2 shadow-lg">
         <CardHeader>
