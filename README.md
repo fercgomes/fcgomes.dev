@@ -1,8 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# fcgomes.dev
+
+Personal portfolio website built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui.
+
+## Tech Stack
+
+- **Next.js 16** - React framework with App Router
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - High-quality component library
+- **Lucide React** - Icon library
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ 
+- npm, yarn, or pnpm
+
+### Installation
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -10,27 +37,63 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build for production:
 
-## Learn More
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Start Production Server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+# or
+yarn start
+# or
+pnpm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+.
+├── app/
+│   ├── layout.tsx      # Root layout
+│   ├── page.tsx         # Home page
+│   └── globals.css      # Global styles
+├── components/
+│   ├── ui/              # shadcn/ui components
+│   ├── header.tsx       # Header component
+│   ├── hero.tsx         # Hero section
+│   ├── experience.tsx   # Experience section
+│   ├── projects.tsx     # Projects section
+│   ├── education.tsx    # Education section
+│   └── skills.tsx       # Skills section
+└── public/              # Static assets
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Modern, clean design with Silicon Valley aesthetic
+- Responsive layout
+- Dark mode support (via shadcn/ui)
+- Type-safe with TypeScript
+- Optimized for performance
+
+## Deployment
+
+This project can be deployed on [Vercel](https://vercel.com), [Netlify](https://netlify.com), or any platform that supports Next.js.
+
+## License
+
+MIT
