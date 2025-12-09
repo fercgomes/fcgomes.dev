@@ -14,6 +14,9 @@ import { Header } from "@/components/header";
 import { Separator } from "@/components/ui/separator";
 import { Calendar, Clock, Tag, Sparkles, Globe, PenTool } from "lucide-react";
 
+// Force static generation
+export const dynamic = "force-static";
+
 export async function generateMetadata({
   params,
 }: {

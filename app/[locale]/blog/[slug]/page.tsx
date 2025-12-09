@@ -23,6 +23,10 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string; locale: string }>;
 }
 
+// Force static generation
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({
