@@ -12,6 +12,7 @@ import {
   Target,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from 'next-intl';
 
 type Metric = {
   value: number;
@@ -26,65 +27,67 @@ type Metric = {
   color?: "chart-1" | "chart-2" | "chart-3" | "chart-4" | "chart-5";
 };
 
-const metrics: Metric[] = [
-  {
-    value: 100000,
-    label: "Users Scaled",
-    description: "From 1K to 100K+ active users",
-    suffix: "+",
-    icon: <Users className="h-5 w-5" />,
-    trend: "up",
-    color: "chart-2",
-  },
-  {
-    value: 300,
-    label: "Active Subscribers",
-    description: "Grew from 0 to 300+ paying customers",
-    suffix: "+",
-    icon: <Target className="h-5 w-5" />,
-    trend: "up",
-    color: "chart-3",
-  },
-  {
-    value: 85,
-    label: "Infra Cost Reduction",
-    description: "Cut infrastructure costs by 85%",
-    suffix: "%",
-    icon: <DollarSign className="h-5 w-5" />,
-    trend: "down",
-    format: "percentage",
-    color: "chart-4",
-  },
-  {
-    value: 50,
-    label: "Churn Reduction",
-    description: "Reduced from 50% to 10%",
-    suffix: "%",
-    icon: <TrendingDown className="h-5 w-5" />,
-    trend: "down",
-    format: "range",
-    rangeEnd: 10,
-    color: "chart-5",
-  },
-  {
-    value: 30000,
-    label: "AI Scans Processed",
-    description: "Question Scan feature used by 20K+ students",
-    suffix: "+",
-    icon: <Brain className="h-5 w-5" />,
-    trend: "up",
-    color: "chart-1",
-  },
-  {
-    value: 18000,
-    label: "Documents Processed",
-    description: "Processed for search and recommendations",
-    suffix: "+",
-    icon: <FileText className="h-5 w-5" />,
-    trend: "up",
-    color: "chart-2",
-  },
-];
+function getMetrics(t: ReturnType<typeof useTranslations<'metrics'>>): Metric[] {
+  return [
+    {
+      value: 100000,
+      label: t('usersScaled.label'),
+      description: t('usersScaled.description'),
+      suffix: "+",
+      icon: <Users className="h-5 w-5" />,
+      trend: "up",
+      color: "chart-2",
+    },
+    {
+      value: 300,
+      label: t('activeSubscribers.label'),
+      description: t('activeSubscribers.description'),
+      suffix: "+",
+      icon: <Target className="h-5 w-5" />,
+      trend: "up",
+      color: "chart-3",
+    },
+    {
+      value: 85,
+      label: t('infraCostReduction.label'),
+      description: t('infraCostReduction.description'),
+      suffix: "%",
+      icon: <DollarSign className="h-5 w-5" />,
+      trend: "down",
+      format: "percentage",
+      color: "chart-4",
+    },
+    {
+      value: 50,
+      label: t('churnReduction.label'),
+      description: t('churnReduction.description'),
+      suffix: "%",
+      icon: <TrendingDown className="h-5 w-5" />,
+      trend: "down",
+      format: "range",
+      rangeEnd: 10,
+      color: "chart-5",
+    },
+    {
+      value: 30000,
+      label: t('aiScansProcessed.label'),
+      description: t('aiScansProcessed.description'),
+      suffix: "+",
+      icon: <Brain className="h-5 w-5" />,
+      trend: "up",
+      color: "chart-1",
+    },
+    {
+      value: 18000,
+      label: t('documentsProcessed.label'),
+      description: t('documentsProcessed.description'),
+      suffix: "+",
+      icon: <FileText className="h-5 w-5" />,
+      trend: "up",
+      color: "chart-2",
+    },
+  ];
+}
 
 const getColorClasses = (color: string) => {
   const colorMap: Record<
@@ -244,13 +247,16 @@ function AnimatedCounter({
 }
 
 export function Metrics() {
+  const t = useTranslations('metrics');
+  const metrics = getMetrics(t);
+  
   return (
     <section className="mb-16 md:mb-32" aria-labelledby="metrics-heading">
       <h2
         id="metrics-heading"
         className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl text-center"
       >
-        Impact by Numbers
+        {t('title')}
       </h2>
       <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {metrics.map((metric) => {

@@ -1,45 +1,39 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { useTranslations } from 'next-intl';
 
 export function Skills() {
+  const t = useTranslations('skills');
+  
   const languages = [
-    { name: "English", level: "Fluent", color: "chart-2", flag: "🇺🇸" },
+    { name: t('languages.english.name'), level: t('languages.english.level'), color: "chart-2", flag: "🇺🇸" },
     {
-      name: "Swedish",
-      level: "Near fluent (lived in Sweden 2013)",
+      name: t('languages.swedish.name'),
+      level: t('languages.swedish.level'),
       color: "chart-2",
       flag: "🇸🇪",
     },
     {
-      name: "French",
-      level: "A2 (2 years of classes)",
+      name: t('languages.french.name'),
+      level: t('languages.french.level'),
       color: "chart-2",
       flag: "🇫🇷",
     },
     {
-      name: "Spanish",
-      level: "Good understanding, limited speaking",
+      name: t('languages.spanish.name'),
+      level: t('languages.spanish.level'),
       color: "chart-2",
       flag: "🇪🇸",
     },
   ];
 
-  const certifications = [
-    "R3 Corda - Build Blockchain / DLT apps (Udemy, Mar 2022)",
-    "Build a Blockchain and a Cryptocurrency from Scratch (Udemy, Feb 2022)",
-    "The Complete Elixir and Phoenix Bootcamp (Udemy, Aug 2021)",
-    "Become a Product Manager | Learn the Skills & Get the Job (Udemy, Jul 2021)",
-    "Ethereum and Solidity: The Complete Developer's Guide (Udemy, Jun 2021)",
-    "Blockchain A-Z™: Learn How To Build Your First Blockchain (Udemy, Sep 2020)",
-    "AWS Cloud Practitioner Essentials (Second Edition) (Apr 2020)",
-    "NodeJS - The Complete Guide (incl. MVC, REST APIs, GraphQL) (Udemy, Apr 2020)",
-    "React - The Complete Guide (incl Hooks, React Router, Redux) (Udemy, Apr 2020)",
-    "Python and Django Full Stack Web Developer Bootcamp (Udemy, Mar 2020)",
-  ];
+  const certifications = t.raw('certifications.items') as string[];
 
   const skillsByCategory = {
-    Backend: [
+    [t('categories.Backend')]: [
       "TypeScript/Node",
       "NestJS",
       "Fastify",
@@ -49,7 +43,7 @@ export function Skills() {
       "KnexJS",
       "Bull Queues",
     ],
-    Frontend: [
+    [t('categories.Frontend')]: [
       "React",
       "Next.js",
       "Flutter",
@@ -58,7 +52,7 @@ export function Skills() {
       "DaisyUI",
       "shadcn/ui",
     ],
-    Architecture: [
+    [t('categories.Architecture')]: [
       "Distributed systems",
       "Modular services",
       "Event-driven design",
@@ -68,7 +62,7 @@ export function Skills() {
       "Microservices",
       "Monolith to microservices",
     ],
-    Infrastructure: [
+    [t('categories.Infrastructure')]: [
       "AWS (ECS/Fargate, RDS, VPC, S3, CloudFront, ElastiCache)",
       "Terraform",
       "Docker",
@@ -78,7 +72,7 @@ export function Skills() {
       "Bastion hosts",
       "Private subnets",
     ],
-    "AI/ML": [
+    [t('categories.AI/ML')]: [
       "LLM integrations (OpenAI, Gemini)",
       "OCR (Gemini, custom pipelines)",
       "Embeddings (OpenAI, custom)",
@@ -87,7 +81,7 @@ export function Skills() {
       "Model evaluation",
       "Streaming LLM responses",
     ],
-    Payments: [
+    [t('categories.Payments')]: [
       "PIX orchestration",
       "Multi-gateway routing",
       "Payment attribution",
@@ -96,7 +90,7 @@ export function Skills() {
       "RevenueCat integration",
       "Superwall paywalls",
     ],
-    Data: [
+    [t('categories.Data')]: [
       "PostgreSQL",
       "Redis",
       "S3 data lakes",
@@ -105,7 +99,7 @@ export function Skills() {
       "Parquet files",
       "Data pipelines",
     ],
-    Tools: [
+    [t('categories.Tools')]: [
       "Linear (project management)",
       "Retool (backoffice)",
       "n8n (automations)",
@@ -114,7 +108,7 @@ export function Skills() {
       "Firebase Crashlytics",
       "CloudWatch",
     ],
-    Leadership: [
+    [t('categories.Leadership')]: [
       "Technical direction",
       "Mentoring",
       "Hiring & onboarding",
@@ -166,7 +160,7 @@ export function Skills() {
         id="skills-heading"
         className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl"
       >
-        Skills & Certifications
+        {t('title')}
       </h2>
 
       <div className="space-y-6">
@@ -203,7 +197,7 @@ export function Skills() {
 
         <Card className="border-l-4 border-l-chart-2 shadow-md transition-all duration-300 hover:shadow-lg">
           <CardHeader>
-            <CardTitle className="text-chart-2">Languages</CardTitle>
+            <CardTitle className="text-chart-2">{t('languages.title')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
@@ -230,11 +224,11 @@ export function Skills() {
 
         <Card className="border-l-4 border-l-chart-2 shadow-md transition-all duration-300 hover:shadow-lg">
           <CardHeader>
-            <CardTitle className="text-chart-2">Certifications</CardTitle>
+            <CardTitle className="text-chart-2">{t('certifications.title')}</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              {certifications.map((cert) => {
+              {certifications.map((cert, idx) => {
                 const certColors = getColorClasses("chart-2");
                 return (
                   <li key={cert} className="flex items-start gap-2">

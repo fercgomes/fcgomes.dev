@@ -1,0 +1,522 @@
+{
+  "common": {
+    "email": "E-post",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "resume": "CV",
+    "fokvs": "Fokvs",
+    "download": "Ladda ner",
+    "sendEmail": "Skicka E-post",
+    "openLinkedIn": "Öppna LinkedIn",
+    "downloadResume": "Ladda ner CV",
+    "visitFokvs": "Besök Fokvs webbplats",
+    "visitGitHub": "Besök Fernando Gomes GitHub-profil",
+    "sendEmailTo": "Skicka e-post till Fernando Gomes",
+    "downloadResumeFor": "Ladda ner Fernando Gomes CV",
+    "visitLinkedIn": "Besök Fernando Gomes LinkedIn-profil"
+  },
+  "header": {
+    "name": "Fernando Gomes",
+    "title": "Grundande Ingenjör & CTO",
+    "jobTitle": "Jobbtitel"
+  },
+  "hero": {
+    "location": "Porto Alegre, RS (Brasilien)",
+    "bio": "Grundande ingenjör och CTO som tar produkter från prototyp till skala — arkitektur, backend, infrastruktur, mobil, webb, AI, betalningar, analys och tillväxt. Byggde och drev hela <fokvs>Fokvs</fokvs> ingenjörsstack medan produkten skalades till 100K+ användare och meningsfull prenumerationsintäkt.",
+    "badges": {
+      "foundingEngineer": "Grundande Ingenjör",
+      "cto": "CTO",
+      "fullStack": "Full-Stack",
+      "infrastructure": "Infrastruktur",
+      "aiMl": "AI/ML"
+    },
+    "personalInterests": {
+      "musician": "Musiker",
+      "marathonRunner": "Maratonlöpare",
+      "scrollToInterests": "Scrolla till sektion för personliga intressen"
+    }
+  },
+  "metrics": {
+    "title": "Påverkan i Siffror",
+    "usersScaled": {
+      "label": "Användare Skalade",
+      "description": "Från 1K till 100K+ aktiva användare"
+    },
+    "activeSubscribers": {
+      "label": "Aktiva Prenumeranter",
+      "description": "Växte från 0 till 300+ betalande kunder"
+    },
+    "infraCostReduction": {
+      "label": "Kostnadsreduktion Infra",
+      "description": "Sänkte infrastrukturkostnader med 85%"
+    },
+    "churnReduction": {
+      "label": "Churn-reduktion",
+      "description": "Reducerat från 50% till 10%"
+    },
+    "aiScansProcessed": {
+      "label": "AI-skanningar Bearbetade",
+      "description": "Question Scan-funktion använd av 20K+ studenter"
+    },
+    "documentsProcessed": {
+      "label": "Dokument Bearbetade",
+      "description": "Bearbetade för sökning och rekommendationer"
+    }
+  },
+  "experience": {
+    "title": "Erfarenhet",
+    "role": "Grundande Ingenjör & CTO",
+    "company": "Fokvs (EdTech SaaS)",
+    "period": "2023 - Nuvarande",
+    "points": {
+      "0": "Återuppbyggde plattformen från en fragmenterad prototyp till ett enhetligt NestJS + Postgres-system, sänkte infrakostnader <cost>85%</cost> och möjliggjorde snabb produktiteration.",
+      "1": "Ägde backend, infra, mobil, webb, AI, analys och tillväxt — effektivt en full-stack ingenjörsorganisation av en person.",
+      "2": "Skalade produkten från <from>1K</from> till <to>100K+ användare</to>; implementerade fundament för tillförlitlighet, observerbarhet och prestanda.",
+      "3": "Levererade AI-funktioner (Question Scan, Flashcards) använda av <students>20K+ studenter</students>; byggde OCR + LLM-pipelines och moderationsarbetsflöden; bearbetade <scans>30K+ skanningar</scans>.",
+      "4": "Designade och byggde betalningsmotorn (PIX + gateways) med återförsök, idempotens, attribuering och rättigheter.",
+      "5": "Byggde dokumentbearbetningspipeline för <materials>18K+ material</materials> (Gemini OCR + OpenAI embeddings + pgvector); skapade Bedrock + S3 vector-variant som driver sökning, återhämtning och rekommendationer.",
+      "6": "Ökade prenumerationer från <fromSubs>0</fromSubs> till <toSubs>300+</toSubs> och reducerade churn från <fromChurn>50%</fromChurn> till <toChurn>10%</toChurn> genom att instrumentera analys, trattar och experiment.",
+      "7": "Ledde AWS-migration (ECS, RDS, Redis, CloudFront, VPC/Terraform) med <downtime>noll driftstopp</downtime>; förbättrade tillförlitlighet och reducerade overhead.",
+      "8": "Byggde data lake (S3 + Glue + Athena) som stödjer attribuering, trattar, A/B-tester och intern rapportering.",
+      "9": "Rekryterade och mentorerade ingenjörsteam; satte riktning för arkitektur, QA, CI/CD och produkt-ingenjörsprocesser."
+    }
+  },
+  "projects": {
+    "title": "Projekt",
+    "features": "Funktioner",
+    "highlights": "Höjdpunkter",
+    "screenshot": "Skärmdump {index} av {name}",
+    "items": {
+      "fokvs-core-api": {
+        "overview": "REST API i NestJS, TypeScript, Postgres. Kärnapplikationslogik som driver hela Fokvs-plattformen.",
+        "features": [
+          "Användare, registreringar, material, flashcards och skanningshantering",
+          "Ambassadörsprogram med transaktionellt redovisningssystem",
+          "LLM-strömning för realtids AI-svar",
+          "Asynkron bearbetning med Bull Queues för bakgrundsjobb"
+        ],
+        "highlights": [
+          "90%+ testtäckning med Jest",
+          "Dockeriserad för konsekventa distributioner",
+          "Redis för cachning och köhantering"
+        ]
+      },
+      "fokvs-checkout": {
+        "overview": "Betalningsgateway-agnostiskt kassasystem med omfattande analys och övervakning. Byggt med Domain-Driven Design-principer.",
+        "features": [
+          "Multi-gateway-integration: Asaas, Pagarme, MercadoPago, AbacatePay",
+          "RevenueCat och Superwall-integration för prenumerationshantering",
+          "Realtidsanalysdashboard med konverteringstrattar",
+          "Meta Marketing API-integration för attribuering"
+        ],
+        "highlights": [
+          "95%+ testtäckning (unit + E2E)",
+          "React + Vite frontend med Fastify backend",
+          "Inversify DI för ren arkitektur",
+          "Helt hanterad med Terraform"
+        ]
+      },
+      "fokvs-app": {
+        "overview": "Mobilapp i Flutter som levererar den kompletta Fokvs-lärupplevelsen till studenter.",
+        "features": [
+          "AI Question Scan: skanna övningar för steg-för-steg LLM-lösningar",
+          "Flashcards med Spaced Repetition System (SRS)",
+          "Materialdelning och upptäckt",
+          "Ambassadörsdashboard för programdeltagare"
+        ],
+        "highlights": [
+          "CI/CD-pipeline på Codemagic",
+          "Firebase Crashlytics för felövervakning",
+          "Bearbetade 30K+ frågeskanningar av 13K+ användare"
+        ]
+      },
+      "fokvs-web": {
+        "overview": "Next.js webbplattform optimerad för SEO och användaranskaffning.",
+        "features": [
+          "Server-side rendering för bättre SEO-prestanda",
+          "TypeScript + Tailwind CSS + DaisyUI för modern UI",
+          "Responsiv design för alla enheter"
+        ],
+        "highlights": [
+          "Distribuerad på Vercel för optimal prestanda",
+          "Tidigare hostad på Fly.io före migration",
+          "Fokuserad på organiskt tillväxt och upptäckbarhet"
+        ]
+      },
+      "infrastructure": {
+        "overview": "Produktionsklass AWS-infrastruktur designad för skala, säkerhet och tillförlitlighet.",
+        "features": [
+          "ECS Fargate med Docker-containrar och autoskalning",
+          "RDS Postgres med automatiserade säkerhetskopior",
+          "ElastiCache Redis för cachning och sessionshantering",
+          "CloudFront CDN för global edge-cachning"
+        ],
+        "highlights": [
+          "Privata subnät med bastion-värdar för säker åtkomst",
+          "Helt observerbar med CloudWatch-dashboards",
+          "100% Infrastructure as Code med Terraform",
+          "Noll driftstopp-migration från Fly.io"
+        ]
+      },
+      "ai-question-scan": {
+        "overview": "Mobilfunktion som gör det möjligt för studenter att skanna övningar och få omedelbara steg-för-steg LLM-lösningar.",
+        "features": [
+          "Realtidsbildbearbetning och OCR",
+          "OpenAI GPT-integration för lösningsgenerering",
+          "Steg-för-steg-förklaringar anpassade till studentnivå"
+        ],
+        "highlights": [
+          "Bearbetade 30K+ skanningar av 13K+ användare",
+          "Initial version optimerad för direkt bildbearbetning",
+          "Nyckeldrivare för prenumerationsväxt"
+        ]
+      },
+      "document-embeddings-pipeline": {
+        "overview": "OCR + embedding-system som driver intelligent sökning och rekommendationer över 18K+ dokument.",
+        "features": [
+          "Dubbel approach: Gemini OCR + OpenAI embeddings + pgvector",
+          "Alternativ: AWS Bedrock + S3 vectors-variant",
+          "Semantisk sökning och dokumentåterhämtning",
+          "Personliga innehållsrekommendationer"
+        ],
+        "highlights": [
+          "Bearbetar 18K+ utbildningsdokument",
+          "Vektorlikhetssökning med pgvector",
+          "Driver upptäckts- och rekommendationsfunktioner"
+        ]
+      },
+      "anyfunnel": {
+        "overview": "Data lake-projekt som aggregerar all Fokvs-data för omfattande försäljningstrattanalys och ROI-vägsvisualisering.",
+        "features": [
+          "Parquet-filer i S3 med AWS Glue Catalog",
+          "Athena-frågor för ad-hoc-analys",
+          "AI-chattgränssnitt för naturlig språkfrågor",
+          "React Flow för interaktiva trattvisualiseringar"
+        ],
+        "highlights": [
+          "Meta Marketing API-integration för attribuering",
+          "Python FastAPI backend med dashboard",
+          "ROI-vägsanalys och konverteringsoptimering",
+          "Realtidsdatapipelinebearbetning"
+        ]
+      },
+      "fokvs-discord-bot": {
+        "overview": "Konversationsbot för Discord för Fokvs-gemenskapen, som ger handledning och dokumentåtkomst.",
+        "features": [
+          "AI-driven handledning med OpenAI",
+          "Realtidsdokumenthämtning från Fokvs-delningssystem",
+          "Integration med Fokvs API för live dataåtkomst"
+        ],
+        "highlights": [
+          "Aktivt verktyg för gemenskapsengagemang",
+          "Sömlöst dokumentdelningsarbetsflöde"
+        ]
+      },
+      "fokvs-voice-bot": {
+        "overview": "Experimentell Discord-bot för röstbaserad lärandehjälp med realtids AI-röstinteraktion.",
+        "features": [
+          "Röstchattintegration med Discord",
+          "GPT-Realtime för naturliga röstkonversationer",
+          "Realtidshandledning i röstkanaler"
+        ],
+        "highlights": [
+          "Experimentell funktion för röstbaserat lärande",
+          "Innovativ approach till studentengagemang"
+        ]
+      },
+      "n8n-automations": {
+        "overview": "Arbetsflödesautomatiseringssystem för användarengagemang och operativ effektivitet.",
+        "features": [
+          "E-postkampanjer för onboarding och engagemang",
+          "Push-meddelanden för mobilapp",
+          "WhatsApp-meddelanden för ambassadörskommunikation"
+        ],
+        "highlights": [
+          "Automatiserade användaronboardingsflöden",
+          "Engagemangskampanjer och retention",
+          "Ambassadörsprogramkommunikation"
+        ]
+      },
+      "fokvs-handbook": {
+        "overview": "Intern anställdhandbok och processdokumentationsplattform. Omfattande guide för utvecklingsprocesser, kvalitetsprinciper och verktygsanvändning.",
+        "features": [
+          "Utvecklingsprocessdokumentation med exempel och checklistor",
+          "PRD-mallar och riktlinjer",
+          "Kvalitetsprinciper och bästa praxis",
+          "Verktygsanvändning och kombinationer"
+        ],
+        "highlights": [
+          "Byggd med Astro för snabb statisk generering",
+          "Cloudflare Zero Trust för säker anställdåtkomst",
+          "Helt hanterad med Terraform",
+          "Levande dokumentation som utvecklas med teamet"
+        ]
+      }
+    }
+  },
+  "media": {
+    "title": "Utvalt Arbete",
+    "items": {
+      "fokvs-web-demo": {
+        "title": "Fokvs Webbplattform Demo",
+        "description": "Komplett genomgång av Fokvs webbapplikation som visar viktiga funktioner och funktionalitet"
+      },
+      "fokvs-app-demo": {
+        "title": "Fokvs Mobilapp Demo",
+        "description": "Demonstration av Fokvs mobilapplikationsfunktioner och användarupplevelse"
+      },
+      "churn-reduction": {
+        "title": "Churn-reduktion",
+        "description": "Churn-frekvens minskade från 50% till 10% under 2025",
+        "alt": "Linjediagram som visar churn-frekvensminskning från 50% i januari 2025 till 10% vid årets slut"
+      },
+      "mau-growth": {
+        "title": "Månadsvis Aktiva Användare Tillväxt",
+        "description": "MAU och WAU-utveckling som visar betydande tillväxt som börjar i mars 2025",
+        "alt": "Linjediagram som visar Månadsvis Aktiva Användare och Veckovis Aktiva Användare tillväxt från 2024 till 2025"
+      },
+      "subscribers-growth": {
+        "title": "Aktiva Prenumerationer Tillväxt",
+        "description": "Prenumerationer växte från 0 till 300+ aktiva prenumeranter",
+        "alt": "Linjediagram som visar aktiva prenumerationer tillväxt från december 2023 till juli 2025, når över 300 prenumeranter"
+      },
+      "team-photo": {
+        "title": "Fokvs Team",
+        "description": "Vårt team på Tecnopuc-kontoret i Porto Alegre",
+        "alt": "Fokvs teammedlemmar på Tecnopuc-kontoret"
+      },
+      "anyfunnel-dashboard": {
+        "title": "AnyFunnel Analys Dashboard",
+        "description": "Data lake-projekt med AI-chattgränssnitt för att fråga försäljningstrattdata och generera visualiseringar",
+        "alt": "AnyFunnel analysdashboard som visar försäljningstrattvisualiseringar och datafrågegränssnitt"
+      },
+      "zero-trust-portal": {
+        "title": "Cloudflare Zero Trust Portal",
+        "description": "Skärmdump av Cloudflare Zero Trust-portalen som används för säker anställdåtkomst till Fokvs Handboken",
+        "alt": "Cloudflare Zero Trust portalgränssnitt"
+      },
+      "fokvs-handbook-interface": {
+        "title": "Fokvs Handbok Gränssnitt",
+        "description": "Skärmdump av Fokvs intern handbokgränssnitt, visar dokumentation och navigering",
+        "alt": "Fokvs Handbok användargränssnitt"
+      },
+      "checkout-dashboard-1": {
+        "title": "Checkout Dashboard - Översikt",
+        "description": "Översikt av Fokvs Checkout-systemdashboard, visar viktiga mätvärden och senaste transaktioner",
+        "alt": "Fokvs Checkout dashboard-översikt"
+      },
+      "checkout-dashboard-2": {
+        "title": "Checkout Dashboard - Trattanalys",
+        "description": "Fokvs Checkout dashboard visar konverteringstrattanalys och betalningsattribueringsdetaljer",
+        "alt": "Fokvs Checkout dashboard trattanalys"
+      }
+    },
+    "videoNotSupported": "Din webbläsare stödjer inte video-taggen."
+  },
+  "journey": {
+    "title": "Resan",
+    "startingPoint": {
+      "title": "Startpunkt: Den Monstruösa Stacken",
+      "period": "Maj 2023",
+      "intro": "När jag gick med som CTO i maj 2023 ärvde jag en komplex infrastruktur som inte matchade skalan eller behoven i verksamheten:",
+      "points": [
+        "<count>7</count> mikrotjänster i Python som kör på AWS Lambda",
+        "En separat API i Java",
+        "<count>3</count> olika databaser: Neo4j, MySQL och DynamoDB",
+        "Flutter-app och React webbplattform",
+        "R$600/månad AWS-kostnader för en handfull användare utan monetisering"
+      ],
+      "conclusion": "Det fanns inget logiskt resonemang bakom dessa val—det byggdes inkrementellt baserat på vad som var känt vid tiden, utan att överväga skalbarhet eller kostnadseffektivitet."
+    },
+    "firstMigration": {
+      "title": "Den Första Migrationen: Förenkling",
+      "period": "2023",
+      "intro": "Mitt första stora beslut som CTO var att förenkla infrastrukturen. Utan monetisering och låg användning var den komplexa uppsättningen inte motiverad. Jag föreslog och genomförde:",
+      "points": [
+        "<nestjs>Enhetlig API i NestJS</nestjs>, byggd från grunden",
+        "<postgresql>PostgreSQL</postgresql> som enda sanningskälla",
+        "<nextjs>Omskrev webbplattformen i Next.js</nextjs> för bättre SEO",
+        "<flyio>Helt hostad på Fly.io</flyio> för hanterad, prisvärd infrastruktur"
+      ],
+      "conclusion": "Jag skrev all kod för den nya API:n och hanterade migrationen. Denna grund möjliggjorde snabb produktiteration och förberedde oss för tillväxt."
+    },
+    "awsMigration": {
+      "title": "Migration Tillbaka till AWS",
+      "period": "2024",
+      "intro": "När produkten skalades och användningen växte behövde vi mer kontroll och skalbarhet än den hanterade plattformen kunde ge. Jag orkestrerade en komplett migration tillbaka till AWS:",
+      "points": [
+        "<ecsFargate>ECS Fargate-distribution:</ecsFargate> Dockeriserade containrar med autoskalningskapacitet för att hantera trafiktoppar",
+        "<prodInfra>Produktionsklass infrastruktur:</prodInfra> RDS Postgres, ElastiCache Redis, CloudFront CDN, privata subnät med bastion-värdar",
+        "<iac>100% Infrastructure as Code:</iac> Hela infrastrukturen hanterad med Terraform för reproducerbarhet och versionskontroll",
+        "<zeroDowntime>Noll driftstopp-migration:</zeroDowntime> Noggrant planerad och genomförd migration utan serviceavbrott, behöll 100% driftstid under övergången",
+        "<scalability>Skalbarhet och kontroll:</scalability> Infrastruktur designad för att stödja 100K+ användare med full kontroll över skalning, övervakning och kostnadshantering"
+      ],
+      "conclusion": "Denna migration gav grunden som behövdes för att skala effektivt samtidigt som kostnadskontroll och operativ excellens bibehölls."
+    },
+    "monetization": {
+      "title": "Monetiseringsförsök",
+      "period": "2023-2024",
+      "intro": "Att hitta hållbar monetisering var utmanande. De flesta materialen var gamla tentor, vilket skapade upphovsrättsbekymmer. Vi provade flera tillvägagångssätt:",
+      "points": [
+        "<b2b>B2B-partnerskap:</b2b> Bannerannonser och jobbtavla-integrationer. Intäkter växte från R$200 till R$650/månad, men krävde manuell, arbetsintensiv distribution genom universitetsgrupper.",
+        "<b2c>B2C-kreditförsäljning:</b2c> Användare kunde köpa krediter för att komma åt material. Några försäljningar, men inte skalbar.",
+        "<firstSub>Första prenumerationsmodellen:</firstSub> Obegränsad åtkomstprenumeration. Bara 3 prenumeranter—skalade inte.",
+        "<aiScan>AI Question Scan + ny prenumeration:</aiScan> Detta var genombrottet. Lanserad tillsammans med den nya prenumerationsmodellen, drev det konsekvent prenumeranttillväxt."
+      ]
+    },
+    "ambassadorProgram": {
+      "title": "Ambassadörsprogrammet",
+      "period": "2023 - Nuvarande",
+      "intro": "Genom användarinteraktioner upptäckte vi att huvudincitamentet för att dela material var den rena instinkten att hjälpa klasskamrater—nästan som en statussymbol. Ambassadörsprogrammet utnyttjade detta naturliga beteende:",
+      "points": [
+        "<onboarding>Personlig onboarding:</onboarding> Inledningsvis gjorde vi samtal med varje sökande för att bättre förstå vår målgrupp",
+        "<compensation>Kompensationsmodell:</compensation> Belönad med pengar för materialuppladdningar (milstolpar) och visningar. Ambassadörer hade en dashboard med saldo som kunde tas ut när minimigränsen nåddes",
+        "<expansion>Nationell expansion:</expansion> När videor blev virala kom ambassadörer från hela Brasilien. Vi växte i topp federala universitet, exakt vårt mål. För närvarande: 600 aktiva ambassadörer, 4K väntelista",
+        "<challenge>Teknisk utmaning:</challenge> Byggde händelsedrivet system med transaktionellt redovisningssystem. Senare refaktorerade för att stödja två samtidiga programversioner under migration, migrerade långsamt användare mellan versioner"
+      ]
+    },
+    "teamBuilding": {
+      "title": "Bygga Teamet & Etablera Processer",
+      "period": "2024",
+      "intro": "När produkten växte tog jag på mig ansvaret att skala produktteamet och etablera tydliga processer:",
+      "points": [
+        "<hiring>Rekrytering och onboarding:</hiring> Rekryterade och onboardade nya produktteammedlemmar, skapade omfattande onboardingsmaterial och processer",
+        "<devProcess>Utvecklingsprocessdokumentation:</devProcess> Etablerade tydliga utvecklingsarbetsflöden, från planering till distribution, med praktiska exempel och checklistor",
+        "<handbook>Intern handbok:</handbook> Skapade ett levande dokumentationssystem som täcker processer, PRD-mallar, kvalitetsprinciper och verktygsanvändningsriktlinjer",
+        "<quality>Kvalitetsstandarder:</quality> Definierade kodningsstandarder, testkrav och granskningsprocesser för att säkerställa konsistens i hela teamet",
+        "<mentoring>Mentorering och kunskapsdelning:</mentoring> Genomförde regelbundna kunskapsöverföringssessioner och mentorade teammedlemmar om tekniska bästa praxis och arkitekturbeslut"
+      ],
+      "conclusion": "Dessa processer möjliggjorde för teamet att skala effektivt samtidigt som höga kvalitetsstandarder och inriktning på teknisk riktning bibehölls."
+    },
+    "directSales": {
+      "title": "Direktförsäljning med Landningssidor",
+      "period": "2025",
+      "intro": "Vi skapade kassasystemet specifikt för att möjliggöra en direktförsäljningsmodell för prenumerationer. Detta tillvägagångssätt förändrade fundamentalt hur vi förvärvade och konverterade användare:",
+      "points": [
+        "<metaAds>Meta-annonskampanjer:</metaAds> Flera kampanjer som driver trafik till olika landningssidor på olika plattformar",
+        "<landingPages>Distribuerade landningssidor:</landingPages> Landningssidor spridda över Framer och Lovable, var och en omdirigerar till det enhetliga kassasystemet",
+        "<attribution>Komplett attribueringsspårning:</attribution> Alla varianter spårade från slut till slut, möjliggör exakt mätning av kampanjprestanda och konverteringsfrekvenser",
+        "<salesFunnel>Förenklad försäljningstratt:</salesFunnel> Användare köper innan de använder, gör attribuering trivial och intäktskalning förutsägbar",
+        "<revenueScaling>Förutsägbar intäktskalning:</revenueScaling> Den förenklade tratten och tydlig attribuering möjliggjorde datadriven optimering och pålitlig intäktsväxt"
+      ],
+      "conclusion": "Denna direktförsäljningsmodell transformerade vår förvärvsstrategi, gjorde det enklare att mäta ROI, optimera kampanjer och skala intäkter förutsägbart."
+    },
+    "technicalEvolution": {
+      "title": "Teknisk Evolution & Utmaningar",
+      "earlyDecisions": {
+        "title": "Tidiga Tekniska Beslut",
+        "points": [
+          "<pdfThumbnails>PDF-miniatyrer:</pdfThumbnails> Inledningsvis lagrade binära miniatyrer i Postgres-kolumner med GraphicsMagick. Funkade bra inledningsvis, men när materialen växte migrerade till S3 med URL-fält. Behöll API-kompatibilitet genom att omdirigera till S3-URL:er",
+          "<reactionsSystem>Reaktionssystem:</reactionsSystem> Började med enkelt like/dislike i en reaktionstabell med COUNT-frågor. Som Instagram hade blev detta långsamt. Denormaliserade med like_count-fält uppdaterade via triggers. Senare utvecklades till 1-5 stjärnbetygssystem"
+        ]
+      },
+      "architectureDebt": {
+        "title": "Arkitekturskuld & Förbättringar",
+        "points": [
+          "<complexity>Växande komplexitet:</complexity> När funktioner expanderade blev tjänsterna stora, tätt kopplade. Affärslogik var blandad med infrastruktur. KnexJS-frågor blev massiva, gjorde affärslogiktestning nästan omöjlig",
+          "<devExperience>Förbättringar av utvecklarupplevelse:</devExperience> Förbättrade ombyggnadstider, hot reload, miljöreproducerbarhet. Skapade seed-system från anonymiserade produktionsdata, laddade ner provstatiska material och växlade mellan dem i Minio för att spara utrymme—ingen S3-beroende för dev",
+          "<refactoring>Framtida refaktorisering:</refactoring> Backend behöver fortfarande stor refaktorisering. Idealet skulle vara närmare DDD-arkitektur för att ordentligt separera bekymmer"
+        ]
+      }
+    }
+  },
+  "education": {
+    "title": "Utbildning & Bakgrund",
+    "degree": "Datavetenskap",
+    "university": "UFRGS - Federala Universitetet i Rio Grande do Sul",
+    "period": "2017 - 2024",
+    "description": "Fullständig examen i Datavetenskap. Fokuserad på entreprenörskap och full-stack-utveckling under hela programmet. Under pandemin tog jag flera kurser för att förvärva färdigheter som behövs för att bygga produkter från grunden. Jag sökte inte traditionella praktikplatser, istället fokuserade jag heltid på Fokvs i 3 år, lärde mig och byggde omfattande.",
+    "background": "Bakgrund: Examen från gymnasiet 2012 från Colégio Sinodal Barão do Rio Branco i Cachoeira do Sul. Drömde alltid om entreprenörskap. Under pandemin tog jag kurser om blockchain, webbutveckling, produktledning och molnberäkning för att bygga färdigheterna som behövs för att skapa något från grunden.",
+    "research": {
+      "title": "Forskningserfarenhet",
+      "scientificInitiation": "Vetenskaplig Initiering: Parallell och distribuerad bearbetningsgrupp. Parallella algoritmer för heterogena arkitekturer med StarPU-biblioteket för CPU/GPU-parallellbearbetning",
+      "entrepreneurialInitiation": "Entreprenöriell Initiering: Utveckling av apoteksleveransapplikation",
+      "tcc": "TCC (Slutprojekt): Business Process Management (BPM)-forskning om LLM-effektivitet för att generera BPMN-affärsprocessbeskrivningar jämfört med traditionella NLP-metoder"
+    },
+    "otherExperiences": {
+      "title": "Andra Erfarenheter",
+      "2012": "2012: Examen från gymnasiet från Colégio Sinodal Barão do Rio Branco i Cachoeira do Sul",
+      "2013": "2013: Rotary Youth Exchange Program - Ett år levde i Sverige som utbytesstudent. Denna erfarenhet bidrog till nästan flytande svenska språkfärdigheter.",
+      "2015": "2015: Två terminer av Biologi vid UFRGS innan byte till Datavetenskap. Denna utforskningsperiod hjälpte till att klargöra karriärriktning.",
+      "entrepreneurshipMarathon": "Entreprenörskapsmaraton (SEDETEC UFRGS): Decoreba-projekt - Duolingo för högskoleinträdesprov. 2:a plats. Utvecklade hela app, webb och backend. Trots erkännande lanserades projektet aldrig på grund av oerfarenhet, men det var värdefullt lärande som förberedde för Fokvs."
+    }
+  },
+  "skills": {
+    "title": "Färdigheter & Certifieringar",
+    "languages": {
+      "title": "Språk",
+      "english": {
+        "name": "Engelska",
+        "level": "Flytande"
+      },
+      "swedish": {
+        "name": "Svenska",
+        "level": "Nästan flytande (bodde i Sverige 2013)"
+      },
+      "french": {
+        "name": "Franska",
+        "level": "A2 (2 års lektioner)"
+      },
+      "spanish": {
+        "name": "Spanska",
+        "level": "Bra förståelse, begränsat tal"
+      }
+    },
+    "certifications": {
+      "title": "Certifieringar",
+      "items": [
+        "R3 Corda - Build Blockchain / DLT apps (Udemy, Mar 2022)",
+        "Build a Blockchain and a Cryptocurrency from Scratch (Udemy, Feb 2022)",
+        "The Complete Elixir and Phoenix Bootcamp (Udemy, Aug 2021)",
+        "Become a Product Manager | Learn the Skills & Get the Job (Udemy, Jul 2021)",
+        "Ethereum and Solidity: The Complete Developer's Guide (Udemy, Jun 2021)",
+        "Blockchain A-Z™: Learn How To Build Your First Blockchain (Udemy, Sep 2020)",
+        "AWS Cloud Practitioner Essentials (Second Edition) (Apr 2020)",
+        "NodeJS - The Complete Guide (incl. MVC, REST APIs, GraphQL) (Udemy, Apr 2020)",
+        "React - The Complete Guide (incl Hooks, React Router, Redux) (Udemy, Apr 2020)",
+        "Python and Django Full Stack Web Developer Bootcamp (Udemy, Mar 2020)"
+      ]
+    },
+    "categories": {
+      "Backend": "Backend",
+      "Frontend": "Frontend",
+      "Architecture": "Arkitektur",
+      "Infrastructure": "Infrastruktur",
+      "AI/ML": "AI/ML",
+      "Payments": "Betalningar",
+      "Data": "Data",
+      "Tools": "Verktyg",
+      "Leadership": "Ledarskap"
+    }
+  },
+  "personal": {
+    "title": "Bortom Koden",
+    "music": {
+      "title": "Musik",
+      "description": "Jag har varit musiker sedan jag var 4 år gammal. Började spela gitarr vid 11, och under åren har jag lärt mig att spela trummor, bas, keyboard, flöjt och munspel. Musik har alltid varit en kärndel av vem jag är.",
+      "rockBand": "<strong>Rockband:</strong> Brukade spela i ett rockband, och vi släppte 2 låtar på Spotify. Upplevelsen av att skapa, spela in och släppa musik lärde mig mycket om samarbete, iteration och ge liv åt kreativa idéer."
+    },
+    "running": {
+      "title": "Löpning",
+      "description": "Jag har varit maratonlöpare i 9 år. Löpning har lärt mig disciplin, tålamod och vikten av konsekvent framsteg över tid—lektioner som översätts direkt till att bygga produkter och leda team.",
+      "marathons": "<strong>6 maratoner slutförda</strong> med ett personbästa på <strong>2:50:22</strong>. Den mentala motståndskraften och långsiktigt tänkande som krävs för maratonträning speglar approachen som behövs för att bygga och skala produkter."
+    }
+  },
+  "commandPalette": {
+    "title": "Kommandopalett",
+    "placeholder": "Sök kommandon...",
+    "noCommands": "Inga kommandon hittades.",
+    "commands": {
+      "experience": "Gå till Erfarenhet",
+      "projects": "Gå till Projekt",
+      "journey": "Gå till Resan",
+      "skills": "Gå till Färdigheter",
+      "email": "Skicka E-post",
+      "linkedin": "Öppna LinkedIn",
+      "resume": "Ladda ner CV"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Fernando Gomes. Byggd med Next.js, TypeScript och Tailwind CSS."
+  }
+}

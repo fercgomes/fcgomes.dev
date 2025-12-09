@@ -1,0 +1,523 @@
+{
+  "common": {
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "resume": "Resume",
+    "fokvs": "Fokvs",
+    "download": "Download",
+    "sendEmail": "Send Email",
+    "openLinkedIn": "Open LinkedIn",
+    "downloadResume": "Download Resume",
+    "visitFokvs": "Visit Fokvs website",
+    "visitGitHub": "Visit Fernando Gomes GitHub profile",
+    "sendEmailTo": "Send email to Fernando Gomes",
+    "downloadResumeFor": "Download Fernando Gomes resume",
+    "visitLinkedIn": "Visit Fernando Gomes LinkedIn profile"
+  },
+  "header": {
+    "name": "Fernando Gomes",
+    "title": "Founding Engineer & CTO",
+    "jobTitle": "Job title"
+  },
+  "hero": {
+    "location": "Porto Alegre, RS (Brazil)",
+    "bio": "Founding engineer and CTO who takes products from prototype to scale — architecture, backend, infra, mobile, web, AI, payments, analytics, and growth. Built and operated the entire <fokvs>Fokvs</fokvs> engineering stack while scaling the product to 100K+ users and meaningful subscription revenue.",
+    "badges": {
+      "foundingEngineer": "Founding Engineer",
+      "cto": "CTO",
+      "fullStack": "Full-Stack",
+      "infrastructure": "Infrastructure",
+      "aiMl": "AI/ML"
+    },
+    "personalInterests": {
+      "musician": "Musician",
+      "marathonRunner": "Marathon Runner",
+      "scrollToInterests": "Scroll to personal interests section"
+    }
+  },
+  "metrics": {
+    "title": "Impact by Numbers",
+    "usersScaled": {
+      "label": "Users Scaled",
+      "description": "From 1K to 100K+ active users"
+    },
+    "activeSubscribers": {
+      "label": "Active Subscribers",
+      "description": "Grew from 0 to 300+ paying customers"
+    },
+    "infraCostReduction": {
+      "label": "Infra Cost Reduction",
+      "description": "Cut infrastructure costs by 85%"
+    },
+    "churnReduction": {
+      "label": "Churn Reduction",
+      "description": "Reduced from 50% to 10%"
+    },
+    "aiScansProcessed": {
+      "label": "AI Scans Processed",
+      "description": "Question Scan feature used by 20K+ students"
+    },
+    "documentsProcessed": {
+      "label": "Documents Processed",
+      "description": "Processed for search and recommendations"
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "role": "Founding Engineer & CTO",
+    "company": "Fokvs (EdTech SaaS)",
+    "period": "2023 - Present",
+    "points": {
+      "0": "Rebuilt the platform from a fragmented prototype into a unified NestJS + Postgres system, cutting infra cost <cost>85%</cost> and enabling rapid product iteration.",
+      "1": "Owned backend, infra, mobile, web, AI, analytics, and growth — effectively a full-stack engineering org of one.",
+      "2": "Scaled product from <from>1K</from> to <to>100K+ users</to>; implemented reliability, observability, and performance foundations.",
+      "3": "Shipped AI features (Question Scan, Flashcards) used by <students>20K+ students</students>; built OCR + LLM pipelines and moderation workflows; processed <scans>30K+ scans</scans>.",
+      "4": "Designed and built the payments engine (PIX + gateways) with retries, idempotency, attribution, and entitlements.",
+      "5": "Built document-processing pipeline for <materials>18K+ materials</materials> (Gemini OCR + OpenAI embeddings + pgvector); created Bedrock + S3 vector variant powering search, retrieval, and recommendations.",
+      "6": "Grew subscriptions <fromSubs>0</fromSubs> to <toSubs>300+</toSubs> and reduced churn <fromChurn>50%</fromChurn> to <toChurn>10%</toChurn> by instrumenting analytics, funnels, and experiments.",
+      "7": "Led AWS migration (ECS, RDS, Redis, CloudFront, VPC/Terraform) with <downtime>zero downtime</downtime>; improved reliability and reduced overhead.",
+      "8": "Built data lake (S3 + Glue + Athena) supporting attribution, funnels, A/B tests, and internal reporting.",
+      "9": "Hired and mentored engineering team; set direction for architecture, QA, CI/CD, and product-engineering processes."
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "features": "Features",
+    "highlights": "Highlights",
+    "screenshot": "Screenshot {index} of {name}",
+    "items": {
+      "fokvs-core-api": {
+        "overview": "REST API in NestJS, TypeScript, Postgres. Core application logic powering the entire Fokvs platform.",
+        "features": [
+          "Users, enrollments, materials, flashcards, and scan management",
+          "Ambassador program with transactional ledger system",
+          "LLM streaming for real-time AI responses",
+          "Async processing with Bull Queues for background jobs"
+        ],
+        "highlights": [
+          "90%+ test coverage with Jest",
+          "Dockerized for consistent deployments",
+          "Redis for caching and queue management"
+        ]
+      },
+      "fokvs-checkout": {
+        "overview": "Payment gateway-agnostic checkout system with comprehensive analytics and monitoring. Built with Domain-Driven Design principles.",
+        "features": [
+          "Multi-gateway integration: Asaas, Pagarme, MercadoPago, AbacatePay",
+          "RevenueCat and Superwall integration for subscription management",
+          "Real-time analytics dashboard with conversion funnels",
+          "Meta Marketing API integration for attribution"
+        ],
+        "highlights": [
+          "95%+ test coverage (unit + E2E)",
+          "React + Vite frontend with Fastify backend",
+          "Inversify DI for clean architecture",
+          "Fully managed with Terraform"
+        ]
+      },
+      "fokvs-app": {
+        "overview": "Mobile app in Flutter delivering the complete Fokvs learning experience to students.",
+        "features": [
+          "AI Question Scan: scan exercises for step-by-step LLM solutions",
+          "Flashcards with Spaced Repetition System (SRS)",
+          "Material sharing and discovery",
+          "Ambassador dashboard for program participants"
+        ],
+        "highlights": [
+          "CI/CD pipeline on Codemagic",
+          "Firebase Crashlytics for error monitoring",
+          "Processed 30K+ question scans by 13K+ users"
+        ]
+      },
+      "fokvs-web": {
+        "overview": "Next.js web platform optimized for SEO and user acquisition.",
+        "features": [
+          "Server-side rendering for better SEO performance",
+          "TypeScript + Tailwind CSS + DaisyUI for modern UI",
+          "Responsive design for all devices"
+        ],
+        "highlights": [
+          "Deployed on Vercel for optimal performance",
+          "Previously hosted on Fly.io before migration",
+          "Focused on organic growth and discoverability"
+        ]
+      },
+      "infrastructure": {
+        "overview": "Production-grade AWS infrastructure designed for scale, security, and reliability.",
+        "features": [
+          "ECS Fargate with Docker containers and autoscaling",
+          "RDS Postgres with automated backups",
+          "ElastiCache Redis for caching and session management",
+          "CloudFront CDN for global edge caching"
+        ],
+        "highlights": [
+          "Private subnets with bastion hosts for secure access",
+          "Fully observable with CloudWatch dashboards",
+          "100% Infrastructure as Code with Terraform",
+          "Zero-downtime migration from Fly.io"
+        ]
+      },
+      "ai-question-scan": {
+        "overview": "Mobile feature enabling students to scan exercises and receive instant step-by-step LLM solutions.",
+        "features": [
+          "Real-time image processing and OCR",
+          "OpenAI GPT integration for solution generation",
+          "Step-by-step explanations tailored to student level"
+        ],
+        "highlights": [
+          "Processed 30K+ scans by 13K+ users",
+          "Initial version optimized for direct image processing",
+          "Key driver for subscription growth"
+        ]
+      },
+      "document-embeddings-pipeline": {
+        "overview": "OCR + embedding system powering intelligent search and recommendations across 18K+ documents.",
+        "features": [
+          "Dual approach: Gemini OCR + OpenAI embeddings + pgvector",
+          "Alternative: AWS Bedrock + S3 vectors variant",
+          "Semantic search and document retrieval",
+          "Personalized content recommendations"
+        ],
+        "highlights": [
+          "Processes 18K+ educational documents",
+          "Vector similarity search with pgvector",
+          "Powers discovery and recommendation features"
+        ]
+      },
+      "anyfunnel": {
+        "overview": "Data lake project aggregating all Fokvs data for comprehensive sales funnel analysis and ROI path visualization.",
+        "features": [
+          "Parquet files in S3 with AWS Glue Catalog",
+          "Athena queries for ad-hoc analytics",
+          "AI chat interface for natural language querying",
+          "React Flow for interactive funnel visualizations"
+        ],
+        "highlights": [
+          "Meta Marketing API integration for attribution",
+          "Python FastAPI backend with dashboard",
+          "ROI path analysis and conversion optimization",
+          "Real-time data pipeline processing"
+        ]
+      },
+      "fokvs-discord-bot": {
+        "overview": "Conversational Discord bot for the Fokvs community, providing tutoring and document access.",
+        "features": [
+          "AI-powered tutoring using OpenAI",
+          "Real-time document fetching from Fokvs sharing system",
+          "Integration with Fokvs API for live data access"
+        ],
+        "highlights": [
+          "Active community engagement tool",
+          "Seamless document sharing workflow"
+        ]
+      },
+      "fokvs-voice-bot": {
+        "overview": "Experimental Discord bot for voice-based learning assistance using real-time AI voice interaction.",
+        "features": [
+          "Voice chat integration with Discord",
+          "GPT-Realtime for natural voice conversations",
+          "Real-time tutoring in voice channels"
+        ],
+        "highlights": [
+          "Experimental feature for voice-based learning",
+          "Innovative approach to student engagement"
+        ]
+      },
+      "n8n-automations": {
+        "overview": "Workflow automation system for user engagement and operational efficiency.",
+        "features": [
+          "Email campaigns for onboarding and engagement",
+          "Push notifications for mobile app",
+          "WhatsApp messaging for ambassador communications"
+        ],
+        "highlights": [
+          "Automated user onboarding flows",
+          "Engagement campaigns and retention",
+          "Ambassador program communications"
+        ]
+      },
+      "fokvs-handbook": {
+        "overview": "Internal employee handbook and process documentation platform. Comprehensive guide for development processes, quality principles, and tool usage.",
+        "features": [
+          "Development process documentation with examples and checklists",
+          "PRD templates and guidelines",
+          "Quality principles and best practices",
+          "Tool usage and combinations"
+        ],
+        "highlights": [
+          "Built with Astro for fast static generation",
+          "Cloudflare Zero Trust for secure employee access",
+          "Fully managed with Terraform",
+          "Living documentation that evolves with the team"
+        ]
+      }
+    }
+  },
+  "media": {
+    "title": "Featured Work",
+    "items": {
+      "fokvs-web-demo": {
+        "title": "Fokvs Web Platform Demo",
+        "description": "Complete walkthrough of the Fokvs web application showcasing key features and functionality"
+      },
+      "fokvs-app-demo": {
+        "title": "Fokvs Mobile App Demo",
+        "description": "Demonstration of the Fokvs mobile application features and user experience"
+      },
+      "churn-reduction": {
+        "title": "Churn Reduction",
+        "description": "Churn rate declined from 50% to 10% over the course of 2025",
+        "alt": "Line chart showing churn rate decline from 50% in January 2025 to 10% by end of year"
+      },
+      "mau-growth": {
+        "title": "Monthly Active Users Growth",
+        "description": "MAU and WAU evolution showing significant growth starting in March 2025",
+        "alt": "Line chart showing Monthly Active Users and Weekly Active Users growth from 2024 to 2025"
+      },
+      "subscribers-growth": {
+        "title": "Active Subscriptions Growth",
+        "description": "Subscriptions grew from 0 to 300+ active subscribers",
+        "alt": "Line chart showing active subscriptions growth from December 2023 to July 2025, reaching over 300 subscribers"
+      },
+      "team-photo": {
+        "title": "Fokvs Team",
+        "description": "Our team at the Tecnopuc office in Porto Alegre",
+        "alt": "Fokvs team members at Tecnopuc office"
+      },
+      "anyfunnel-dashboard": {
+        "title": "AnyFunnel Analytics Dashboard",
+        "description": "Data lake project with AI chat interface for querying sales funnel data and generating visualizations",
+        "alt": "AnyFunnel analytics dashboard showing sales funnel visualizations and data querying interface"
+      },
+      "zero-trust-portal": {
+        "title": "Cloudflare Zero Trust Portal",
+        "description": "Screenshot of the Cloudflare Zero Trust portal used for secure employee access to the Fokvs Handbook",
+        "alt": "Cloudflare Zero Trust portal interface"
+      },
+      "fokvs-handbook-interface": {
+        "title": "Fokvs Handbook Interface",
+        "description": "Screenshot of the Fokvs internal handbook interface, showcasing documentation and navigation",
+        "alt": "Fokvs Handbook user interface"
+      },
+      "checkout-dashboard-1": {
+        "title": "Checkout Dashboard - Overview",
+        "description": "Overview of the Fokvs Checkout system dashboard, showing key metrics and recent transactions",
+        "alt": "Fokvs Checkout dashboard overview"
+      },
+      "checkout-dashboard-2": {
+        "title": "Checkout Dashboard - Funnel Analytics",
+        "description": "Fokvs Checkout dashboard displaying conversion funnel analytics and payment attribution details",
+        "alt": "Fokvs Checkout dashboard funnel analytics"
+      }
+    },
+    "videoNotSupported": "Your browser does not support the video tag."
+  },
+  "journey": {
+    "title": "The Journey",
+    "startingPoint": {
+      "title": "Starting Point: The Monstrous Stack",
+      "period": "May 2023",
+      "intro": "When I joined as CTO in May 2023, I inherited a complex infrastructure that didn't match the scale or needs of the business:",
+      "points": [
+        "<count>7</count> microservices in Python running on AWS Lambda",
+        "A separate API in Java",
+        "<count>3</count> different databases: Neo4j, MySQL, and DynamoDB",
+        "Flutter app and React web platform",
+        "R$600/month AWS costs for a handful of users with no monetization"
+      ],
+      "conclusion": "There was no logical reasoning behind these choices—it was built incrementally based on what was known at the time, without considering scalability or cost efficiency."
+    },
+    "firstMigration": {
+      "title": "The First Migration: Simplification",
+      "period": "2023",
+      "intro": "My first major decision as CTO was to simplify the infrastructure. With no monetization and low usage, the complex setup wasn't justified. I proposed and executed:",
+      "points": [
+        "Single unified API in NestJS, built from scratch",
+        "PostgreSQL as the single source of truth",
+        "Rewrote the web platform in Next.js for better SEO",
+        "Hosted entirely on Fly.io for managed, affordable infrastructure"
+      ],
+      "conclusion": "I wrote all the code for the new API and handled the migration. This foundation enabled rapid product iteration and set us up for growth."
+    },
+    "awsMigration": {
+      "title": "Migration Back to AWS",
+      "period": "2024",
+      "intro": "As the product scaled and usage grew, we needed more control and scalability than the managed platform could provide. I orchestrated a complete migration back to AWS:",
+      "points": [
+        "ECS Fargate deployment: Dockerized containers with autoscaling capabilities for handling traffic spikes",
+        "Production-grade infrastructure: RDS Postgres, ElastiCache Redis, CloudFront CDN, private subnets with bastion hosts",
+        "100% Infrastructure as Code: Entire infrastructure managed with Terraform for reproducibility and version control",
+        "Zero-downtime migration: Carefully planned and executed migration with no service interruption, maintaining 100% uptime during the transition",
+        "Scalability and control: Infrastructure designed to support 100K+ users with full control over scaling, monitoring, and cost management"
+      ],
+      "conclusion": "This migration provided the foundation needed to scale efficiently while maintaining cost control and operational excellence."
+    },
+    "monetization": {
+      "title": "Monetization Experiments",
+      "period": "2023-2024",
+      "intro": "Finding sustainable monetization was challenging. Most materials were old exams, creating copyright concerns. We tried multiple approaches:",
+      "points": [
+        "B2B partnerships: Banner ads and job board integrations. Revenue grew from R$200 to R$650/month, but required manual, labor-intensive distribution through university groups.",
+        "B2C credit sales: Users could buy credits to access materials. Some sales, but not scalable.",
+        "First subscription model: Unlimited access subscription. Only 3 subscribers—didn't scale.",
+        "AI Question Scan + new subscription: This was the breakthrough. Launched alongside the new subscription model, it drove consistent subscriber growth."
+      ]
+    },
+    "ambassadorProgram": {
+      "title": "The Ambassador Program",
+      "period": "2023 - Present",
+      "intro": "Through user interactions, we discovered that the main incentive for sharing materials was the pure instinct to help classmates—almost like a status symbol. The ambassador program leveraged this natural behavior:",
+      "points": [
+        "Personal onboarding: Initially, we did calls with every applicant to understand our target audience better",
+        "Compensation model: Rewarded in money for material uploads (milestones) and views. Ambassadors had a dashboard with balance that could be withdrawn once minimum threshold reached",
+        "National expansion: When videos went viral, ambassadors came from all over Brazil. We grew in top federal universities, exactly our target. Currently: 600 active ambassadors, 4K waitlist",
+        "Technical challenge: Built event-driven system with transactional ledger. Later refactored to support two concurrent program versions during migration, slowly migrating users between versions"
+      ]
+    },
+    "teamBuilding": {
+      "title": "Building the Team & Establishing Processes",
+      "period": "2024",
+      "intro": "As the product grew, I took on the responsibility of scaling the product team and establishing clear processes:",
+      "points": [
+        "Hiring and onboarding: Recruited and onboarded new product team members, creating comprehensive onboarding materials and processes",
+        "Development process documentation: Established clear development workflows, from planning to deployment, with practical examples and checklists",
+        "Internal handbook: Created a living documentation system covering processes, PRD templates, quality principles, and tool usage guidelines",
+        "Quality standards: Defined coding standards, testing requirements, and review processes to ensure consistency across the team",
+        "Mentoring and knowledge sharing: Conducted regular knowledge transfer sessions and mentored team members on technical best practices and architecture decisions"
+      ],
+      "conclusion": "These processes enabled the team to scale effectively while maintaining high quality standards and alignment on technical direction."
+    },
+    "directSales": {
+      "title": "Direct Sales with Landing Pages",
+      "period": "2025",
+      "intro": "We created the checkout system specifically to enable a direct sales model for subscriptions. This approach fundamentally changed how we acquired and converted users:",
+      "points": [
+        "Meta ads campaigns: Multiple campaigns driving traffic to various landing pages across different platforms",
+        "Distributed landing pages: Landing pages scattered across Framer and Lovable, each redirecting to the unified checkout system",
+        "Complete attribution tracking: All variants tracked end-to-end, enabling precise measurement of campaign performance and conversion rates",
+        "Simplified sales funnel: Users buy before using, making attribution trivial and revenue scaling predictable",
+        "Predictable revenue scaling: The simplified funnel and clear attribution enabled data-driven optimization and reliable revenue growth"
+      ],
+      "conclusion": "This direct sales model transformed our acquisition strategy, making it easier to measure ROI, optimize campaigns, and scale revenue predictably."
+    },
+    "technicalEvolution": {
+      "title": "Technical Evolution & Challenges",
+      "earlyDecisions": {
+        "title": "Early Technical Decisions",
+        "points": [
+          "PDF thumbnails: Initially stored binary thumbnails in Postgres columns using GraphicsMagick. Worked well initially, but as materials grew, migrated to S3 with URL fields. Maintained API compatibility by redirecting to S3 URLs",
+          "Reactions system: Started with simple like/dislike in a reactions table with COUNT queries. As Instagram had, this became slow. Denormalized with like_count fields updated via triggers. Later evolved to 1-5 star rating system"
+        ]
+      },
+      "architectureDebt": {
+        "title": "Architecture Debt & Improvements",
+        "points": [
+          "Growing complexity: As features expanded, services became large, tightly coupled. Business logic was mixed with infrastructure. KnexJS queries became massive, making business logic testing nearly impossible",
+          "Developer experience improvements: Improved rebuild times, hot reload, environment replicability. Created seed system from anonymized production data, downloaded sample static materials and alternated between them in Minio to save space—no S3 dependency for dev",
+          "Future refactoring: Backend still needs major refactoring. Ideal would be closer to DDD architecture to properly separate concerns"
+        ]
+      }
+    }
+  },
+  "education": {
+    "title": "Education & Background",
+    "degree": "Computer Science",
+    "university": "UFRGS - Federal University of Rio Grande do Sul",
+    "period": "2017 - 2024",
+    "description": "Full graduation in Computer Science. Focused on entrepreneurship and full-stack development throughout the program. During the pandemic, took multiple courses to acquire skills needed to build products from scratch. Did not pursue traditional internships, instead focused full-time on Fokvs for 3 years, learning and building extensively.",
+    "background": "Background: Graduated high school in 2012 from Colégio Sinodal Barão do Rio Branco in Cachoeira do Sul. Always dreamed of entrepreneurship. During the pandemic, took courses on blockchain, web development, product management, and cloud computing to build the skills needed to create something from scratch.",
+    "research": {
+      "title": "Research Experience",
+      "scientificInitiation": "Scientific Initiation: Parallel and distributed processing group. Parallel algorithms for heterogeneous architectures using StarPU library for CPU/GPU parallel processing",
+      "entrepreneurialInitiation": "Entrepreneurial Initiation: Development of pharmacy delivery application",
+      "tcc": "TCC (Final Project): Business Process Management (BPM) research on LLM efficiency for generating BPMN business process descriptions compared to traditional NLP methods"
+    },
+    "otherExperiences": {
+      "title": "Other Experiences",
+      "2012": "2012: Graduated high school from Colégio Sinodal Barão do Rio Branco in Cachoeira do Sul",
+      "2013": "2013: Rotary Youth Exchange Program - One year living in Sweden as exchange student. This experience contributed to near-fluent Swedish language skills.",
+      "2015": "2015: Two semesters of Biology at UFRGS before switching to Computer Science. This exploration period helped clarify career direction.",
+      "entrepreneurshipMarathon": "Entrepreneurship Marathon (SEDETEC UFRGS): Decoreba project - Duolingo for college entrance exams. 2nd place. Developed entire app, web, and backend. Despite the recognition, the project was never launched due to inexperience, but it was valuable learning that prepared for Fokvs."
+    }
+  },
+  "skills": {
+    "title": "Skills & Certifications",
+    "languages": {
+      "title": "Languages",
+      "english": {
+        "name": "English",
+        "level": "Fluent"
+      },
+      "swedish": {
+        "name": "Swedish",
+        "level": "Near fluent (lived in Sweden 2013)"
+      },
+      "french": {
+        "name": "French",
+        "level": "A2 (2 years of classes)"
+      },
+      "spanish": {
+        "name": "Spanish",
+        "level": "Good understanding, limited speaking"
+      }
+    },
+    "certifications": {
+      "title": "Certifications",
+      "items": [
+        "R3 Corda - Build Blockchain / DLT apps (Udemy, Mar 2022)",
+        "Build a Blockchain and a Cryptocurrency from Scratch (Udemy, Feb 2022)",
+        "The Complete Elixir and Phoenix Bootcamp (Udemy, Aug 2021)",
+        "Become a Product Manager | Learn the Skills & Get the Job (Udemy, Jul 2021)",
+        "Ethereum and Solidity: The Complete Developer's Guide (Udemy, Jun 2021)",
+        "Blockchain A-Z™: Learn How To Build Your First Blockchain (Udemy, Sep 2020)",
+        "AWS Cloud Practitioner Essentials (Second Edition) (Apr 2020)",
+        "NodeJS - The Complete Guide (incl. MVC, REST APIs, GraphQL) (Udemy, Apr 2020)",
+        "React - The Complete Guide (incl Hooks, React Router, Redux) (Udemy, Apr 2020)",
+        "Python and Django Full Stack Web Developer Bootcamp (Udemy, Mar 2020)"
+      ]
+    },
+    "categories": {
+      "Backend": "Backend",
+      "Frontend": "Frontend",
+      "Architecture": "Architecture",
+      "Infrastructure": "Infrastructure",
+      "AI/ML": "AI/ML",
+      "Payments": "Payments",
+      "Data": "Data",
+      "Tools": "Tools",
+      "Leadership": "Leadership"
+    }
+  },
+  "personal": {
+    "title": "Beyond Code",
+    "music": {
+      "title": "Music",
+      "description": "I've been a musician since I was 4 years old. Started playing guitar at 11, and over the years I've learned to play drums, bass, keyboards, flute, and harmonica. Music has always been a core part of who I am.",
+      "rockBand": "<strong>Rock band:</strong> Used to play in a rock band, and we released 2 songs on Spotify. The experience of creating, recording, and releasing music taught me a lot about collaboration, iteration, and bringing creative ideas to life."
+    },
+    "running": {
+      "title": "Running",
+      "description": "I've been a marathon runner for 9 years. Running has taught me discipline, patience, and the importance of consistent progress over time—lessons that translate directly to building products and leading teams.",
+      "marathons": "<strong>6 marathons completed</strong> with a personal best of <strong>2:50:22</strong>. The mental resilience and long-term thinking required for marathon training mirror the approach needed to build and scale products."
+    }
+  },
+  "commandPalette": {
+    "title": "Command Palette",
+    "placeholder": "Search commands...",
+    "noCommands": "No commands found.",
+    "commands": {
+      "experience": "Go to Experience",
+      "projects": "Go to Projects",
+      "journey": "Go to Journey",
+      "skills": "Go to Skills",
+      "email": "Send Email",
+      "linkedin": "Open LinkedIn",
+      "resume": "Download Resume"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Fernando Gomes. Built with Next.js, TypeScript, and Tailwind CSS."
+  }
+}
+

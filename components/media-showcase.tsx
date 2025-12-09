@@ -1,6 +1,9 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { ImageLightbox } from "@/components/image-lightbox";
+import { useTranslations } from 'next-intl';
 
 type MediaItem = {
   id: string;
@@ -14,72 +17,48 @@ type MediaItem = {
 };
 
 export function MediaShowcase() {
-  const mediaItems: MediaItem[] = [
-    {
-      id: "fokvs-web-demo",
-      title: "Fokvs Web Platform Demo",
-      description: "Complete walkthrough of the Fokvs web application showcasing key features and functionality",
-      type: "video",
-      src: "/media/videos/demo_fokvs_full.mp4",
-      alt: "Video demonstration of Fokvs web platform features and user interface",
-      project: "Fokvs",
-    },
-    {
-      id: "fokvs-app-demo",
-      title: "Fokvs Mobile App Demo",
-      description: "Demonstration of the Fokvs mobile application features and user experience",
-      type: "video",
-      src: "/media/videos/demo_fokvs_app.mp4",
-      alt: "Video demonstration of Fokvs mobile app features and functionality",
-      project: "Fokvs",
-      orientation: "portrait",
-    },
-    {
-      id: "churn-reduction",
-      title: "Churn Reduction",
-      description: "Churn rate declined from 50% to 10% over the course of 2025",
-      type: "chart",
-      src: "/media/images/churn_chart.png",
-      alt: "Line chart showing churn rate decline from 50% in January 2025 to 10% by end of year",
-      project: "Fokvs",
-    },
-    {
-      id: "mau-growth",
-      title: "Monthly Active Users Growth",
-      description: "MAU and WAU evolution showing significant growth starting in March 2025",
-      type: "chart",
-      src: "/media/images/mau.png",
-      alt: "Line chart showing Monthly Active Users and Weekly Active Users growth from 2024 to 2025",
-      project: "Fokvs",
-    },
-    {
-      id: "subscribers-growth",
-      title: "Active Subscriptions Growth",
-      description: "Subscriptions grew from 0 to 300+ active subscribers",
-      type: "chart",
-      src: "/media/images/subscribers_chart.png",
-      alt: "Line chart showing active subscriptions growth from December 2023 to July 2025, reaching over 300 subscribers",
-      project: "Fokvs",
-    },
-    {
-      id: "team-photo",
-      title: "Fokvs Team",
-      description: "Our team at the Tecnopuc office in Porto Alegre",
-      type: "image",
-      src: "/media/images/team.jpeg",
-      alt: "Fokvs team members at Tecnopuc office",
-      project: "Fokvs",
-    },
-    {
-      id: "anyfunnel-dashboard",
-      title: "AnyFunnel Analytics Dashboard",
-      description: "Data lake project with AI chat interface for querying sales funnel data and generating visualizations",
-      type: "image",
-      src: "/media/images/anyfunnel.png",
-      alt: "AnyFunnel analytics dashboard showing sales funnel visualizations and data querying interface",
-      project: "anyfunnel",
-    },
+  const t = useTranslations('media');
+  const mediaItemKeys = [
+    "fokvs-web-demo",
+    "fokvs-app-demo",
+    "churn-reduction",
+    "mau-growth",
+    "subscribers-growth",
+    "team-photo",
+    "anyfunnel-dashboard",
   ];
+  
+  const mediaItems: MediaItem[] = mediaItemKeys.map((key) => {
+    const itemData = t.raw(`items.${key}`) as {
+      title: string;
+      description: string;
+      alt?: string;
+    };
+    
+    return {
+      id: key,
+      title: itemData.title,
+      description: itemData.description,
+      alt: itemData.alt || itemData.title,
+      type: key.includes('demo') ? 'video' : key.includes('chart') ? 'chart' : 'image',
+      src: getMediaSrc(key),
+      project: key.includes('anyfunnel') ? 'anyfunnel' : 'Fokvs',
+      orientation: key === 'fokvs-app-demo' ? 'portrait' : undefined,
+    };
+  });
+  
+  function getMediaSrc(key: string): string {
+    const srcMap: Record<string, string> = {
+      'fokvs-web-demo': '/media/videos/demo_fokvs_full.mp4',
+      'fokvs-app-demo': '/media/videos/demo_fokvs_app.mp4',
+      'churn-reduction': '/media/images/churn_chart.png',
+      'mau-growth': '/media/images/mau.png',
+      'subscribers-growth': '/media/images/subscribers_chart.png',
+      'team-photo': '/media/images/team.jpeg',
+      'anyfunnel-dashboard': '/media/images/anyfunnel.png',
+    };
+    return srcMap[key] || '';
+  }
 
   if (mediaItems.length === 0) {
     return null;
@@ -95,7 +74,7 @@ export function MediaShowcase() {
   return (
     <section className="mb-16 md:mb-32" aria-labelledby="media-heading">
       <h2 id="media-heading" className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl">
-        Featured Work
+        {t('title')}
       </h2>
       <div className="grid gap-4 md:gap-6 md:grid-cols-2">
         {mediaItems.map((item) => {

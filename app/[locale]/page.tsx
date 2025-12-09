@@ -10,6 +10,7 @@ import { Personal } from "@/components/personal";
 import { MediaShowcase } from "@/components/media-showcase";
 import { CommandPalette } from "@/components/command-palette";
 import { Separator } from "@/components/ui/separator";
+import { getTranslations } from 'next-intl/server';
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -52,7 +53,9 @@ const structuredData = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const t = await getTranslations('footer');
+  
   return (
     <>
       <script
@@ -75,8 +78,7 @@ export default function Home() {
           <Personal />
           <footer className="mt-16 md:mt-32 pt-8 md:pt-12 pb-6 md:pb-8 border-t border-border/50">
             <p className="text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Fernando Gomes. Built with Next.js,
-              TypeScript, and Tailwind CSS.
+              {t('copyright', { year: new Date().getFullYear() })}
             </p>
           </footer>
         </div>

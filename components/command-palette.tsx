@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Command, Search, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from 'next-intl';
 
 type CommandItem = {
   id: string;
@@ -22,11 +23,12 @@ export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const router = useRouter();
+  const t = useTranslations('commandPalette');
 
   const commands: CommandItem[] = [
     {
       id: "experience",
-      label: "Go to Experience",
+      label: t('commands.experience'),
       action: () => {
         document.getElementById("experience-heading")?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
@@ -35,7 +37,7 @@ export function CommandPalette() {
     },
     {
       id: "projects",
-      label: "Go to Projects",
+      label: t('commands.projects'),
       action: () => {
         document.getElementById("projects-heading")?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
@@ -44,7 +46,7 @@ export function CommandPalette() {
     },
     {
       id: "journey",
-      label: "Go to Journey",
+      label: t('commands.journey'),
       action: () => {
         document.getElementById("journey-heading")?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
@@ -53,7 +55,7 @@ export function CommandPalette() {
     },
     {
       id: "skills",
-      label: "Go to Skills",
+      label: t('commands.skills'),
       action: () => {
         document.getElementById("skills-heading")?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
@@ -62,7 +64,7 @@ export function CommandPalette() {
     },
     {
       id: "email",
-      label: "Send Email",
+      label: t('commands.email'),
       action: () => {
         window.location.href = "mailto:fernando@fokvs.com.br";
         setOpen(false);
@@ -71,7 +73,7 @@ export function CommandPalette() {
     },
     {
       id: "linkedin",
-      label: "Open LinkedIn",
+      label: t('commands.linkedin'),
       action: () => {
         window.open("https://www.linkedin.com/in/fercgomes/", "_blank");
         setOpen(false);
@@ -80,7 +82,7 @@ export function CommandPalette() {
     },
     {
       id: "resume",
-      label: "Download Resume",
+      label: t('commands.resume'),
       action: () => {
         const link = document.createElement("a");
         link.href = "/media/resumee.pdf";
@@ -123,12 +125,12 @@ export function CommandPalette() {
           showCloseButton={false}
           className="max-w-2xl p-0 gap-0 overflow-hidden"
         >
-          <DialogTitle className="sr-only">Command Palette</DialogTitle>
+          <DialogTitle className="sr-only">{t('title')}</DialogTitle>
           <div className="flex items-center border-b px-4 py-3">
             <Search className="mr-2 h-4 w-4 shrink-0 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Search commands..."
+              placeholder={t('placeholder')}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="flex h-10 w-full rounded-md bg-transparent py-2 text-sm outline-none placeholder:text-muted-foreground"
@@ -161,7 +163,7 @@ export function CommandPalette() {
               </div>
             ) : (
               <div className="p-8 text-center text-sm text-muted-foreground">
-                No commands found.
+                {t('noCommands')}
               </div>
             )}
           </div>
