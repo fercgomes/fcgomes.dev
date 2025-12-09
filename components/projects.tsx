@@ -152,12 +152,12 @@ function ProjectCard({
   getColorClasses,
 }: {
   project: { name: string; images?: string[]; tech: string[] };
-  colors: ReturnType<typeof getColorClasses>;
+  colors: { border: string; text: string; bg: string; hover: string; badgeBorder: string };
   desc: ProjectDescription;
   t: ReturnType<typeof useTranslations<'projects'>>;
   track: ReturnType<typeof usePostHogTracking>['track'];
   projectRefs: React.MutableRefObject<Map<string, boolean>>;
-  getColorClasses: (color: string) => ReturnType<typeof getColorClasses>;
+  getColorClasses: (color: string) => { border: string; text: string; bg: string; hover: string; badgeBorder: string };
 }) {
   const projectRef = useRef<HTMLDivElement>(null);
   
