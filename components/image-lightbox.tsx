@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ZoomIn } from "lucide-react";
+import { usePostHogTracking } from "@/lib/posthog";
 
 type ImageLightboxProps = {
   src: string;
@@ -16,6 +17,9 @@ type ImageLightboxProps = {
   children: React.ReactNode;
   title?: string;
   description?: string;
+  imageId?: string;
+  section?: 'projects' | 'media';
+  projectName?: string;
 };
 
 export function ImageLightbox({
@@ -24,20 +28,36 @@ export function ImageLightbox({
   children,
   title,
   description,
+  imageId,
+  section,
+  projectName,
 }: ImageLightboxProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { track } = usePostHogTracking();
 
   return (
     <>
       <div
         className="relative group cursor-pointer"
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setIsOpen(true);
+          track('image_lightbox_opened', {
+            image_id: imageId || src,
+            section: section || 'unknown',
+            project_name: projectName,
+          });
+        }}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             setIsOpen(true);
+            track('image_lightbox_opened', {
+              image_id: imageId || src,
+              section: section || 'unknown',
+              project_name: projectName,
+            });
           }
         }}
         aria-label={`Click to expand ${alt}`}

@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { usePostHogTracking } from "@/lib/posthog";
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -23,10 +24,12 @@ export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const { track } = usePostHogTracking();
 
   const currentLanguage = languages.find((lang) => lang.code === locale) || languages[0];
 
   const handleLanguageChange = (newLocale: string) => {
+    track('language_changed', { from_locale: locale, to_locale: newLocale, source: 'language_switcher' });
     // Use router.push to navigate to the new locale
     // pathname from usePathname() already excludes the locale prefix
     router.replace(pathname, { locale: newLocale });

@@ -21,11 +21,13 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePostHogTracking } from "@/lib/posthog";
 
 export function Header() {
   const t = useTranslations("header");
   const tCommon = useTranslations("common");
   const [isLoaded, setIsLoaded] = useState(false);
+  const { track } = usePostHogTracking();
 
   useEffect(() => {
     setIsLoaded(true);
@@ -74,6 +76,7 @@ export function Header() {
             <a
               href="mailto:fernando@fokvs.com.br"
               aria-label={tCommon("sendEmailTo")}
+              onClick={() => track('email_clicked', { source: 'header' })}
             >
               <Mail className="h-4 w-4 sm:mr-2" aria-hidden="true" />
               <span className="hidden sm:inline">{tCommon("email")}</span>
@@ -89,6 +92,7 @@ export function Header() {
               href="/media/resumee.pdf"
               download="Fernando_Gomes_Resume.pdf"
               aria-label={tCommon("downloadResumeFor")}
+              onClick={() => track('resume_downloaded', { source: 'header' })}
             >
               <Download className="h-4 w-4 sm:mr-2" aria-hidden="true" />
               <span className="hidden sm:inline">{tCommon("resume")}</span>
@@ -123,6 +127,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="flex items-center cursor-pointer"
                 aria-label={tCommon("visitLinkedIn")}
+                onClick={() => track('external_link_clicked', { platform: 'linkedin', source: 'header' })}
               >
                 <Linkedin className="mr-2 h-4 w-4" />
                 {tCommon("linkedin")}
@@ -135,6 +140,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="flex items-center cursor-pointer"
                 aria-label={tCommon("visitGitHub")}
+                onClick={() => track('external_link_clicked', { platform: 'github', source: 'header' })}
               >
                 <Github className="mr-2 h-4 w-4" />
                 {tCommon("github")}
@@ -148,6 +154,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="flex items-center cursor-pointer"
                 aria-label={tCommon("visitFokvs")}
+                onClick={() => track('external_link_clicked', { platform: 'fokvs', source: 'header' })}
               >
                 <ExternalLink className="mr-2 h-4 w-4" />
                 {tCommon("fokvs")}

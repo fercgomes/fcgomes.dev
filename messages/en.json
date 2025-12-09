@@ -518,6 +518,11 @@
   },
   "footer": {
     "copyright": "© {year} Fernando Gomes. Built with Next.js, TypeScript, and Tailwind CSS."
+  },
+  "consent": {
+    "title": "Analytics Notice",
+    "description": "By using this page, you consent to analytics tracking. Your data is anonymized and helps improve the experience.",
+    "dismiss": "Dismiss"
   }
 }
 

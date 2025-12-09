@@ -1,9 +1,13 @@
 "use client";
 
 import { Command } from "lucide-react";
+import { usePostHogTracking } from "@/lib/posthog";
 
 export function CommandPaletteHint() {
+  const { track } = usePostHogTracking();
+  
   const handleClick = () => {
+    track('command_palette_opened');
     const event = new KeyboardEvent("keydown", {
       key: "k",
       metaKey: true,

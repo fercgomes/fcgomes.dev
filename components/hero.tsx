@@ -3,9 +3,11 @@
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Music, Activity } from "lucide-react";
 import { useTranslations } from 'next-intl';
+import { usePostHogTracking } from "@/lib/posthog";
 
 export function Hero() {
   const t = useTranslations('hero');
+  const { track } = usePostHogTracking();
   
   return (
     <section className="mb-16 md:mb-32">
@@ -27,6 +29,8 @@ export function Hero() {
       </div>
       <button
         onClick={() => {
+          track('personal_interests_clicked');
+          track('section_viewed', { section: 'personal', method: 'hero_link' });
           document.getElementById("personal-heading")?.scrollIntoView({ behavior: "smooth" });
         }}
         className="mt-8 flex items-center gap-4 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer group"

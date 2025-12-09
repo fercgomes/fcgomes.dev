@@ -9,8 +9,9 @@ import { Skills } from "@/components/skills";
 import { Personal } from "@/components/personal";
 import { MediaShowcase } from "@/components/media-showcase";
 import { CommandPalette } from "@/components/command-palette";
+import { ScrollTracker } from "@/components/scroll-tracker";
 import { Separator } from "@/components/ui/separator";
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from "next-intl/server";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -54,15 +55,17 @@ const structuredData = {
 };
 
 export default async function Home() {
-  const t = await getTranslations('footer');
-  
+  const t = await getTranslations("footer");
+
   return (
     <>
       <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <main className="min-h-screen bg-background">
+        <ScrollTracker />
         <CommandPalette />
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-20">
           <Header />
@@ -78,7 +81,7 @@ export default async function Home() {
           <Personal />
           <footer className="mt-16 md:mt-32 pt-8 md:pt-12 pb-6 md:pb-8 border-t border-border/50">
             <p className="text-center text-sm text-muted-foreground">
-              {t('copyright', { year: new Date().getFullYear() })}
+              {t("copyright", { year: new Date().getFullYear() })}
             </p>
           </footer>
         </div>

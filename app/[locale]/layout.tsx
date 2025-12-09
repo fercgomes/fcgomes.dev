@@ -4,6 +4,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { PostHogProvider } from '@/components/posthog-provider';
+import { ConsentBanner } from '@/components/consent-banner';
 import "../globals.css";
 
 const geistSans = Geist({
@@ -137,7 +139,10 @@ export default async function LocaleLayout({
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <PostHogProvider>
+            {children}
+            <ConsentBanner />
+          </PostHogProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -10,6 +10,7 @@ import {
 import { Command, Search, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from 'next-intl';
+import { usePostHogTracking } from "@/lib/posthog";
 
 type CommandItem = {
   id: string;
@@ -24,12 +25,14 @@ export function CommandPalette() {
   const [search, setSearch] = useState("");
   const router = useRouter();
   const t = useTranslations('commandPalette');
+  const { track } = usePostHogTracking();
 
   const commands: CommandItem[] = [
     {
       id: "experience",
       label: t('commands.experience'),
       action: () => {
+        track('section_viewed', { section: 'experience', method: 'command_palette' });
         document.getElementById("experience-heading")?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
       },
@@ -39,6 +42,7 @@ export function CommandPalette() {
       id: "projects",
       label: t('commands.projects'),
       action: () => {
+        track('section_viewed', { section: 'projects', method: 'command_palette' });
         document.getElementById("projects-heading")?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
       },
@@ -48,6 +52,7 @@ export function CommandPalette() {
       id: "journey",
       label: t('commands.journey'),
       action: () => {
+        track('section_viewed', { section: 'journey', method: 'command_palette' });
         document.getElementById("journey-heading")?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
       },
@@ -57,6 +62,7 @@ export function CommandPalette() {
       id: "skills",
       label: t('commands.skills'),
       action: () => {
+        track('section_viewed', { section: 'skills', method: 'command_palette' });
         document.getElementById("skills-heading")?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
       },
@@ -66,6 +72,7 @@ export function CommandPalette() {
       id: "email",
       label: t('commands.email'),
       action: () => {
+        track('email_clicked', { source: 'command_palette' });
         window.location.href = "mailto:fernando@fokvs.com.br";
         setOpen(false);
       },
@@ -75,6 +82,7 @@ export function CommandPalette() {
       id: "linkedin",
       label: t('commands.linkedin'),
       action: () => {
+        track('external_link_clicked', { platform: 'linkedin', source: 'command_palette' });
         window.open("https://www.linkedin.com/in/fercgomes/", "_blank");
         setOpen(false);
       },
@@ -84,6 +92,7 @@ export function CommandPalette() {
       id: "resume",
       label: t('commands.resume'),
       action: () => {
+        track('resume_downloaded', { source: 'command_palette' });
         const link = document.createElement("a");
         link.href = "/media/resumee.pdf";
         link.download = "Fernando_Gomes_Resume.pdf";
@@ -102,7 +111,12 @@ export function CommandPalette() {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpen((open) => {
+          if (!open) {
+            track('command_palette_opened');
+          }
+          return !open;
+        });
       }
       if (e.key === "Escape") {
         setOpen(false);
@@ -111,9 +125,10 @@ export function CommandPalette() {
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [track]);
 
   const handleCommand = (command: CommandItem) => {
+    track('command_palette_command_executed', { command: command.id });
     command.action();
     setSearch("");
   };

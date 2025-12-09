@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { useTranslations } from 'next-intl';
+import { usePostHogTracking } from "@/lib/posthog";
+import { useEffect, useRef, useMemo } from 'react';
 
 type ProjectDescription = {
   overview?: string;
@@ -16,6 +18,8 @@ type ProjectDescription = {
 
 export function Projects() {
   const t = useTranslations('projects');
+  const { track } = usePostHogTracking();
+  const projectRefs = useRef<Map<string, boolean>>(new Map());
   
   const projectKeys = [
     "fokvs-core-api",
@@ -121,104 +125,158 @@ export function Projects() {
         {t('title')}
       </h2>
       <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:gap-8">
-        {projects.map((project) => {
-          const colors = getColorClasses(project.color);
-          const desc = project.description as ProjectDescription;
-          return (
-            <Card
-              key={project.name}
-              className={`border-l-4 ${colors.border} shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden`}
-            >
-              <CardHeader>
-                <CardTitle className={`text-lg font-mono ${colors.text}`}>
-                  {project.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {desc.overview && (
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {desc.overview}
-                  </p>
-                )}
-
-                {desc.features && desc.features.length > 0 && (
-                  <div>
-                    <h4 className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">
-                      {t('features')}
-                    </h4>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
-                      {desc.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-chart-2" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {desc.highlights && desc.highlights.length > 0 && (
-                  <div>
-                    <h4 className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">
-                      {t('highlights')}
-                    </h4>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
-                      {desc.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-chart-2" />
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {project.images && project.images.length > 0 && (
-                  <div className="space-y-2">
-                    <Separator />
-                    <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
-                      {project.images.map((image, idx) => (
-                        <ImageLightbox
-                          key={idx}
-                          src={image}
-                          alt={`${project.name} screenshot ${idx + 1}`}
-                          title={project.name}
-                          description={`Screenshot ${idx + 1} of ${project.name}`}
-                        >
-                          <div className="relative w-full aspect-video bg-muted rounded-md overflow-hidden border border-border">
-                            <Image
-                              src={image}
-                              alt={`${project.name} screenshot ${idx + 1}`}
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 640px) 100vw, 50vw"
-                              loading="lazy"
-                            />
-                          </div>
-                        </ImageLightbox>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex flex-wrap gap-1.5 pt-2">
-                  {project.tech.map((tech) => {
-                    const techColorsMap = getColorClasses("chart-2");
-                    return (
-                      <Badge
-                        key={tech}
-                        className={`${techColorsMap.bg} ${techColorsMap.text} ${techColorsMap.badgeBorder} text-xs ${techColorsMap.hover}`}
-                      >
-                        {tech}
-                      </Badge>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.name}
+            project={project}
+            colors={getColorClasses(project.color)}
+            desc={project.description as ProjectDescription}
+            t={t}
+            track={track}
+            projectRefs={projectRefs}
+            getColorClasses={getColorClasses}
+          />
+        ))}
       </div>
     </section>
+  );
+}
+
+function ProjectCard({
+  project,
+  colors,
+  desc,
+  t,
+  track,
+  projectRefs,
+  getColorClasses,
+}: {
+  project: { name: string; images?: string[]; tech: string[] };
+  colors: ReturnType<typeof getColorClasses>;
+  desc: ProjectDescription;
+  t: ReturnType<typeof useTranslations<'projects'>>;
+  track: ReturnType<typeof usePostHogTracking>['track'];
+  projectRefs: React.MutableRefObject<Map<string, boolean>>;
+  getColorClasses: (color: string) => ReturnType<typeof getColorClasses>;
+}) {
+  const projectRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    if (!projectRef.current || projectRefs.current.get(project.name)) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !projectRefs.current.get(project.name)) {
+            projectRefs.current.set(project.name, true);
+            track('project_viewed', {
+              project_name: project.name,
+              has_images: (project.images?.length || 0) > 0,
+            });
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    
+    observer.observe(projectRef.current);
+    return () => observer.disconnect();
+  }, [project.name, track, projectRefs, project.images]);
+  
+  return (
+    <Card
+      ref={projectRef}
+      className={`border-l-4 ${colors.border} shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden`}
+    >
+      <CardHeader>
+        <CardTitle className={`text-lg font-mono ${colors.text}`}>
+          {project.name}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {desc.overview && (
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {desc.overview}
+          </p>
+        )}
+
+        {desc.features && desc.features.length > 0 && (
+          <div>
+            <h4 className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">
+              {t('features')}
+            </h4>
+            <ul className="space-y-1.5 text-sm text-muted-foreground">
+              {desc.features.map((feature, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-chart-2" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {desc.highlights && desc.highlights.length > 0 && (
+          <div>
+            <h4 className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">
+              {t('highlights')}
+            </h4>
+            <ul className="space-y-1.5 text-sm text-muted-foreground">
+              {desc.highlights.map((highlight, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-chart-2" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {project.images && project.images.length > 0 && (
+          <div className="space-y-2">
+            <Separator />
+            <div className="grid gap-2 grid-cols-1 sm:grid-cols-2">
+              {project.images.map((image, idx) => (
+                <ImageLightbox
+                  key={idx}
+                  src={image}
+                  alt={`${project.name} screenshot ${idx + 1}`}
+                  title={project.name}
+                  description={`Screenshot ${idx + 1} of ${project.name}`}
+                  imageId={`${project.name}-screenshot-${idx + 1}`}
+                  section="projects"
+                  projectName={project.name}
+                >
+                  <div className="relative w-full aspect-video bg-muted rounded-md overflow-hidden border border-border">
+                    <Image
+                      src={image}
+                      alt={`${project.name} screenshot ${idx + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      loading="lazy"
+                    />
+                  </div>
+                </ImageLightbox>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="flex flex-wrap gap-1.5 pt-2">
+          {project.tech.map((tech) => {
+            const techColorsMap = getColorClasses("chart-2");
+            return (
+              <Badge
+                key={tech}
+                className={`${techColorsMap.bg} ${techColorsMap.text} ${techColorsMap.badgeBorder} text-xs ${techColorsMap.hover}`}
+              >
+                {tech}
+              </Badge>
+            );
+          })}
+        </div>
+      </CardContent>
+    </Card>
   );
 }
