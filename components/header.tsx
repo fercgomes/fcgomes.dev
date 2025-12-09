@@ -20,6 +20,7 @@ import {
   BadgeCheck,
   Sparkles,
   Share2,
+  PenTool,
 } from "lucide-react";
 import { CommandPaletteHint } from "@/components/command-palette-hint";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -36,7 +37,11 @@ export function Header() {
   const [isLoaded, setIsLoaded] = useState(false);
   const { track } = usePostHogTracking();
   const pathname = usePathname();
-  const { open: shareOpen, setOpen: setShareOpen, openShare } = useShareModal("header-share");
+  const {
+    open: shareOpen,
+    setOpen: setShareOpen,
+    openShare,
+  } = useShareModal("header-share");
 
   useEffect(() => {
     setIsLoaded(true);
@@ -50,7 +55,12 @@ export function Header() {
           <Link
             href="/"
             className="flex items-center gap-3 md:gap-5 group"
-            onClick={() => track('navigation_clicked', { destination: '/', source: 'header' })}
+            onClick={() =>
+              track("navigation_clicked", {
+                destination: "/",
+                source: "header",
+              })
+            }
           >
             <div
               className={`relative h-16 w-16 shrink-0 md:h-20 md:w-20 avatar-container ${
@@ -91,7 +101,7 @@ export function Header() {
               <a
                 href="mailto:fernando@fokvs.com.br"
                 aria-label={tCommon("sendEmailTo")}
-                onClick={() => track('email_clicked', { source: 'header' })}
+                onClick={() => track("email_clicked", { source: "header" })}
               >
                 <Mail className="h-4 w-4 sm:mr-2" aria-hidden="true" />
                 <span className="hidden sm:inline">{tCommon("email")}</span>
@@ -107,7 +117,7 @@ export function Header() {
                 href="/media/resumee.pdf"
                 download="Fernando_Gomes_Resume.pdf"
                 aria-label={tCommon("downloadResumeFor")}
-                onClick={() => track('resume_downloaded', { source: 'header' })}
+                onClick={() => track("resume_downloaded", { source: "header" })}
               >
                 <Download className="h-4 w-4 sm:mr-2" aria-hidden="true" />
                 <span className="hidden sm:inline">{tCommon("resume")}</span>
@@ -144,7 +154,12 @@ export function Header() {
                     rel="noopener noreferrer"
                     className="flex items-center cursor-pointer"
                     aria-label={tCommon("visitLinkedIn")}
-                    onClick={() => track('external_link_clicked', { platform: 'linkedin', source: 'header' })}
+                    onClick={() =>
+                      track("external_link_clicked", {
+                        platform: "linkedin",
+                        source: "header",
+                      })
+                    }
                   >
                     <Linkedin className="mr-2 h-4 w-4" />
                     {tCommon("linkedin")}
@@ -157,7 +172,12 @@ export function Header() {
                     rel="noopener noreferrer"
                     className="flex items-center cursor-pointer"
                     aria-label={tCommon("visitGitHub")}
-                    onClick={() => track('external_link_clicked', { platform: 'github', source: 'header' })}
+                    onClick={() =>
+                      track("external_link_clicked", {
+                        platform: "github",
+                        source: "header",
+                      })
+                    }
                   >
                     <Github className="mr-2 h-4 w-4" />
                     {tCommon("github")}
@@ -171,7 +191,12 @@ export function Header() {
                     rel="noopener noreferrer"
                     className="flex items-center cursor-pointer"
                     aria-label={tCommon("visitFokvs")}
-                    onClick={() => track('external_link_clicked', { platform: 'fokvs', source: 'header' })}
+                    onClick={() =>
+                      track("external_link_clicked", {
+                        platform: "fokvs",
+                        source: "header",
+                      })
+                    }
                   >
                     <ExternalLink className="mr-2 h-4 w-4" />
                     {tCommon("fokvs")}
@@ -190,17 +215,52 @@ export function Header() {
       {/* Row 2: navigation */}
       <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
         {[
-          { href: "/projects", label: t("nav.projects"), icon: <FileText className="h-4 w-4" /> },
-          { href: "/journey", label: t("nav.journey"), icon: <BookOpen className="h-4 w-4" /> },
-          { href: "/skills", label: t("nav.skills"), icon: <BadgeCheck className="h-4 w-4" /> },
-          { href: "/beyond-code", label: t("nav.beyond"), icon: <Sparkles className="h-4 w-4" /> },
+          {
+            href: "/projects",
+            label: t("nav.projects"),
+            icon: <FileText className="h-4 w-4" />,
+            isBlog: false,
+          },
+          {
+            href: "/journey",
+            label: t("nav.journey"),
+            icon: <BookOpen className="h-4 w-4" />,
+            isBlog: false,
+          },
+          {
+            href: "/skills",
+            label: t("nav.skills"),
+            icon: <BadgeCheck className="h-4 w-4" />,
+            isBlog: false,
+          },
+          {
+            href: "/beyond-code",
+            label: t("nav.beyond"),
+            icon: <Sparkles className="h-4 w-4" />,
+            isBlog: false,
+          },
+          {
+            href: "/blog",
+            label: t("nav.blog"),
+            icon: <PenTool className="h-4 w-4" />,
+            isBlog: true,
+          },
         ].map((link) => (
           <div className="flex" key={link.href} title={link.label}>
             <Link
               href={link.href}
-              onClick={() => track('navigation_clicked', { destination: link.href, source: 'header' })}
+              onClick={() =>
+                track("navigation_clicked", {
+                  destination: link.href,
+                  source: "header",
+                })
+              }
               className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 transition-colors ${
-                pathname.startsWith(link.href)
+                link.isBlog
+                  ? pathname.startsWith(link.href)
+                    ? "border-chart-2/40 bg-chart-2/5 text-chart-2 font-semibold"
+                    : "border-chart-2/20 bg-chart-2/5 text-muted-foreground hover:border-chart-2/40 hover:text-chart-2 font-semibold"
+                  : pathname.startsWith(link.href)
                   ? "border-chart-2/60 bg-chart-2/10 text-foreground"
                   : "border-transparent hover:border-chart-2/60 hover:bg-chart-2/10 hover:text-foreground"
               }`}
@@ -212,7 +272,11 @@ export function Header() {
         ))}
       </div>
 
-      <ShareModal open={shareOpen} onOpenChange={setShareOpen} utmContent="header-share" />
+      <ShareModal
+        open={shareOpen}
+        onOpenChange={setShareOpen}
+        utmContent="header-share"
+      />
     </header>
   );
 }

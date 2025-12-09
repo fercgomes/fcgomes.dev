@@ -34,6 +34,15 @@
     "x": {
       "text": "Check out Fernando Gomes - Founding Engineer & CTO building startups from scratch"
     },
+    "blogPost": {
+      "email": {
+        "subject": "Check out this blog post by Fernando Gomes",
+        "body": "I thought you might find this blog post interesting:"
+      },
+      "x": {
+        "text": "Check out this blog post"
+      }
+    },
     "referCta": "Know a recruiter or founder who might be interested? Help me connect with them.",
     "referButton": "Refer me",
     "projectsCta": "Know someone building something similar? Share my work with them.",
@@ -47,13 +56,18 @@
       "projects": "Projects & demos",
       "journey": "Journey & backstory",
       "skills": "Skills & certs",
-      "beyond": "Beyond code"
+      "beyond": "Beyond code",
+      "blog": "Read my blog"
     }
   },
   "hero": {
     "location": "Porto Alegre, RS (Brazil)",
     "headline": "I build and guide products from <highlight>0 → 1</highlight> into steady revenue.",
     "bio": "Hands-on product engineer and builder. Founding engineer & CTO at <fokvs>Fokvs</fokvs>. I design, code, and run the stack—backend, infra, AI, web, mobile—with a focus on sustainable growth and reliability.",
+    "fokvsPreview": {
+      "title": "Fokvs - Brazilian EdTech",
+      "description": "Fokvs is a Brazilian EdTech founded in Porto Alegre. It offers a social platform for content sharing between students and AI features for study optimization. <strong>Question Scan</strong> allows students to take a picture of any exercise and get a personalized step-by-step solution, and <strong>Flashcards</strong> allow students to generate flashcards from any PDF or image, with a full spaced repetition practice system."
+    },
     "sellingPoints": {
       "0": "Open to senior/staff+ or founding roles where shipping and coaching both matter.",
       "1": "Comfortable owning architecture, delivery, and operations end-to-end to keep momentum.",
@@ -79,7 +93,8 @@
       "resume": "Download resume",
       "email": "Email Fernando",
       "projects": "See projects & demos",
-      "journey": "Read the journey"
+      "journey": "Read the journey",
+      "blog": "Read my blog"
     },
     "badges": {
       "foundingEngineer": "Founding Engineer",
@@ -389,10 +404,7 @@
       "churrosfm": {
         "overview": "Course project demo (churros.fm) with live walkthrough video.",
         "features": [],
-        "highlights": [
-          "Class project",
-          "Linked demo video"
-        ]
+        "highlights": ["Class project", "Linked demo video"]
       }
     }
   },
@@ -668,7 +680,8 @@
       "skills": "Go to Skills",
       "email": "Send Email",
       "linkedin": "Open LinkedIn",
-      "resume": "Download Resume"
+      "resume": "Download Resume",
+      "blog": "Go to Blog"
     }
   },
   "footer": {
@@ -678,6 +691,17 @@
     "title": "Analytics Notice",
     "description": "By using this page, you consent to analytics tracking. Your data is anonymized and helps improve the experience.",
     "dismiss": "Dismiss"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Thoughts on engineering, infrastructure, product development, and building startups from scratch.",
+    "noPosts": "No blog posts available yet. Check back soon!",
+    "minRead": "min read",
+    "backToBlog": "Back to blog",
+    "writtenBy": "Written by",
+    "aiGenerated": "AI Generated",
+    "notAiGenerated": "Human Written",
+    "aiDisclaimer": "For full transparency, I will signal which blog posts were written using AI and which were not.",
+    "share": "Share"
   }
 }
-

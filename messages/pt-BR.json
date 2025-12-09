@@ -34,6 +34,15 @@
     "x": {
       "text": "Conheça Fernando Gomes - Founding Engineer & CTO construindo startups do zero"
     },
+    "blogPost": {
+      "email": {
+        "subject": "Confira este post do blog do Fernando Gomes",
+        "body": "Achei que você poderia achar este post interessante:"
+      },
+      "x": {
+        "text": "Confira este post do blog"
+      }
+    },
     "referCta": "Conhece um recrutador ou founder que pode se interessar? Ajude-me a conectar com eles.",
     "referButton": "Indicar",
     "projectsCta": "Conhece alguém construindo algo similar? Compartilhe meu trabalho com eles.",
@@ -47,13 +56,18 @@
       "projects": "Projetos e demos",
       "journey": "Jornada e contexto",
       "skills": "Skills e certificados",
-      "beyond": "Além do código"
+      "beyond": "Além do código",
+      "blog": "Leia meu blog"
     }
   },
   "hero": {
     "location": "Porto Alegre, RS (Brasil)",
     "headline": "Eu construo e oriento produtos do <highlight>0 → 1</highlight> até receita previsível.",
     "bio": "Engenheiro de produto hands-on. Founding Engineer & CTO na <fokvs>Fokvs</fokvs>. Desenho, programo e opero o stack — backend, infra, IA, web, mobile — com foco em crescimento sustentável e confiabilidade.",
+    "fokvsPreview": {
+      "title": "Fokvs - EdTech Brasileira",
+      "description": "Fokvs é uma EdTech brasileira fundada em Porto Alegre. Oferece uma plataforma social para compartilhamento de conteúdo entre estudantes e recursos de IA para otimização de estudos. <strong>Question Scan</strong> permite que estudantes tirem uma foto de qualquer exercício e recebam uma solução passo a passo personalizada, e <strong>Flashcards</strong> permite que estudantes gerem flashcards de qualquer PDF ou imagem, com um sistema completo de repetição espaçada."
+    },
     "sellingPoints": {
       "0": "Aberto a papéis sênior/staff+ ou fundadores onde entregar e orientar contam.",
       "1": "Confortável em assumir arquitetura, entrega e operações end-to-end para manter o ritmo.",
@@ -79,7 +93,8 @@
       "resume": "Baixar currículo",
       "email": "Enviar e-mail",
       "projects": "Ver projetos e demos",
-      "journey": "Ler a jornada"
+      "journey": "Ler a jornada",
+      "blog": "Leia meu blog"
     },
     "badges": {
       "foundingEngineer": "Founding Engineer",
@@ -389,10 +404,7 @@
       "churrosfm": {
         "overview": "Projeto de curso (churros.fm) com vídeo de demonstração.",
         "features": [],
-        "highlights": [
-          "Projeto de classe",
-          "Vídeo demo vinculado"
-        ]
+        "highlights": ["Projeto de classe", "Vídeo demo vinculado"]
       }
     }
   },
@@ -668,7 +680,8 @@
       "skills": "Ir para Habilidades",
       "email": "Enviar Email",
       "linkedin": "Abrir LinkedIn",
-      "resume": "Baixar Currículo"
+      "resume": "Baixar Currículo",
+      "blog": "Ir para Blog"
     }
   },
   "footer": {
@@ -678,5 +691,16 @@
     "title": "Aviso de Analytics",
     "description": "Ao usar esta página, você consente com o rastreamento de analytics. Seus dados são anonimizados e ajudam a melhorar a experiência.",
     "dismiss": "Fechar"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Pensamentos sobre engenharia, infraestrutura, desenvolvimento de produtos e construção de startups do zero.",
+    "noPosts": "Ainda não há posts no blog. Volte em breve!",
+    "minRead": "min de leitura",
+    "backToBlog": "Voltar ao blog",
+    "writtenBy": "Escrito por",
+    "aiGenerated": "Gerado por IA",
+    "notAiGenerated": "Escrito por Humano",
+    "aiDisclaimer": "Para total transparência, sinalizarei quais posts do blog foram escritos usando IA e quais não foram."
   }
 }

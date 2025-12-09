@@ -42,9 +42,17 @@ type ShareModalProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   utmContent?: string;
+  isBlogPost?: boolean;
+  postTitle?: string;
 };
 
-export function ShareModal({ open, onOpenChange, utmContent }: ShareModalProps) {
+export function ShareModal({
+  open,
+  onOpenChange,
+  utmContent,
+  isBlogPost = false,
+  postTitle,
+}: ShareModalProps) {
   const t = useTranslations("share");
   const pathname = usePathname();
   const { track } = usePostHogTracking();
@@ -62,7 +70,9 @@ export function ShareModal({ open, onOpenChange, utmContent }: ShareModalProps) 
 
   const getBaseUrl = useCallback(() => {
     if (typeof window === "undefined") return "";
-    return `${window.location.origin}${pathname}`;
+    // Remove locale prefix from pathname for cleaner URLs
+    const cleanPath = pathname.replace(/^\/(en|pt-BR|sv)/, "") || "/";
+    return `${window.location.origin}${cleanPath}`;
   }, [pathname]);
 
   const handleShare = useCallback(
@@ -80,29 +90,60 @@ export function ShareModal({ open, onOpenChange, utmContent }: ShareModalProps) 
         case "copy":
           const success = await copyToClipboard(shareUrl);
           if (success) {
-            track("share_copy_succeeded", { utm_content: utmContent, url: shareUrl });
+            track("share_copy_succeeded", {
+              utm_content: utmContent,
+              url: shareUrl,
+            });
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
           } else {
-            track("share_copy_failed", { utm_content: utmContent, url: shareUrl });
+            track("share_copy_failed", {
+              utm_content: utmContent,
+              url: shareUrl,
+            });
           }
           break;
         case "email":
-          track("share_channel_opened", { channel, utm_content: utmContent, url: shareUrl });
+          track("share_channel_opened", {
+            channel,
+            utm_content: utmContent,
+            url: shareUrl,
+          });
+          const emailSubject = isBlogPost
+            ? t("blogPost.email.subject")
+            : t("email.subject");
+          const emailBody = isBlogPost
+            ? `${t("blogPost.email.body")} ${postTitle || ""}`
+            : t("email.body");
           window.location.href = getEmailShareUrl(
             shareUrl,
-            t("email.subject"),
-            t("email.body")
+            emailSubject,
+            emailBody
           );
           break;
         case "linkedin":
-          track("share_channel_opened", { channel, utm_content: utmContent, url: shareUrl });
-          window.open(getLinkedInShareUrl(shareUrl), "_blank", "noopener,noreferrer");
+          track("share_channel_opened", {
+            channel,
+            utm_content: utmContent,
+            url: shareUrl,
+          });
+          window.open(
+            getLinkedInShareUrl(shareUrl),
+            "_blank",
+            "noopener,noreferrer"
+          );
           break;
         case "x":
-          track("share_channel_opened", { channel, utm_content: utmContent, url: shareUrl });
+          track("share_channel_opened", {
+            channel,
+            utm_content: utmContent,
+            url: shareUrl,
+          });
+          const xText = isBlogPost
+            ? `${t("blogPost.x.text")}: ${postTitle || ""}`
+            : t("x.text");
           window.open(
-            getXShareUrl(shareUrl, t("x.text")),
+            getXShareUrl(shareUrl, xText),
             "_blank",
             "noopener,noreferrer"
           );
@@ -122,9 +163,14 @@ export function ShareModal({ open, onOpenChange, utmContent }: ShareModalProps) 
       url: shareUrl,
     });
 
-    const shared = await triggerWebShare(shareUrl, t("title"), t("description"));
+    const shareTitle = isBlogPost && postTitle ? postTitle : t("title");
+    const shareText = isBlogPost && postTitle ? postTitle : t("description");
+    const shared = await triggerWebShare(shareUrl, shareTitle, shareText);
     if (shared) {
-      track("share_native_succeeded", { utm_content: utmContent, url: shareUrl });
+      track("share_native_succeeded", {
+        utm_content: utmContent,
+        url: shareUrl,
+      });
       onOpenChange(false);
     } else {
       track("share_native_failed", { utm_content: utmContent, url: shareUrl });
@@ -215,13 +261,16 @@ export function useShareModal(utmContent?: string) {
         url: shareUrl,
       });
 
-      triggerWebShare(shareUrl, "Fernando Gomes | Founding Engineer & CTO").then(
-        (shared) => {
-          if (!shared) {
-            setOpen(true);
-          }
+      const title =
+        typeof window !== "undefined"
+          ? document.title || "Fernando Gomes | Founding Engineer & CTO"
+          : "Fernando Gomes | Founding Engineer & CTO";
+
+      triggerWebShare(shareUrl, title).then((shared) => {
+        if (!shared) {
+          setOpen(true);
         }
-      );
+      });
     } else {
       setOpen(true);
     }
@@ -229,4 +278,3 @@ export function useShareModal(utmContent?: string) {
 
   return { open, setOpen, openShare };
 }
-

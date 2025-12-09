@@ -34,6 +34,15 @@
     "x": {
       "text": "Kolla in Fernando Gomes - Founding Engineer & CTO som bygger startups från grunden"
     },
+    "blogPost": {
+      "email": {
+        "subject": "Kolla in denna bloggpost av Fernando Gomes",
+        "body": "Jag tänkte att du kanske skulle tycka att denna bloggpost är intressant:"
+      },
+      "x": {
+        "text": "Kolla in denna bloggpost"
+      }
+    },
     "referCta": "Känner du en rekryterare eller grundare som kan vara intresserad? Hjälp mig att komma i kontakt.",
     "referButton": "Rekommendera",
     "projectsCta": "Känner du någon som bygger något liknande? Dela mitt arbete med dem.",
@@ -47,13 +56,18 @@
       "projects": "Projekt och demos",
       "journey": "Resa och kontext",
       "skills": "Skills och cert",
-      "beyond": "Beyond code"
+      "beyond": "Beyond code",
+      "blog": "Läs min blogg"
     }
   },
   "hero": {
     "location": "Porto Alegre, RS (Brasilien)",
     "headline": "Jag bygger och guidar produkter från <highlight>0 → 1</highlight> till stabil intäkt.",
     "bio": "Praktisk produktingenjör. Grundande ingenjör & CTO på <fokvs>Fokvs</fokvs>. Jag designar, kodar och driver stacken — backend, infra, AI, webb, mobil — med fokus på hållbar tillväxt och tillförlitlighet.",
+    "fokvsPreview": {
+      "title": "Fokvs - Brasiliansk EdTech",
+      "description": "Fokvs är en brasiliansk EdTech grundad i Porto Alegre. Den erbjuder en social plattform för innehållsdelning mellan studenter och AI-funktioner för studieoptimering. <strong>Question Scan</strong> låter studenter ta en bild av vilken övning som helst och få en personlig steg-för-steg-lösning, och <strong>Flashcards</strong> låter studenter generera flashcards från vilken PDF eller bild som helst, med ett komplett system för spridd repetition."
+    },
     "sellingPoints": {
       "0": "Öppen för senior/staff+ eller founding-roller där leverans och coaching är viktiga.",
       "1": "Bekväm med att äga arkitektur, leverans och drift end-to-end för att hålla farten.",
@@ -79,7 +93,8 @@
       "resume": "Ladda ner CV",
       "email": "Skicka e-post",
       "projects": "Se projekt och demos",
-      "journey": "Läs resan"
+      "journey": "Läs resan",
+      "blog": "Läs min blogg"
     },
     "badges": {
       "foundingEngineer": "Grundande Ingenjör",
@@ -389,10 +404,7 @@
       "churrosfm": {
         "overview": "Kursprojekt (churros.fm) med demovideo.",
         "features": [],
-        "highlights": [
-          "Klassprojekt",
-          "Länkad demovideo"
-        ]
+        "highlights": ["Klassprojekt", "Länkad demovideo"]
       }
     }
   },
@@ -668,7 +680,8 @@
       "skills": "Gå till Färdigheter",
       "email": "Skicka E-post",
       "linkedin": "Öppna LinkedIn",
-      "resume": "Ladda ner CV"
+      "resume": "Ladda ner CV",
+      "blog": "Gå till Blogg"
     }
   },
   "footer": {
@@ -678,5 +691,16 @@
     "title": "Analytics Meddelande",
     "description": "Genom att använda denna sida samtycker du till analytics-spårning. Dina data är anonymiserade och hjälper till att förbättra upplevelsen.",
     "dismiss": "Stäng"
+  },
+  "blog": {
+    "title": "Blogg",
+    "description": "Tankar om teknik, infrastruktur, produktutveckling och att bygga startups från grunden.",
+    "noPosts": "Inga blogginlägg tillgängliga ännu. Kom tillbaka snart!",
+    "minRead": "min läsning",
+    "backToBlog": "Tillbaka till bloggen",
+    "writtenBy": "Skriven av",
+    "aiGenerated": "AI-genererad",
+    "notAiGenerated": "Skriven av Människa",
+    "aiDisclaimer": "För fullständig transparens kommer jag signalera vilka blogginlägg som skrevs med AI och vilka som inte gjorde det."
   }
 }

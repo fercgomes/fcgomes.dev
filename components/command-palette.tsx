@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/dialog";
 import { Command, Search, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 import { usePostHogTracking } from "@/lib/posthog";
+import { useRouter as useI18nRouter } from "@/i18n/routing";
 
 type CommandItem = {
   id: string;
@@ -24,55 +25,76 @@ export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const router = useRouter();
-  const t = useTranslations('commandPalette');
+  const i18nRouter = useI18nRouter();
+  const t = useTranslations("commandPalette");
   const { track } = usePostHogTracking();
 
   const commands: CommandItem[] = [
     {
       id: "experience",
-      label: t('commands.experience'),
+      label: t("commands.experience"),
       action: () => {
-        track('section_viewed', { section: 'experience', method: 'command_palette' });
-        document.getElementById("experience-heading")?.scrollIntoView({ behavior: "smooth" });
+        track("section_viewed", {
+          section: "experience",
+          method: "command_palette",
+        });
+        document
+          .getElementById("experience-heading")
+          ?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
       },
       shortcut: "E",
     },
     {
       id: "projects",
-      label: t('commands.projects'),
+      label: t("commands.projects"),
       action: () => {
-        track('section_viewed', { section: 'projects', method: 'command_palette' });
-        document.getElementById("projects-heading")?.scrollIntoView({ behavior: "smooth" });
+        track("section_viewed", {
+          section: "projects",
+          method: "command_palette",
+        });
+        document
+          .getElementById("projects-heading")
+          ?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
       },
       shortcut: "P",
     },
     {
       id: "journey",
-      label: t('commands.journey'),
+      label: t("commands.journey"),
       action: () => {
-        track('section_viewed', { section: 'journey', method: 'command_palette' });
-        document.getElementById("journey-heading")?.scrollIntoView({ behavior: "smooth" });
+        track("section_viewed", {
+          section: "journey",
+          method: "command_palette",
+        });
+        document
+          .getElementById("journey-heading")
+          ?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
       },
       shortcut: "J",
     },
     {
       id: "skills",
-      label: t('commands.skills'),
+      label: t("commands.skills"),
       action: () => {
-        track('section_viewed', { section: 'skills', method: 'command_palette' });
-        document.getElementById("skills-heading")?.scrollIntoView({ behavior: "smooth" });
+        track("section_viewed", {
+          section: "skills",
+          method: "command_palette",
+        });
+        document
+          .getElementById("skills-heading")
+          ?.scrollIntoView({ behavior: "smooth" });
         setOpen(false);
       },
       shortcut: "S",
     },
     {
       id: "email",
-      label: t('commands.email'),
+      label: t("commands.email"),
       action: () => {
-        track('email_clicked', { source: 'command_palette' });
+        track("email_clicked", { source: "command_palette" });
         window.location.href = "mailto:fernando@fokvs.com.br";
         setOpen(false);
       },
@@ -80,9 +102,12 @@ export function CommandPalette() {
     },
     {
       id: "linkedin",
-      label: t('commands.linkedin'),
+      label: t("commands.linkedin"),
       action: () => {
-        track('external_link_clicked', { platform: 'linkedin', source: 'command_palette' });
+        track("external_link_clicked", {
+          platform: "linkedin",
+          source: "command_palette",
+        });
         window.open("https://www.linkedin.com/in/fercgomes/", "_blank");
         setOpen(false);
       },
@@ -90,9 +115,9 @@ export function CommandPalette() {
     },
     {
       id: "resume",
-      label: t('commands.resume'),
+      label: t("commands.resume"),
       action: () => {
-        track('resume_downloaded', { source: 'command_palette' });
+        track("resume_downloaded", { source: "command_palette" });
         const link = document.createElement("a");
         link.href = "/media/resumee.pdf";
         link.download = "Fernando_Gomes_Resume.pdf";
@@ -100,6 +125,19 @@ export function CommandPalette() {
         setOpen(false);
       },
       shortcut: "R",
+    },
+    {
+      id: "blog",
+      label: t("commands.blog"),
+      action: () => {
+        track("navigation_clicked", {
+          destination: "/blog",
+          source: "command_palette",
+        });
+        i18nRouter.push("/blog");
+        setOpen(false);
+      },
+      shortcut: "B",
     },
   ];
 
@@ -113,7 +151,7 @@ export function CommandPalette() {
         e.preventDefault();
         setOpen((open) => {
           if (!open) {
-            track('command_palette_opened');
+            track("command_palette_opened");
           }
           return !open;
         });
@@ -128,7 +166,7 @@ export function CommandPalette() {
   }, [track]);
 
   const handleCommand = (command: CommandItem) => {
-    track('command_palette_command_executed', { command: command.id });
+    track("command_palette_command_executed", { command: command.id });
     command.action();
     setSearch("");
   };
@@ -140,12 +178,12 @@ export function CommandPalette() {
           showCloseButton={false}
           className="max-w-2xl p-0 gap-0 overflow-hidden"
         >
-          <DialogTitle className="sr-only">{t('title')}</DialogTitle>
+          <DialogTitle className="sr-only">{t("title")}</DialogTitle>
           <div className="flex items-center border-b px-4 py-3">
             <Search className="mr-2 h-4 w-4 shrink-0 text-muted-foreground" />
             <input
               type="text"
-              placeholder={t('placeholder')}
+              placeholder={t("placeholder")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="flex h-10 w-full rounded-md bg-transparent py-2 text-sm outline-none placeholder:text-muted-foreground"
@@ -178,7 +216,7 @@ export function CommandPalette() {
               </div>
             ) : (
               <div className="p-8 text-center text-sm text-muted-foreground">
-                {t('noCommands')}
+                {t("noCommands")}
               </div>
             )}
           </div>
@@ -187,4 +225,3 @@ export function CommandPalette() {
     </>
   );
 }
-
