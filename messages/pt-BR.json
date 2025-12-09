@@ -13,16 +13,74 @@
     "visitGitHub": "Visitar perfil do Fernando Gomes no GitHub",
     "sendEmailTo": "Enviar email para Fernando Gomes",
     "downloadResumeFor": "Baixar currículo do Fernando Gomes",
-    "visitLinkedIn": "Visitar perfil do Fernando Gomes no LinkedIn"
+    "visitLinkedIn": "Visitar perfil do Fernando Gomes no LinkedIn",
+    "share": "Compartilhar"
+  },
+  "share": {
+    "title": "Compartilhar perfil",
+    "description": "Conhece alguém que pode se interessar? Compartilhe meu perfil.",
+    "channels": {
+      "native": "Compartilhar",
+      "copy": "Copiar link",
+      "copied": "Link copiado!",
+      "email": "Enviar por Email",
+      "linkedin": "Compartilhar no LinkedIn",
+      "x": "Compartilhar no X"
+    },
+    "email": {
+      "subject": "Conheça Fernando Gomes - Founding Engineer & CTO",
+      "body": "Pensei que você poderia se interessar pelo perfil do Fernando Gomes. Ele é Founding Engineer e CTO com experiência construindo startups do zero."
+    },
+    "x": {
+      "text": "Conheça Fernando Gomes - Founding Engineer & CTO construindo startups do zero"
+    },
+    "referCta": "Conhece um recrutador ou founder que pode se interessar? Ajude-me a conectar com eles.",
+    "referButton": "Indicar",
+    "projectsCta": "Conhece alguém construindo algo similar? Compartilhe meu trabalho com eles.",
+    "skillsCta": "Procurando alguém com essas skills? Compartilhe meu perfil na sua rede."
   },
   "header": {
     "name": "Fernando Gomes",
     "title": "Founding Engineer & CTO",
-    "jobTitle": "Cargo"
+    "jobTitle": "Cargo",
+    "nav": {
+      "projects": "Projetos e demos",
+      "journey": "Jornada e contexto",
+      "skills": "Skills e certificados",
+      "beyond": "Além do código"
+    }
   },
   "hero": {
     "location": "Porto Alegre, RS (Brasil)",
-    "bio": "Founding Engineer e CTO que leva produtos do protótipo à escala — arquitetura, backend, infra, mobile, web, IA, pagamentos, analytics e crescimento. Construí e operei toda a stack de engenharia <fokvs>Fokvs</fokvs> enquanto escalava o produto para 100K+ usuários e receita significativa de assinaturas.",
+    "headline": "Eu construo e oriento produtos do <highlight>0 → 1</highlight> até receita previsível.",
+    "bio": "Engenheiro de produto hands-on. Founding Engineer & CTO na <fokvs>Fokvs</fokvs>. Desenho, programo e opero o stack — backend, infra, IA, web, mobile — com foco em crescimento sustentável e confiabilidade.",
+    "sellingPoints": {
+      "0": "Aberto a papéis sênior/staff+ ou fundadores onde entregar e orientar contam.",
+      "1": "Confortável em assumir arquitetura, entrega e operações end-to-end para manter o ritmo.",
+      "2": "Histórico: reescrevi a Fokvs, reduzi 85% do gasto de infra e crescemos para 100K+ usuários e 300+ assinantes."
+    },
+    "audience": {
+      "recruiters": {
+        "title": "Para times de recrutamento",
+        "points": {
+          "0": "Pode atuar como IC Staff+ para destravar entregas mantendo padrões claros e práticos.",
+          "1": "Ajuda a reduzir dependências entre times e mantém o roadmap andando sem drama."
+        }
+      },
+      "founders": {
+        "title": "Para founders e times fundadores",
+        "points": {
+          "0": "Constrói e opera o loop de produto: infra, backend, IA, web/mobile, analytics e plumbing de GTM.",
+          "1": "Viés para shippar: migrar, estabilizar e monetizar rápido com instrumentação e experimentos sensatos."
+        }
+      }
+    },
+    "cta": {
+      "resume": "Baixar currículo",
+      "email": "Enviar e-mail",
+      "projects": "Ver projetos e demos",
+      "journey": "Ler a jornada"
+    },
     "badges": {
       "foundingEngineer": "Founding Engineer",
       "cto": "CTO",
@@ -63,6 +121,22 @@
       "description": "Processados para busca e recomendações"
     }
   },
+  "landing": {
+    "projectsTeaser": "Construções mãos na massa em plataformas, infra, IA e pagamentos.",
+    "projectsSummary": "Detalhes dos sistemas que arquitetei e entreguei ponta a ponta, com métricas e demos.",
+    "viewProjects": "Ver projetos e mídia",
+    "journeyTeaser": "Decisões, migrações, experimentos de monetização e processos.",
+    "journeySummary": "Como reconstruí a Fokvs, escalei e organizei o time.",
+    "viewJourney": "Ler a jornada",
+    "skillsTitle": "Skills e certificações",
+    "skillsTeaser": "Visão rápida de alcance técnico, liderança e idiomas.",
+    "skillsSummary": "Backend, infra, IA, pagamentos, dados e liderança, com certificações e proficiência em idiomas.",
+    "viewSkills": "Ver skills e certificados",
+    "beyondTitle": "Além do código",
+    "beyondTeaser": "Interesses pessoais que mostram resiliência e colaboração.",
+    "beyondSummary": "Música, esportes de endurance e hábitos que viram resiliência no trabalho.",
+    "viewBeyond": "Ver além do código"
+  },
   "experience": {
     "title": "Experiência",
     "role": "Engenheiro Fundador e CTO",
@@ -83,6 +157,28 @@
   },
   "projects": {
     "title": "Projetos",
+    "subtitle": "Detalhamento de sistemas entregues em trabalho, projetos pessoais e de curso, com demos e métricas ao vivo.",
+    "backToTop": "Voltar ao topo",
+    "categories": {
+      "work": "Projetos de trabalho",
+      "workDesc": "Sistemas em produção na Fokvs: backend, infra, IA e growth.",
+      "personal": "Projetos pessoais",
+      "personalDesc": "Explorações e bots rápidos para aprender e validar ideias.",
+      "course": "Projetos de curso",
+      "courseDesc": "Trabalhos de faculdade arquivados; foco recente é Fokvs em produção."
+    },
+    "personalDisclaimer": "Para transparência: aviso quais projetos foram vibecodados com uso de IA. Para vibecoding uso o Cursor.",
+    "noProjects": "Sem projetos nesta categoria no momento.",
+    "github": {
+      "title": "Repositórios pessoais no GitHub",
+      "loading": "Carregando estatísticas do GitHub...",
+      "error": "Não foi possível carregar os dados do GitHub agora.",
+      "viewRepo": "Ver repositório",
+      "updated": "Atualizado em {date}",
+      "vibecoded": "vibecoded",
+      "repoBadge": "Repositório GitHub",
+      "noDescription": "Descrição do repositório em breve."
+    },
     "features": "Funcionalidades",
     "highlights": "Destaques",
     "screenshot": "Captura de tela {index} de {name}",
@@ -251,11 +347,59 @@
           "Totalmente gerenciado com Terraform",
           "Documentação viva que evolui com a equipe"
         ]
+      },
+      "unisim": {
+        "overview": "App de simulação n-body (C++/GTK4) com múltiplos integradores e backends GPU.",
+        "features": [
+          "Integradores: Euler, Verlet, Leapfrog, RK4",
+          "Métodos de força: Brute Force, Barnes-Hut, Fast Multipole",
+          "Renderizadores: 2D, 3D, 3D OpenGL",
+          "Condições iniciais: galáxias espiral/elíptica, colisões, sistemas solar/binário"
+        ],
+        "highlights": [
+          "Backend Metal GPU no macOS",
+          "Passo de tempo, corpos e visualização configuráveis",
+          "Construído com CMake; suporta CUDA quando disponível"
+        ]
+      },
+      "finirig": {
+        "overview": "Rig de finanças pessoais para experimentar pipelines e análises.",
+        "features": [],
+        "highlights": [
+          "Em andamento; repo rastreado por transparência",
+          "Usa Cursor (vibecoded)"
+        ]
+      },
+      "Punkchain": {
+        "overview": "Experimento cripto inicial (pessoal/arquivado).",
+        "features": [],
+        "highlights": [
+          "Projeto pessoal de exploração",
+          "Mantido por histórico; detalhes serão atualizados"
+        ]
+      },
+      "putrefactos": {
+        "overview": "Repositório pessoal pequeno de sandbox.",
+        "features": [],
+        "highlights": [
+          "Projeto de aprendizado pessoal",
+          "Mantido por histórico; detalhes serão atualizados"
+        ]
+      },
+      "churrosfm": {
+        "overview": "Projeto de curso (churros.fm) com vídeo de demonstração.",
+        "features": [],
+        "highlights": [
+          "Projeto de classe",
+          "Vídeo demo vinculado"
+        ]
       }
     }
   },
   "media": {
     "title": "Trabalhos em Destaque",
+    "featured": "Mídia em destaque",
+    "backToTop": "Voltar ao topo",
     "items": {
       "fokvs-web-demo": {
         "title": "Demo da Plataforma Web Fokvs",
@@ -309,12 +453,23 @@
         "title": "Dashboard de Checkout - Analytics de Funil",
         "description": "Dashboard Fokvs Checkout exibindo analytics de funil de conversão e detalhes de atribuição de pagamento",
         "alt": "Dashboard Fokvs Checkout analytics de funil"
+      },
+      "unisim-gui": {
+        "title": "Interface do Unisim",
+        "description": "Captura do app Unisim de simulação n-body rodando uma colisão de galáxias",
+        "alt": "GUI do Unisim simulando n-body"
+      },
+      "churrosfm-demo": {
+        "title": "Demo churros.fm",
+        "description": "Demo do projeto de curso mostrando o churros.fm em ação",
+        "alt": "Vídeo demo do churros.fm"
       }
     },
     "videoNotSupported": "Seu navegador não suporta a tag de vídeo."
   },
   "journey": {
     "title": "A Jornada",
+    "context": "Minha jornada profissional na Fokvs (única experiência de trabalho), cobrindo reconstrução, migrações, monetização e processos de time.",
     "startingPoint": {
       "title": "Ponto de Partida: A Stack Monstruosa",
       "period": "Maio 2023",

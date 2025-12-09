@@ -13,16 +13,74 @@
     "visitGitHub": "Besök Fernando Gomes GitHub-profil",
     "sendEmailTo": "Skicka e-post till Fernando Gomes",
     "downloadResumeFor": "Ladda ner Fernando Gomes CV",
-    "visitLinkedIn": "Besök Fernando Gomes LinkedIn-profil"
+    "visitLinkedIn": "Besök Fernando Gomes LinkedIn-profil",
+    "share": "Dela"
+  },
+  "share": {
+    "title": "Dela profil",
+    "description": "Känner du någon som kan vara intresserad? Dela min profil med dem.",
+    "channels": {
+      "native": "Dela",
+      "copy": "Kopiera länk",
+      "copied": "Länk kopierad!",
+      "email": "Skicka via e-post",
+      "linkedin": "Dela på LinkedIn",
+      "x": "Dela på X"
+    },
+    "email": {
+      "subject": "Kolla in Fernando Gomes - Founding Engineer & CTO",
+      "body": "Jag tänkte att du kanske är intresserad av Fernando Gomes profil. Han är Founding Engineer och CTO med erfarenhet av att bygga startups från grunden."
+    },
+    "x": {
+      "text": "Kolla in Fernando Gomes - Founding Engineer & CTO som bygger startups från grunden"
+    },
+    "referCta": "Känner du en rekryterare eller grundare som kan vara intresserad? Hjälp mig att komma i kontakt.",
+    "referButton": "Rekommendera",
+    "projectsCta": "Känner du någon som bygger något liknande? Dela mitt arbete med dem.",
+    "skillsCta": "Letar du efter någon med dessa kunskaper? Dela min profil i ditt nätverk."
   },
   "header": {
     "name": "Fernando Gomes",
     "title": "Grundande Ingenjör & CTO",
-    "jobTitle": "Jobbtitel"
+    "jobTitle": "Jobbtitel",
+    "nav": {
+      "projects": "Projekt och demos",
+      "journey": "Resa och kontext",
+      "skills": "Skills och cert",
+      "beyond": "Beyond code"
+    }
   },
   "hero": {
     "location": "Porto Alegre, RS (Brasilien)",
-    "bio": "Grundande ingenjör och CTO som tar produkter från prototyp till skala — arkitektur, backend, infrastruktur, mobil, webb, AI, betalningar, analys och tillväxt. Byggde och drev hela <fokvs>Fokvs</fokvs> ingenjörsstack medan produkten skalades till 100K+ användare och meningsfull prenumerationsintäkt.",
+    "headline": "Jag bygger och guidar produkter från <highlight>0 → 1</highlight> till stabil intäkt.",
+    "bio": "Praktisk produktingenjör. Grundande ingenjör & CTO på <fokvs>Fokvs</fokvs>. Jag designar, kodar och driver stacken — backend, infra, AI, webb, mobil — med fokus på hållbar tillväxt och tillförlitlighet.",
+    "sellingPoints": {
+      "0": "Öppen för senior/staff+ eller founding-roller där leverans och coaching är viktiga.",
+      "1": "Bekväm med att äga arkitektur, leverans och drift end-to-end för att hålla farten.",
+      "2": "Historik: skrev om Fokvs, sänkte infrakostnad 85 %, och växte till 100K+ användare och 300+ abonnenter."
+    },
+    "audience": {
+      "recruiters": {
+        "title": "För rekryteringsteam",
+        "points": {
+          "0": "Kan kliva in som Staff+ IC för att avblockera leveranser och hålla standarder tydliga och praktiska.",
+          "1": "Hjälper till att minska beroenden mellan team och håller roadmapen rullande utan drama."
+        }
+      },
+      "founders": {
+        "title": "För founders och grundarteams",
+        "points": {
+          "0": "Bygger och driver produktloopen: infra, backend, AI, web/mobil, analytics och GTM-plumbing.",
+          "1": "Bias att skeppa: migrera, stabilisera och monetisera snabbt med rimlig instrumentering och experiment."
+        }
+      }
+    },
+    "cta": {
+      "resume": "Ladda ner CV",
+      "email": "Skicka e-post",
+      "projects": "Se projekt och demos",
+      "journey": "Läs resan"
+    },
     "badges": {
       "foundingEngineer": "Grundande Ingenjör",
       "cto": "CTO",
@@ -63,6 +121,22 @@
       "description": "Bearbetade för sökning och rekommendationer"
     }
   },
+  "landing": {
+    "projectsTeaser": "Hands-on byggen inom plattformar, infrastruktur, AI och betalningar.",
+    "projectsSummary": "Genomgångar av system jag designat och levererat end-to-end, med siffror och demos.",
+    "viewProjects": "Visa projekt och media",
+    "journeyTeaser": "Beslut, migrationer, intäkts-experiment och processer.",
+    "journeySummary": "Hur jag byggde om Fokvs, skalade den och satte struktur på teamet.",
+    "viewJourney": "Läs resan",
+    "skillsTitle": "Skills och certifieringar",
+    "skillsTeaser": "Snabb vy av teknisk bredd, ledarskap och språk.",
+    "skillsSummary": "Backend, infra, AI, betalningar, data och ledarskap, med certifieringar och språkförmåga.",
+    "viewSkills": "Visa skills och cert",
+    "beyondTitle": "Beyond code",
+    "beyondTeaser": "Personliga intressen som visar driv och teamwork.",
+    "beyondSummary": "Musik, uthållighetsidrott och vanor som ger arbetsresiliens.",
+    "viewBeyond": "Visa beyond code"
+  },
   "experience": {
     "title": "Erfarenhet",
     "role": "Grundande Ingenjör & CTO",
@@ -83,6 +157,28 @@
   },
   "projects": {
     "title": "Projekt",
+    "subtitle": "Genomgång av levererade system inom arbete, personliga och kursprojekt, med live-demos och statistik.",
+    "backToTop": "Tillbaka upp",
+    "categories": {
+      "work": "Arbetsprojekt",
+      "workDesc": "Produktion för Fokvs: backend, infra, AI och growth.",
+      "personal": "Personliga projekt",
+      "personalDesc": "Utforskningar och botar byggda snabbt för att lära och validera idéer.",
+      "course": "Kursprojekt",
+      "courseDesc": "Arkiverade kursarbeten; senaste fokus är Fokvs i produktion."
+    },
+    "personalDisclaimer": "För full transparens: jag visar vilka projekt som vibecodades med AI. För vibecoding använder jag Cursor.",
+    "noProjects": "Inga projekt i den här kategorin just nu.",
+    "github": {
+      "title": "Personliga GitHub-repon",
+      "loading": "Laddar GitHub-statistik...",
+      "error": "Kunde inte ladda GitHub-data just nu.",
+      "viewRepo": "Visa repo",
+      "updated": "Uppdaterad {date}",
+      "vibecoded": "vibecoded",
+      "repoBadge": "GitHub-repo",
+      "noDescription": "Repo-beskrivning kommer snart."
+    },
     "features": "Funktioner",
     "highlights": "Höjdpunkter",
     "screenshot": "Skärmdump {index} av {name}",
@@ -251,11 +347,59 @@
           "Helt hanterad med Terraform",
           "Levande dokumentation som utvecklas med teamet"
         ]
+      },
+      "unisim": {
+        "overview": "N-body-simuleringsapp (C++/GTK4) med flera integratorer och GPU-backends.",
+        "features": [
+          "Integratorer: Euler, Verlet, Leapfrog, RK4",
+          "Kraftmetoder: Brute Force, Barnes-Hut, Fast Multipole",
+          "Renderer: 2D, 3D, 3D OpenGL",
+          "Initiala tillstånd: spiral/elliptiska galaxer, kollisioner, sol-/binära system"
+        ],
+        "highlights": [
+          "Metal GPU-backend på macOS",
+          "Konfigurerbart tidsteg, antal kroppar och visualisering",
+          "Byggd med CMake; stöd för CUDA när det finns"
+        ]
+      },
+      "finirig": {
+        "overview": "Personlig finansrigg för experiment med datapipelines och analyser.",
+        "features": [],
+        "highlights": [
+          "Pågående; repo följs för transparens",
+          "Använder Cursor (vibecoded)"
+        ]
+      },
+      "Punkchain": {
+        "overview": "Tidigt krypto-experiment (personligt/arkiverat).",
+        "features": [],
+        "highlights": [
+          "Personligt utforskningsprojekt",
+          "Sparat för historik; detaljer uppdateras senare"
+        ]
+      },
+      "putrefactos": {
+        "overview": "Litet personligt sandbox-repo.",
+        "features": [],
+        "highlights": [
+          "Personligt lärandeprojekt",
+          "Sparat för historik; detaljer uppdateras senare"
+        ]
+      },
+      "churrosfm": {
+        "overview": "Kursprojekt (churros.fm) med demovideo.",
+        "features": [],
+        "highlights": [
+          "Klassprojekt",
+          "Länkad demovideo"
+        ]
       }
     }
   },
   "media": {
     "title": "Utvalt Arbete",
+    "featured": "Utvald media",
+    "backToTop": "Tillbaka upp",
     "items": {
       "fokvs-web-demo": {
         "title": "Fokvs Webbplattform Demo",
@@ -309,12 +453,23 @@
         "title": "Checkout Dashboard - Trattanalys",
         "description": "Fokvs Checkout dashboard visar konverteringstrattanalys och betalningsattribueringsdetaljer",
         "alt": "Fokvs Checkout dashboard trattanalys"
+      },
+      "unisim-gui": {
+        "title": "Unisim GUI",
+        "description": "Skärmdump av Unisim n-body-simuleringsappen som kör en galaxkollision",
+        "alt": "Unisim n-body-simulerings-GUI"
+      },
+      "churrosfm-demo": {
+        "title": "churros.fm demo",
+        "description": "Kursprojekt-demo som visar churros.fm i action",
+        "alt": "churros.fm demovideo"
       }
     },
     "videoNotSupported": "Din webbläsare stödjer inte video-taggen."
   },
   "journey": {
     "title": "Resan",
+    "context": "Min professionella resa på Fokvs (enda arbetslivserfarenheten) med ombyggnad, migrationer, intäkter och teamprocesser.",
     "startingPoint": {
       "title": "Startpunkt: Den Monstruösa Stacken",
       "period": "Maj 2023",

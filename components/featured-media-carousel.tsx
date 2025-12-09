@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { useTranslations } from "next-intl";
@@ -18,7 +17,7 @@ type MediaItem = {
   orientation?: "portrait" | "landscape";
 };
 
-export function MediaShowcase() {
+export function FeaturedMediaCarousel() {
   const t = useTranslations("media");
   const { track } = usePostHogTracking();
   const mediaRefs = useRef<Map<string, boolean>>(new Map());
@@ -28,8 +27,6 @@ export function MediaShowcase() {
     "churn-reduction",
     "mau-growth",
     "subscribers-growth",
-    "team-photo",
-    "anyfunnel-dashboard",
     "unisim-gui",
     "churrosfm-demo",
   ];
@@ -64,58 +61,49 @@ export function MediaShowcase() {
       "churn-reduction": "/media/images/churn_chart.png",
       "mau-growth": "/media/images/mau.png",
       "subscribers-growth": "/media/images/subscribers_chart.png",
-      "team-photo": "/media/images/team.jpeg",
-      "anyfunnel-dashboard": "/media/images/anyfunnel.png",
       "unisim-gui": "/media/images/unisim.png",
       "churrosfm-demo": "/media/videos/churros.mp4",
     };
     return srcMap[key] || "";
   }
 
-  if (mediaItems.length === 0) {
-    return null;
-  }
-
-  const getColorClasses = (type: string) => {
-    return {
-      border: "border-l-chart-2",
-      text: "text-chart-2",
-    };
-  };
+  if (mediaItems.length === 0) return null;
 
   return (
-    <section className="mb-16 md:mb-32" aria-labelledby="media-heading">
-      <h2
-        id="media-heading"
-        className="mb-8 md:mb-12 bg-gradient-to-r from-foreground to-chart-2 bg-clip-text text-2xl font-bold tracking-tight text-transparent md:text-4xl"
-      >
-        {t("title")}
-      </h2>
-      <div className="grid gap-4 md:gap-6 md:grid-cols-2">
+    <div className="mb-8">
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="text-lg font-semibold text-foreground">{t("featured")}</h3>
+      </div>
+      <div className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory">
         {mediaItems.map((item) => (
-          <MediaCard
+          <MediaSlide
             key={item.id}
             item={item}
-            colors={getColorClasses(item.type)}
             track={track}
             mediaRefs={mediaRefs}
             t={t}
           />
         ))}
       </div>
-    </section>
+      <div className="flex justify-end mt-2">
+        <a
+          href="#projects-heading"
+          className="text-sm text-chart-2 hover:text-chart-2/80 transition-colors"
+        >
+          {t("backToTop")}
+        </a>
+      </div>
+    </div>
   );
 }
 
-function MediaCard({
+function MediaSlide({
   item,
-  colors,
   track,
   mediaRefs,
   t,
 }: {
   item: MediaItem;
-  colors: { border: string; text: string };
   track: ReturnType<typeof usePostHogTracking>["track"];
   mediaRefs: React.MutableRefObject<Map<string, boolean>>;
   t: ReturnType<typeof useTranslations<"media">>;
@@ -133,11 +121,12 @@ function MediaCard({
             track("media_item_viewed", {
               media_id: item.id,
               media_type: item.type,
+              source: "projects_carousel",
             });
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
 
     observer.observe(itemRef.current);
@@ -145,31 +134,13 @@ function MediaCard({
   }, [item.id, item.type, track, mediaRefs]);
 
   return (
-    <Card
+    <div
       ref={itemRef}
-      className={`border-l-4 ${colors.border} shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden`}
+      className="min-w-[280px] max-w-[320px] snap-start flex flex-col gap-2"
+      title={item.title}
     >
-      <CardHeader>
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex-1">
-            <CardTitle className={`text-lg ${colors.text}`}>
-              {item.title}
-            </CardTitle>
-            {item.project && (
-              <p className="text-xs text-muted-foreground mt-1">
-                {item.project}
-              </p>
-            )}
-          </div>
-        </div>
-        {item.description && (
-          <p className="text-sm text-muted-foreground mt-2">
-            {item.description}
-          </p>
-        )}
-      </CardHeader>
-      <CardContent className="p-0">
-        {item.type === "image" && (
+      <div className="relative w-full h-[240px] rounded-xl overflow-hidden bg-black border border-border">
+        {(item.type === "image" || item.type === "chart") && (
           <ImageLightbox
             src={item.src}
             alt={item.alt}
@@ -178,60 +149,38 @@ function MediaCard({
             imageId={item.id}
             section="media"
           >
-            <div className="relative w-full aspect-video bg-muted">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                loading="lazy"
-              />
-            </div>
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 320px"
+              priority
+            />
           </ImageLightbox>
         )}
         {item.type === "video" && (
-          <div
-            className={`relative w-full ${
-              item.orientation === "portrait"
-                ? "aspect-[9/16] max-w-[280px] sm:max-w-sm mx-auto"
-                : "aspect-video"
-            } bg-muted`}
-          >
-            <video
-              src={item.src}
-              controls
-              className="w-full h-full object-contain"
-              preload="metadata"
-              aria-label={item.alt}
-              onPlay={() => track("video_played", { video_id: item.id })}
-            >
-              {t("videoNotSupported")}
-            </video>
-          </div>
-        )}
-        {item.type === "chart" && (
-          <ImageLightbox
+          <video
             src={item.src}
-            alt={item.alt}
-            title={item.title}
-            description={item.description}
-            imageId={item.id}
-            section="media"
+            controls
+            className="w-full h-full object-cover bg-black"
+            preload="metadata"
+            onPlay={() =>
+              track("video_played", {
+                media_id: item.id,
+                section: "projects_carousel",
+              })
+            }
           >
-            <div className="relative w-full aspect-video bg-muted">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-contain p-4"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                loading="lazy"
-              />
-            </div>
-          </ImageLightbox>
+            {t("videoNotSupported")}
+          </video>
         )}
-      </CardContent>
-    </Card>
+      </div>
+      <div className="text-sm font-semibold text-foreground">{item.title}</div>
+      {item.description && (
+        <p className="text-xs text-muted-foreground leading-snug">{item.description}</p>
+      )}
+    </div>
   );
 }
+

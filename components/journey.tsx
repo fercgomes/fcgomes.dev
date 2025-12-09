@@ -66,6 +66,9 @@ export function Journey() {
       >
         {t('title')}
       </h2>
+      <p className="mb-6 text-sm md:text-base text-muted-foreground">
+        {t('context')}
+      </p>
 
       <Card className="border-l-4 border-l-chart-2 shadow-lg mb-4 md:mb-6 transition-all duration-300 hover:shadow-xl">
         <CardHeader>

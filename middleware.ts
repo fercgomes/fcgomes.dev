@@ -10,7 +10,7 @@ export const config = {
     '/',
     
     // Set a cookie to remember the locale of the last visit
-    '/(pt-BR|es|fr|sv|en)/:path*',
+    '/(pt-BR|sv|en)/:path*',
     
     // Enable redirects that add missing locales
     // (e.g. `/pathnames` -> `/en/pathnames`)

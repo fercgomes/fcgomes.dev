@@ -13,11 +13,9 @@ import {
 import { usePostHogTracking } from "@/lib/posthog";
 
 const languages = [
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'pt-BR', name: 'Português (BR)', flag: '🇧🇷' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'sv', name: 'Svenska', flag: '🇸🇪' },
+  { code: 'en', name: 'English' },
+  { code: 'pt-BR', name: 'Português (BR)' },
+  { code: 'sv', name: 'Svenska' },
 ];
 
 export function LanguageSwitcher() {
@@ -44,8 +42,8 @@ export function LanguageSwitcher() {
           className="border-chart-2/30 hover:border-chart-2 hover:bg-chart-2/10 transition-all duration-300"
         >
           <Languages className="mr-2 h-4 w-4" aria-hidden="true" />
-          <span className="mr-2">{currentLanguage.flag}</span>
           <span className="hidden sm:inline">{currentLanguage.name}</span>
+          <span className="sm:hidden">{currentLanguage.code.toUpperCase()}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -55,7 +53,6 @@ export function LanguageSwitcher() {
             onClick={() => handleLanguageChange(lang.code)}
             className={locale === lang.code ? 'bg-chart-2/10' : ''}
           >
-            <span className="mr-2">{lang.flag}</span>
             <span>{lang.name}</span>
           </DropdownMenuItem>
         ))}
