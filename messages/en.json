@@ -34,15 +34,6 @@
     "x": {
       "text": "Check out Fernando Gomes - Founding Engineer & CTO building startups from scratch"
     },
-    "blogPost": {
-      "email": {
-        "subject": "Check out this blog post by Fernando Gomes",
-        "body": "I thought you might find this blog post interesting:"
-      },
-      "x": {
-        "text": "Check out this blog post"
-      }
-    },
     "referCta": "Know a recruiter or founder who might be interested? Help me connect with them.",
     "referButton": "Refer me",
     "projectsCta": "Know someone building something similar? Share my work with them.",
@@ -695,13 +686,6 @@
   "blog": {
     "title": "Blog",
     "description": "Thoughts on engineering, infrastructure, product development, and building startups from scratch.",
-    "noPosts": "No blog posts available yet. Check back soon!",
-    "minRead": "min read",
-    "backToBlog": "Back to blog",
-    "writtenBy": "Written by",
-    "aiGenerated": "AI Generated",
-    "notAiGenerated": "Human Written",
-    "aiDisclaimer": "For full transparency, I will signal which blog posts were written using AI and which were not.",
-    "share": "Share"
+    "visitSubstack": "Visit my Substack"
   }
 }

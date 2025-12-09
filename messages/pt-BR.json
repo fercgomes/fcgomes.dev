@@ -34,15 +34,6 @@
     "x": {
       "text": "Conheça Fernando Gomes - Founding Engineer & CTO construindo startups do zero"
     },
-    "blogPost": {
-      "email": {
-        "subject": "Confira este post do blog do Fernando Gomes",
-        "body": "Achei que você poderia achar este post interessante:"
-      },
-      "x": {
-        "text": "Confira este post do blog"
-      }
-    },
     "referCta": "Conhece um recrutador ou founder que pode se interessar? Ajude-me a conectar com eles.",
     "referButton": "Indicar",
     "projectsCta": "Conhece alguém construindo algo similar? Compartilhe meu trabalho com eles.",
@@ -695,12 +686,6 @@
   "blog": {
     "title": "Blog",
     "description": "Pensamentos sobre engenharia, infraestrutura, desenvolvimento de produtos e construção de startups do zero.",
-    "noPosts": "Ainda não há posts no blog. Volte em breve!",
-    "minRead": "min de leitura",
-    "backToBlog": "Voltar ao blog",
-    "writtenBy": "Escrito por",
-    "aiGenerated": "Gerado por IA",
-    "notAiGenerated": "Escrito por Humano",
-    "aiDisclaimer": "Para total transparência, sinalizarei quais posts do blog foram escritos usando IA e quais não foram."
+    "visitSubstack": "Visite meu Substack"
   }
 }

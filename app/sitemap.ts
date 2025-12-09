@@ -1,9 +1,7 @@
 import { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts();
   const routes: MetadataRoute.Sitemap = [];
 
   // Add main pages for each locale
@@ -48,21 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
-    });
-  });
-
-  // Add blog posts
-  posts.forEach((post) => {
-    routes.push({
-      url: `https://fcgomes.dev/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: "monthly",
-      priority: 0.6,
-      alternates: {
-        languages: {
-          [post.lang]: `https://fcgomes.dev/${post.lang}/blog/${post.slug}`,
-        },
-      },
     });
   });
 

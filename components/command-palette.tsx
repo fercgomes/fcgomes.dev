@@ -131,10 +131,10 @@ export function CommandPalette() {
       label: t("commands.blog"),
       action: () => {
         track("navigation_clicked", {
-          destination: "/blog",
+          destination: "https://substack.com/@fcgomes",
           source: "command_palette",
         });
-        i18nRouter.push("/blog");
+        window.open("https://substack.com/@fcgomes", "_blank", "noopener,noreferrer");
         setOpen(false);
       },
       shortcut: "B",

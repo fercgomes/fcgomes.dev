@@ -183,15 +183,20 @@ export function Hero() {
           asChild
           onClick={() =>
             track("navigation_clicked", {
-              destination: "blog",
+              destination: "https://substack.com/@fcgomes",
               source: "hero",
             })
           }
         >
-          <Link href="/blog" className="inline-flex items-center">
+          <a
+            href="https://substack.com/@fcgomes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center"
+          >
             {t("cta.blog")}
             <ArrowUpRight className="ml-2 h-4 w-4" />
-          </Link>
+          </a>
         </Button>
       </div>
 

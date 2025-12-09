@@ -34,15 +34,6 @@
     "x": {
       "text": "Kolla in Fernando Gomes - Founding Engineer & CTO som bygger startups från grunden"
     },
-    "blogPost": {
-      "email": {
-        "subject": "Kolla in denna bloggpost av Fernando Gomes",
-        "body": "Jag tänkte att du kanske skulle tycka att denna bloggpost är intressant:"
-      },
-      "x": {
-        "text": "Kolla in denna bloggpost"
-      }
-    },
     "referCta": "Känner du en rekryterare eller grundare som kan vara intresserad? Hjälp mig att komma i kontakt.",
     "referButton": "Rekommendera",
     "projectsCta": "Känner du någon som bygger något liknande? Dela mitt arbete med dem.",
@@ -695,12 +686,6 @@
   "blog": {
     "title": "Blogg",
     "description": "Tankar om teknik, infrastruktur, produktutveckling och att bygga startups från grunden.",
-    "noPosts": "Inga blogginlägg tillgängliga ännu. Kom tillbaka snart!",
-    "minRead": "min läsning",
-    "backToBlog": "Tillbaka till bloggen",
-    "writtenBy": "Skriven av",
-    "aiGenerated": "AI-genererad",
-    "notAiGenerated": "Skriven av Människa",
-    "aiDisclaimer": "För fullständig transparens kommer jag signalera vilka blogginlägg som skrevs med AI och vilka som inte gjorde det."
+    "visitSubstack": "Besök min Substack"
   }
 }

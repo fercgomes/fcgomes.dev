@@ -42,16 +42,12 @@ type ShareModalProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   utmContent?: string;
-  isBlogPost?: boolean;
-  postTitle?: string;
 };
 
 export function ShareModal({
   open,
   onOpenChange,
   utmContent,
-  isBlogPost = false,
-  postTitle,
 }: ShareModalProps) {
   const t = useTranslations("share");
   const pathname = usePathname();
@@ -109,16 +105,10 @@ export function ShareModal({
             utm_content: utmContent,
             url: shareUrl,
           });
-          const emailSubject = isBlogPost
-            ? t("blogPost.email.subject")
-            : t("email.subject");
-          const emailBody = isBlogPost
-            ? `${t("blogPost.email.body")} ${postTitle || ""}`
-            : t("email.body");
           window.location.href = getEmailShareUrl(
             shareUrl,
-            emailSubject,
-            emailBody
+            t("email.subject"),
+            t("email.body")
           );
           break;
         case "linkedin":
@@ -139,11 +129,8 @@ export function ShareModal({
             utm_content: utmContent,
             url: shareUrl,
           });
-          const xText = isBlogPost
-            ? `${t("blogPost.x.text")}: ${postTitle || ""}`
-            : t("x.text");
           window.open(
-            getXShareUrl(shareUrl, xText),
+            getXShareUrl(shareUrl, t("x.text")),
             "_blank",
             "noopener,noreferrer"
           );
@@ -163,8 +150,8 @@ export function ShareModal({
       url: shareUrl,
     });
 
-    const shareTitle = isBlogPost && postTitle ? postTitle : t("title");
-    const shareText = isBlogPost && postTitle ? postTitle : t("description");
+    const shareTitle = t("title");
+    const shareText = t("description");
     const shared = await triggerWebShare(shareUrl, shareTitle, shareText);
     if (shared) {
       track("share_native_succeeded", {

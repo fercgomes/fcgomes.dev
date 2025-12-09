@@ -220,54 +220,77 @@ export function Header() {
             label: t("nav.projects"),
             icon: <FileText className="h-4 w-4" />,
             isBlog: false,
+            external: false,
           },
           {
             href: "/journey",
             label: t("nav.journey"),
             icon: <BookOpen className="h-4 w-4" />,
             isBlog: false,
+            external: false,
           },
           {
             href: "/skills",
             label: t("nav.skills"),
             icon: <BadgeCheck className="h-4 w-4" />,
             isBlog: false,
+            external: false,
           },
           {
             href: "/beyond-code",
             label: t("nav.beyond"),
             icon: <Sparkles className="h-4 w-4" />,
             isBlog: false,
+            external: false,
           },
           {
-            href: "/blog",
+            href: "https://substack.com/@fcgomes",
             label: t("nav.blog"),
             icon: <PenTool className="h-4 w-4" />,
             isBlog: true,
+            external: true,
           },
         ].map((link) => (
           <div className="flex" key={link.href} title={link.label}>
-            <Link
-              href={link.href}
-              onClick={() =>
-                track("navigation_clicked", {
-                  destination: link.href,
-                  source: "header",
-                })
-              }
-              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 transition-colors ${
-                link.isBlog
-                  ? pathname.startsWith(link.href)
-                    ? "border-chart-2/40 bg-chart-2/5 text-chart-2 font-semibold"
-                    : "border-chart-2/20 bg-chart-2/5 text-muted-foreground hover:border-chart-2/40 hover:text-chart-2 font-semibold"
-                  : pathname.startsWith(link.href)
-                  ? "border-chart-2/60 bg-chart-2/10 text-foreground"
-                  : "border-transparent hover:border-chart-2/60 hover:bg-chart-2/10 hover:text-foreground"
-              }`}
-            >
-              {link.icon}
-              {link.label}
-            </Link>
+            {link.external ? (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  track("navigation_clicked", {
+                    destination: link.href,
+                    source: "header",
+                  })
+                }
+                className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 transition-colors ${
+                  link.isBlog
+                    ? "border-chart-2/20 bg-chart-2/5 text-muted-foreground hover:border-chart-2/40 hover:text-chart-2 font-semibold"
+                    : "border-transparent hover:border-chart-2/60 hover:bg-chart-2/10 hover:text-foreground"
+                }`}
+              >
+                {link.icon}
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                href={link.href}
+                onClick={() =>
+                  track("navigation_clicked", {
+                    destination: link.href,
+                    source: "header",
+                  })
+                }
+                className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 transition-colors ${
+                  pathname.startsWith(link.href)
+                    ? "border-chart-2/60 bg-chart-2/10 text-foreground"
+                    : "border-transparent hover:border-chart-2/60 hover:bg-chart-2/10 hover:text-foreground"
+                }`}
+              >
+                {link.icon}
+                {link.label}
+              </Link>
+            )}
           </div>
         ))}
       </div>
