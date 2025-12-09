@@ -18,6 +18,7 @@ import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import mdxComponents from "@/components/mdx-components";
 import { BlogShareButton } from "@/components/blog-share-button";
+import { routing } from "@/i18n/routing";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string; locale: string }>;
@@ -29,9 +30,19 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const params: { slug: string; locale: string }[] = [];
+
+  // Generate params for all locales and all posts
+  for (const locale of routing.locales) {
+    for (const post of posts) {
+      params.push({
+        slug: post.slug,
+        locale,
+      });
+    }
+  }
+
+  return params;
 }
 
 export async function generateMetadata({
