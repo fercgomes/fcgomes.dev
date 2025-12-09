@@ -15,6 +15,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { usePostHogTracking } from "@/lib/posthog";
 import { ShareModal, useShareModal } from "@/components/share-modal";
+import { getSubstackUrl } from "@/lib/substack";
 
 export function Hero() {
   const t = useTranslations("hero");
@@ -181,15 +182,21 @@ export function Hero() {
           variant="ghost"
           className="text-foreground hover:text-foreground hover:bg-muted"
           asChild
-          onClick={() =>
+          onClick={() => {
+            const substackUrl = getSubstackUrl("hero");
             track("navigation_clicked", {
-              destination: "https://substack.com/@fcgomes",
+              destination: substackUrl,
               source: "hero",
-            })
-          }
+            });
+            track("external_link_clicked", {
+              platform: "substack",
+              destination: substackUrl,
+              source: "hero",
+            });
+          }}
         >
           <a
-            href="https://substack.com/@fcgomes"
+            href={getSubstackUrl("hero")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center"

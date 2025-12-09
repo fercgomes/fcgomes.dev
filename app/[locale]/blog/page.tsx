@@ -2,9 +2,7 @@ import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/header";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
-import { redirect } from "next/navigation";
+import { SubstackButton } from "@/components/substack-button";
 
 // Force static generation
 export const dynamic = "force-static";
@@ -53,20 +51,10 @@ export default async function BlogPage({
           <p className="text-base text-muted-foreground md:text-lg max-w-2xl">
             {t("description")}
           </p>
-          <Button
-            size="lg"
+          <SubstackButton
+            source="blog_page"
             className="bg-chart-2 text-white hover:bg-chart-2/90"
-            asChild
-          >
-            <a
-              href="https://substack.com/@fcgomes"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink className="mr-2 h-4 w-4" />
-              {t("visitSubstack")}
-            </a>
-          </Button>
+          />
         </div>
       </div>
     </main>

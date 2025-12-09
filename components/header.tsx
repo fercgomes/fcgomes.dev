@@ -30,6 +30,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePostHogTracking } from "@/lib/posthog";
 import { Link, usePathname } from "@/i18n/routing";
+import { getSubstackUrl } from "@/lib/substack";
 
 export function Header() {
   const t = useTranslations("header");
@@ -244,7 +245,7 @@ export function Header() {
             external: false,
           },
           {
-            href: "https://substack.com/@fcgomes",
+            href: getSubstackUrl("header"),
             label: t("nav.blog"),
             icon: <PenTool className="h-4 w-4" />,
             isBlog: true,
@@ -257,12 +258,17 @@ export function Header() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() =>
+                onClick={() => {
                   track("navigation_clicked", {
                     destination: link.href,
                     source: "header",
-                  })
-                }
+                  });
+                  track("external_link_clicked", {
+                    platform: "substack",
+                    destination: link.href,
+                    source: "header",
+                  });
+                }}
                 className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 transition-colors ${
                   link.isBlog
                     ? "border-chart-2/20 bg-chart-2/5 text-muted-foreground hover:border-chart-2/40 hover:text-chart-2 font-semibold"

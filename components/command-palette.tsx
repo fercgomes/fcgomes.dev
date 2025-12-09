@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { usePostHogTracking } from "@/lib/posthog";
 import { useRouter as useI18nRouter } from "@/i18n/routing";
+import { getSubstackUrl } from "@/lib/substack";
 
 type CommandItem = {
   id: string;
@@ -130,11 +131,17 @@ export function CommandPalette() {
       id: "blog",
       label: t("commands.blog"),
       action: () => {
+        const substackUrl = getSubstackUrl("command_palette");
         track("navigation_clicked", {
-          destination: "https://substack.com/@fcgomes",
+          destination: substackUrl,
           source: "command_palette",
         });
-        window.open("https://substack.com/@fcgomes", "_blank", "noopener,noreferrer");
+        track("external_link_clicked", {
+          platform: "substack",
+          destination: substackUrl,
+          source: "command_palette",
+        });
+        window.open(substackUrl, "_blank", "noopener,noreferrer");
         setOpen(false);
       },
       shortcut: "B",
