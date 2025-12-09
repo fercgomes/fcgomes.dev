@@ -104,7 +104,7 @@ function MediaCard({
   t,
 }: {
   item: MediaItem;
-  colors: ReturnType<typeof getColorClasses>;
+  colors: { border: string; text: string };
   track: ReturnType<typeof usePostHogTracking>['track'];
   mediaRefs: React.MutableRefObject<Map<string, boolean>>;
   t: ReturnType<typeof useTranslations<'media'>>;
