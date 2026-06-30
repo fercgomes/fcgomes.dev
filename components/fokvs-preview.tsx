@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { usePostHogTracking } from "@/lib/posthog";
 
 type FokvsPreviewProps = {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ export function FokvsPreview({ children }: FokvsPreviewProps) {
   const previewRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("hero");
   const tCommon = useTranslations("common");
+  const { track } = usePostHogTracking();
 
   useEffect(() => {
     if (isHovered && containerRef.current) {
@@ -160,7 +162,10 @@ export function FokvsPreview({ children }: FokvsPreviewProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-chart-2 transition-colors"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      track('fokvs_preview_link_clicked', { source: 'hero_fokvs_preview' });
+                    }}
                     aria-label={tCommon("visitFokvs")}
                   >
                     <ExternalLink className="h-4 w-4" />

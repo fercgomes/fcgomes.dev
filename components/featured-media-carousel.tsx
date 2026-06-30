@@ -171,6 +171,18 @@ function MediaSlide({
                 section: "projects_carousel",
               })
             }
+            onPause={() =>
+              track("video_paused", {
+                media_id: item.id,
+                section: "projects_carousel",
+              })
+            }
+            onEnded={() =>
+              track("video_ended", {
+                media_id: item.id,
+                section: "projects_carousel",
+              })
+            }
           >
             {t("videoNotSupported")}
           </video>
