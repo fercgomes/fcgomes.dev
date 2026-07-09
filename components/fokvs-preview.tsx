@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { usePostHogTracking } from "@/lib/posthog";
 
 type FokvsPreviewProps = {
   children: React.ReactNode;
@@ -20,6 +21,12 @@ export function FokvsPreview({ children }: FokvsPreviewProps) {
   const previewRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("hero");
   const tCommon = useTranslations("common");
+  const { track } = usePostHogTracking();
+
+  const handleOpen = () => {
+    setIsHovered(true);
+    track("fokvs_preview_hovered", { source: "hero" });
+  };
 
   useEffect(() => {
     if (isHovered && containerRef.current) {
@@ -120,9 +127,9 @@ export function FokvsPreview({ children }: FokvsPreviewProps) {
       <span
         ref={containerRef}
         className="relative inline-block cursor-pointer font-semibold text-chart-2 transition-all duration-200 hover:text-chart-2/80"
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={handleOpen}
         onMouseLeave={() => setIsHovered(false)}
-        onFocus={() => setIsHovered(true)}
+        onFocus={handleOpen}
         onBlur={() => setIsHovered(false)}
         role="button"
         tabIndex={0}
@@ -160,7 +167,10 @@ export function FokvsPreview({ children }: FokvsPreviewProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-chart-2 transition-colors"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      track("fokvs_link_clicked", { source: "fokvs_preview" });
+                    }}
                     aria-label={tCommon("visitFokvs")}
                   >
                     <ExternalLink className="h-4 w-4" />
