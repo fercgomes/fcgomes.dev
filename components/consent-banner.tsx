@@ -4,33 +4,28 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { X, BarChart3, Shield } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { initializePostHog } from '@/lib/posthog';
+import posthog from 'posthog-js';
 
 export function ConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const t = useTranslations('consent');
 
   useEffect(() => {
-    // Check if user has already seen the banner
     const consent = localStorage.getItem('posthog_consent');
     if (!consent) {
-      // Show banner after a short delay for better UX
       const timer = setTimeout(() => setIsVisible(true), 1000);
       return () => clearTimeout(timer);
     } else if (consent === 'accepted' || consent === 'dismissed') {
-      // If already consented or dismissed, initialize PostHog
-      initializePostHog();
+      posthog.opt_in_capturing();
       window.dispatchEvent(new Event('posthog_consent_accepted'));
     }
   }, []);
 
   const handleDismiss = () => {
-    // By dismissing, user consents to analytics
     localStorage.setItem('posthog_consent', 'accepted');
     setIsVisible(false);
-    initializePostHog();
-    
-    // Dispatch custom event for PostHogProvider
+    posthog.opt_in_capturing();
+    posthog.capture('consent_banner_dismissed');
     window.dispatchEvent(new Event('posthog_consent_accepted'));
   };
 
@@ -54,7 +49,7 @@ export function ConsentBanner() {
               </p>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-2 w-full md:w-auto">
             <Button
               onClick={handleDismiss}
@@ -71,4 +66,3 @@ export function ConsentBanner() {
     </div>
   );
 }
-
